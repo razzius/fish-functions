@@ -19,3 +19,9 @@ Updating origin
 created repository: razzius/fish_functions
 fish_functions $
 ```
+
+## ensuredb
+
+Ensure that a fresh database is created with a name.
+Drops a database by that name if it exists.
+Clears database connections as necessary.
