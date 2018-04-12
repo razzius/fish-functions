@@ -1,6 +1,13 @@
 These are fish functions for making common tasks more convenient.
 
-To use them, link them to `~/.config/fish/functions/`.
+## Installation
+
+```sh
+# Backup your old ~/.config/fish/functions first, then:
+$ git clone https://github.com/razzius/fish-functions ~/.config/fish/functions
+```
+
+## File utilities
 
 ### `backup <file>`
 
@@ -14,41 +21,9 @@ $ ls
 README.md.bak
 ```
 
-### `coln <column>`
+### `restore <backup>`
 
-Splits its input on whitespace and prints the column indicated.
-
-```
-$ echo 1 2 | coln 2
-2
-```
-
-### `ensuredb <name>`
-
-Ensure that a fresh database by the name given is created.
-Drops a database by that name if it exists.
-Clears database connections as necessary.
-
-### `fs`
-
-Save the last-edited `fish` function.
-
-```
-$ function hi
-  echo hi
-end
-$ fs
-Saved hi
-```
-
-### `lower`
-
-Converts stdin to lowercase.
-
-```
-$ echo A | lower
-a
-```
+Rename file.bak to file.
 
 ### `mc <directory>`
 
@@ -58,6 +33,14 @@ Make a directory and cd into it.
 $ mc folder
 folder $
 ```
+
+### cp <file>
+
+cp with some extra behaviors.
+
+Automatic recursive copy for folders.
+
+If only 1 argument is given, move the file into the current directory.
 
 ### `new <project>`
 
@@ -78,7 +61,9 @@ Append the note text to ~/notes.org. If no note text is provided, the text comes
 
 ### `post <title>`
 
-Create a skeleton Jekyll post with the given title.
+Go to my Jekyll blog and create a skeleton Jekyll post with the given title.
+
+Note: this is hardcoded with my blog path
 
 ```
 $ post Fish functions
@@ -88,6 +73,96 @@ title: Fish functions
 date: 2017-06-21
 ---
 ```
+
+### `ls`
+
+Like `ls` but hides __pycache__ and .pyc files. Risky...
+
+## Text utilities
+
+### `coln <column>`
+
+Splits its input on whitespace and prints the column indicated.
+
+```
+$ echo 1 2 | coln 2
+2
+```
+
+### `lower`
+
+Converts stdin to lowercase.
+
+```
+$ echo A | lower
+a
+```
+
+## git utilities
+
+### `ga`
+
+Like git add, but defaults to `.` if no arguments given, rather than erroring.
+
+### `gc`
+
+`git commit -m` without the need to quote the commit message.
+
+If no commit message is given and there's only 1 file, commit "Update (that file)".
+
+```
+$ gc Fix typo in README.md
+[master 0078f7f] Fix typo in README.md
+1 file changed, 57 insertions(+), 18 deletions(-)
+$ git reset @^
+Unstaged changes after reset:
+M       README.md
+$ ga
+$ gc
+[master c77868d] Update README.md
+ 1 file changed, 57 insertions(+), 18 deletions(-)
+```
+
+### `gcr`
+
+Like `gc` but adds the current branch name at the start of the commit.
+
+Needed for a certain commit style.
+
+```
+$ git checkout -b razzi/ticket-1
+$ gcr Blah
+[razzi/ticket-1 25719b6] [TICKET-1] Blah
+ 1 file changed, 57 insertions(+), 18 deletions(-)
+```
+
+### `git`
+
+Alias for [hub](https://github.com/github/hub)
+
+## Database utilities
+
+### `ensuredb <name>`
+
+Ensure that a fresh database by the name given is created.
+Drops a database by that name if it exists.
+Clears database connections as necessary.
+
+## Fish utilities
+
+### `fs`
+
+Save the last-edited `fish` function.
+
+```
+$ function hi
+  echo hi
+end
+$ fs
+Saved hi
+```
+
+## Environment utilities
 
 ### `readpass <password>`
 
@@ -99,10 +174,35 @@ $ echo $email
 razzi@abuissa.net
 ```
 
-### `restore <backup>`
+### `eco <envvar>`
 
-Rename file.bak to file.
+Like echo for testing environment variables, but doesn't need dollar or capitalization.
 
-### `sudo <command>`
+TODO doesn't tab complete
 
-Runs a command as sudo. If the command is `!!`, runs the last command.
+```
+$ eco user
+razzi
+$ echo $USER
+razzi
+```
+
+## Command utilities
+
+### `dollar`
+
+Remove the starting $ from a shell command and run it. Useful if you're copying stuff and it has `$` signs before commands you're meant to run.
+
+```
+$ echo '$ echo hi' | dollar
+hi
+$ pbpaste | dollar
+Somebody made commands
+That started with dollars
+```
+
+## Markdown utilities
+
+### `md <file>`
+
+Convert a file to markdown and open the resulting html.
