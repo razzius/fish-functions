@@ -78,6 +78,10 @@ date: 2017-06-21
 
 Like `ls` but hides __pycache__ and .pyc files. Risky...
 
+## mv-last
+
+Move the latest download to the current directory.
+
 ## Text utilities
 
 ### `coln <column>`
