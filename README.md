@@ -1,10 +1,10 @@
-Fish functions for making common tasks more convenient.
+Fish config and functions for making common tasks more convenient.
 
 ## Installation
 
 ```sh
-# Backup your old ~/.config/fish/functions first, then:
-$ git clone https://github.com/razzius/fish-functions ~/.config/fish/functions
+# Backup your old ~/.config/fish first, then:
+$ git clone https://github.com/razzius/fish-functions ~/.config/fish
 ```
 
 ## File utilities
@@ -34,7 +34,7 @@ $ mc folder
 folder $
 ```
 
-### cp <file>
+### `cp <file>`
 
 cp with some extra behaviors.
 
@@ -76,7 +76,7 @@ date: 2017-06-21
 
 ### `ls`
 
-Like `ls` but hides __pycache__ and .pyc files. Risky...
+Like `ls` but hides `__pycache__` and `.pyc` files. Risky...
 
 ## mv-last
 
