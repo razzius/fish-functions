@@ -1,4 +1,4 @@
-These are fish functions for making common tasks more convenient.
+Fish functions for making common tasks more convenient.
 
 ## Installation
 
@@ -102,6 +102,14 @@ $ echo A | lower
 a
 ```
 
+### `upper`
+
+Converts stdin to uppercase.
+
+```
+$ echo a | upper
+A
+```
 ## git utilities
 
 ### `ga`
@@ -178,14 +186,14 @@ $ echo $email
 razzi@abuissa.net
 ```
 
-### `eco <envvar>`
+### `ev <envvar>`
 
-Like echo for testing environment variables, but doesn't need dollar or capitalization.
+Short for "echo variable".
 
-TODO doesn't tab complete
+Like `echo`, but doesn't need the `$` or capitalization. Useful for testing environment variables.
 
 ```
-$ eco user
+$ ev user
 razzi
 $ echo $USER
 razzi

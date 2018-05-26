@@ -1,4 +1,4 @@
-function pw --argument url
+function pw --argument url --wraps pass
 	set domain (domain $url)
 if pass list $domain > /dev/null
 pass -c $domain
