@@ -4,7 +4,7 @@ function cp
 	if [ (count $argv | tr -d \n) = 2 ]; and [ -d $argv[1] ]
     command cp -r $argv
   else if [ $count = 1 ]
-    cp (echo $argv | py -x 'x.rstrip("/")') .
+    cp (echo $argv | trim-right /) .
   else
     command cp $argv
   end
