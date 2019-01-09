@@ -1,4 +1,5 @@
-function backup
-	echo $argv[1] | rev | cut -d / -f 2- | rev | read file
-	mv $file $file.bak
+# Defined in - @ line 2
+function backup --argument filename
+	echo $filename | rev | cut -d / -f 2- | rev | read file
+    cp $file $file.bak
 end
