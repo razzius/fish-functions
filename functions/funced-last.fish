@@ -1,6 +1,6 @@
 # Defined in - @ line 2
 function funced-last
-	set function_name (last_function_name)
+    set function_name (last-function-name)
     funced $function_name
     funcsave $function_name
 end
