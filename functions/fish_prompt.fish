@@ -20,6 +20,10 @@ function fish_prompt --description 'Write out the prompt'
     set_color $fish_color_error
 	end
 
+  if jobs -q
+    echo -s -n (set_color -b purple) '.' (set_color normal)
+  end
+
   if set -q VIRTUAL_ENV
     echo -s -n (set_color -b blue) '$' (set_color normal)
   else
