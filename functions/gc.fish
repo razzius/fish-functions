@@ -1,7 +1,9 @@
-# Defined in /var/folders/7v/b0z6dsqj1fx8k5rf8x121l580000gn/T//fish.x6bcgv/gc.fish @ line 2
+# Defined in /var/folders/5r/x8hb9kbd5751zn4pz9yq24s80000gn/T//fish.QfyLgO/gc.fish @ line 2
 function gc
 	if [ -z "$argv" ]
-    if test (git staged-files | wc -l | tr -d ' ') = 1
+    if test (git new-files | wc -l | tr -d ' ') = 1
+      git commit -m "Add "(git staged-files)
+    else if test (git staged-files | wc -l | tr -d ' ') = 1
       git commit -m "Update "(git staged-files)
     else
       echo "Add a commit message"
