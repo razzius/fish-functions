@@ -2,3 +2,4 @@ fish_history
 fishd.*
 fish_read_history
 functions/__*
+fish_variables
