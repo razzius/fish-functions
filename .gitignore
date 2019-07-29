@@ -2,4 +2,5 @@ fish_history
 fishd.*
 fish_read_history
 functions/__*
+functions/private/*
 fish_variables
