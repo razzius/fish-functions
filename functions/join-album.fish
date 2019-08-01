@@ -1,3 +1,3 @@
 function join-album
-	shntool join -o flac -a (basename (pwd)) *.flac
+    shntool join -o flac -a (basename (pwd)) *.flac
 end

@@ -1,3 +1,3 @@
 function clear-dns
-	sudo killall -HUP mDNSResponder
+    sudo killall -HUP mDNSResponder
 end

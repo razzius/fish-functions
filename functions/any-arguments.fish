@@ -1,3 +1,3 @@
 function any-arguments
-	count $argv > /dev/null
+    count $argv >/dev/null
 end

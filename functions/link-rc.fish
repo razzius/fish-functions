@@ -1,3 +1,3 @@
 function link-rc --argument file
-	gln -sr $file ~
+    gln -sr $file ~
 end

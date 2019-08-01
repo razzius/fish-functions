@@ -1,3 +1,3 @@
 function replace --argument a b
-	sed s/$a/$b/g
+    sed s/$a/$b/g
 end

@@ -1,3 +1,3 @@
 function upper
-	tr '[:lower:]' '[:upper:]'
+    tr '[:lower:]' '[:upper:]'
 end

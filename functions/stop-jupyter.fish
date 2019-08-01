@@ -1,3 +1,3 @@
 function stop-jupyter
-	launchctl stop local.jupyter.notebook
+    launchctl stop local.jupyter.notebook
 end

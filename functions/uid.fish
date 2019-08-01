@@ -1,3 +1,3 @@
 function uid
-	id -u (whoami)
+    id -u (whoami)
 end

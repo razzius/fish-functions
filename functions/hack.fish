@@ -1,3 +1,3 @@
 function hack
-	cd ~/hack
+    cd ~/hack
 end

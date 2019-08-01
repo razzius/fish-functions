@@ -1,5 +1,5 @@
 function sudo
-	if test "$argv" = !!
+    if test "$argv" = !!
         eval command sudo $history[1]
     else
         command sudo $argv

@@ -1,3 +1,3 @@
 function notes
-	$EDITOR ~/notes.org 
+    $EDITOR ~/notes.org
 end
