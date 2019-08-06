@@ -13,7 +13,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 
 Moves file to file.bak.
 
-```
+```fish
 $ ls
 README.md
 $ backup README.md
@@ -78,7 +78,7 @@ date: 2017-06-21
 
 Like `ls` but hides `__pycache__` and `.pyc` files. Risky...
 
-## mv-last
+## `mv-last`
 
 Move the latest download to the current directory.
 
@@ -110,6 +110,18 @@ Converts stdin to uppercase.
 $ echo a | upper
 A
 ```
+
+### `skip-lines <n>`
+
+Skips the first n lines of stdin.
+
+```
+$ seq 5 | skip-lines 2
+3
+4
+5
+```
+
 ## git utilities
 
 ### `ga`
@@ -218,3 +230,9 @@ That started with dollars
 ### `md <file>`
 
 Convert a file to markdown and open the resulting html.
+
+## TODO
+
+### `unzip-cd`
+
+Unzip a tar or zip directory and cd into it. If it's a messy tar and doesn't have a toplevel folder, create the folder and move its files into it.
