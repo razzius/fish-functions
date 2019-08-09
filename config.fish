@@ -1,13 +1,13 @@
 if not status is-interactive
-  exit
+    exit
 end
 
 if not test -n "$TMUX"
-  tmux
+    tmux
 end
 
 for f in ~/.config/fish/functions/private/*
-  source $f
+    source $f
 end
 
 bind \e\[1\;5A history-token-search-backward
@@ -17,7 +17,7 @@ bind \ct transpose-chars
 
 # emacs ansi-term support
 if test -n "$EMACS"
-  set -x TERM eterm-color
+    set -x TERM eterm-color
 end
 
 source ~/.profile
@@ -25,4 +25,3 @@ source ~/.fish_abbrs.fish
 
 source (pyenv init -|psub)
 eval (python3 -m virtualfish)
-
