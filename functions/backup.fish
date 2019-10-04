@@ -1,5 +1,4 @@
-# Defined in - @ line 2
+# Defined in /var/folders/5r/x8hb9kbd5751zn4pz9yq24s80000gn/T//fish.7atXhU/backup.fish @ line 2
 function backup --argument filename
-    echo $filename | rev | cut -d / -f 2- | rev | read file
-    cp $file $file.bak
+	cp $filename $filename.bak
 end
