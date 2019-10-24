@@ -74,10 +74,6 @@ date: 2017-06-21
 ---
 ```
 
-### `ls`
-
-Like `ls` but hides `__pycache__` and `.pyc` files. Risky...
-
 ## `mv-last`
 
 Move the latest download to the current directory.
