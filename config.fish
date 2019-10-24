@@ -25,3 +25,9 @@ source ~/.fish_abbrs.fish
 
 source (pyenv init -|psub)
 eval (python3 -m virtualfish)
+
+function postexec_source_profile --on-event fish_postexec
+  if test "$argv" = "vi ~/.profile"
+    source ~/.profile
+  end
+end
