@@ -11,14 +11,14 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 
 ### `backup <file>`
 
-Moves file to file.bak.
+Creates a copy of `file` as `file.bak`.
 
 ```fish
 $ ls
 README.md
 $ backup README.md
 $ ls
-README.md.bak
+README.md  README.md.bak
 ```
 
 ### `restore <backup>`
@@ -58,21 +58,6 @@ fish_functions $
 ### `note <text>`
 
 Append the note text to ~/notes.org. If no note text is provided, the text comes from pasting.
-
-### `post <title>`
-
-Go to my Jekyll blog and create a skeleton Jekyll post with the given title.
-
-Note: this is hardcoded with my blog path
-
-```
-$ post Fish functions
-$ cat _posts/2017-06-21-fish-functions.md
----
-title: Fish functions
-date: 2017-06-21
----
-```
 
 ## `mv-last`
 
