@@ -7,7 +7,12 @@ Fish config and functions for making common tasks more convenient.
 $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 ```
 
-## File utilities
+## Contents
+
+- [File Manipulation](#file-manipulation)
+  * [`backup`](#backup-<file>)
+
+## File Manipulation
 
 ### `backup <file>`
 
@@ -125,19 +130,6 @@ M       README.md
 $ ga
 $ gc
 [master c77868d] Update README.md
- 1 file changed, 57 insertions(+), 18 deletions(-)
-```
-
-### `gcr`
-
-Like `gc` but adds the current branch name at the start of the commit.
-
-Needed for a certain commit style.
-
-```
-$ git checkout -b razzi/ticket-1
-$ gcr Blah
-[razzi/ticket-1 25719b6] [TICKET-1] Blah
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
