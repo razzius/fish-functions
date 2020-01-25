@@ -10,11 +10,13 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 ## Contents
 
 - [File Manipulation](#file-manipulation)
-  * [`backup`](#backup-<file>)
+  * [`backup`](#backup-file)
+  * [`restore`](#restore-file)
+  * [`mkdir-cd`](#mkdir-cd-directory)
 
 ## File Manipulation
 
-### `backup <file>`
+### `backup <file>` [(source)](functions/backup.fish)
 
 Creates a copy of `file` as `file.bak`.
 
@@ -26,11 +28,21 @@ $ ls
 README.md  README.md.bak
 ```
 
-### `restore <backup>`
+Recommended abbreviation: `abbr -a bk backup`
 
-Rename file.bak to file.
+### `restore <backup>` [(source)](functions/restore.fish)
 
-### `mc <directory>`
+Rename a backup such as `file.bak` to remove the `.bak` extension.
+
+```fish
+$ ls
+README.md README.md.bak
+$ restore README.md.bak
+$ ls
+README.md
+```
+
+### `mkdir-cd <directory>`
 
 Make a directory and cd into it.
 
