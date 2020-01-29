@@ -1,4 +1,4 @@
-Fish config and functions for making common tasks more convenient.
+Config and functions for the [Fish Shell](https://fishshell.org), making common tasks more convenient.
 
 ## Installation
 
@@ -10,9 +10,45 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 ## Contents
 
 - [File Manipulation](#file-manipulation)
-  * [`backup`](#backup-file)
-  * [`restore`](#restore-file)
-  * [`mkdir-cd`](#mkdir-cd-directory)
+  * [`backup`](#backup-file-source)
+  * [`restore`](#restore-file-source)
+  * [`mkdir-cd`](#mkdir-cd-directory-source)
+  * [`copy`](#copy-source-destination-source)
+  * [`remove`](#remove-target-source)
+  * [`unzip-cd`](#unzip-cd-zipfile)
+- [Text Utilities](#text-utilities)
+  * [`coln`](#coln-number-source)
+  * [`row`](#row-number-source)
+  * [`skip-lines`](#skip-lines-number-source)
+  * [`take`](#take-lines-number-source)
+- [`fish` Utilities](#fish-utilities)
+  * [`exists`](#exists-file)
+  * [`funcsave-last`](#funcsave-last)
+  * [`any-arguments`](#any-arguments-argv)
+  * [`confirm`](#confirm)
+- [Environment Utilities](#environment-utilities)
+  * [`echo-variable`](#echo-variable-envvar)
+  * [`readpass`](#readpass-variable)
+- [Symlink Utilities](#symlink-utilities)
+  * [`symlink`](#symlink-from-to)
+  * [`unsymlink`](#unsymlink-file)
+  * [`symlinks`](#symlinks-directory)
+  * [`link-rc`](#link-rc-file)
+- [`git` Utilities](#git-utilities)
+  * [`wip`](#wip-message)
+  * [`git-add`](#git-add-arguments)
+  * [`git-commit`](#git-commit-message)
+  * [`git-add-commit`](#git-add-commit-message)
+- [Postgres Utilities](#postgres-utilities)
+  * [`ensuredb`](#ensuredb-name)
+  * [`renamedb`](#renamedb-from-to)
+- [Date Utilities](#date-utilities)
+  * [`isodate`](#isodate)
+- [MacOS Utilities](#macos-utilities)
+  * [`move-last-download`](#move-last-download)
+  * [`wifi-network-name`](#wifi-network-name)
+  * [`wifi-password`](#wifi-password)
+  * [`wifi-reset`](#wifi-reset)
 
 ## File Manipulation
 
@@ -42,45 +78,59 @@ $ ls
 README.md
 ```
 
+Recommended abbreviation: `abbr -a re restore`
+
 ### `mkdir-cd <directory>`
 
 Make a directory and cd into it.
 
 ```
-$ mc folder
+$ mkdir-cd folder
 folder $
 ```
 
-### `cp <file>`
+Recommended abbreviation: `abbr -a mc mkdir-cd`
 
-cp with some extra behaviors.
+### `copy <source> ... [<destination>]`
 
-Automatic recursive copy for folders.
+`cp` with some extra behaviors.
 
-If only 1 argument is given, move the file into the current directory.
+Automatic recursive copy for directories.
 
-### `new <project>`
+If only 1 argument is given, move the argument file into the current directory.
 
-Create a new directory of the project name, enter it,
-initialize git, and create a git repo.
+Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
+
+### `remove <target>`
+
+`rm` with an extra behavior.
+
+If removing a directory with write-protected `.git`, confirm once to ensure the git directory is desired to be removed.
 
 ```
-$ new fish-functions
-Initialized empty Git repository in /Users/razzi/forks/fish-functions/.git/
-Updating origin
-created repository: razzius/fish-functions
-fish_functions $
+$ ls -a dodo
+.  ..  .git  x
+$ remove dodo
+Remove .git directory dodo/.git?> y
 ```
 
-### `note <text>`
+Using plain `rm`:
 
-Append the note text to ~/notes.org. If no note text is provided, the text comes from pasting.
+```
+$ rm -r dodo
+override r--r--r--  razzi/staff for dodo/.git/objects/58/05b676e247eb9a8046ad0c4d249cd2fb2513df? y
+override r--r--r--  razzi/staff for dodo/.git/objects/f3/7f81fa1f16e78ac451e2d9ce42eab8933bd99f? y
+override r--r--r--  razzi/staff for dodo/.git/objects/e6/9de29bb2d1d6434b8b29ae775ad8c2e48c5391? ^C
+$ rm -rf dodo
+```
 
-## `mv-last`
+Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-Move the latest download to the current directory.
+### `unzip-cd`
 
-## Text utilities
+Unzip a zip directory and cd into it. If doesn't have a toplevel folder, create a folder and move its files into it.
+
+## Text Utilities
 
 ### `coln <column>`
 
@@ -89,24 +139,6 @@ Splits its input on whitespace and prints the column indicated.
 ```
 $ echo 1 2 | coln 2
 2
-```
-
-### `lower`
-
-Converts stdin to lowercase.
-
-```
-$ echo A | lower
-a
-```
-
-### `upper`
-
-Converts stdin to uppercase.
-
-```
-$ echo a | upper
-A
 ```
 
 ### `skip-lines <n>`
@@ -120,17 +152,145 @@ $ seq 5 | skip-lines 2
 5
 ```
 
+### `take <n>`
+
+Take the first `n` lines of stdin.
+```
+$ seq 5 | take 3
+1
+2
+3
+```
+
+## `fish` utilities
+
+### `exists <file>`
+
+Test if `$file` exists.
+
+### `funcsave-last`
+
+Save the last-edited `fish` function.
+
+```
+$ function hi
+  echo hi
+end
+$ funcsave-last
+Saved hi
+```
+
+Recommended abbreviation: `abbr -a fs funcsave-last`.
+
+### any-arguments
+
+Check if any arguments were passed to a fish function.
+
+```
+$ function something
+    if any-arguments $argv
+        echo Arguments were passed
+    else
+        echo No arguments passed
+    end
+end
+$ something
+No arguments passed
+$ something 1
+Arguments were passed
+```
+
+### `confirm`
+
+Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
+
+## Environment Utilities
+
+### `echo-variable <envvar>`
+
+Like `echo`, but doesn't need the `$` or capitalization.
+
+```
+$ echo-variable user
+razzi
+$ echo $USER
+razzi
+```
+
+Recommended abbreviation: `abbr -a ev echo-variable`.
+
+### `readpass <name>`
+
+Prompt for a password. Does not echo entered characters.
+
+```
+$ readpass email
+●●●●●●●●●●●●●●●●●
+$ echo $email
+razzi@abuissa.net
+```
+
+## symlink utilities
+
+### `symlink <from> <to>`
+
+Create a symbolic link, using absolute paths.
+
+```
+~/dotfiles $ symlink .prettierrc ~
+~/dotfiles $ cat ~/.prettierrc
+singleQuote: true
+semi: false
+```
+
+Without using absolute paths:
+
+```
+~/dotfiles $ ln -s .prettierrc ~
+~/dotfiles $ cat ~/.prettierrc
+cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
+```
+
+
+### `unsymlink <file>`
+
+Removes a symlink. Errors if the file is not a symlink.
+
+### `symlinks [<dir>]`
+
+Lists symlinks in the given directory, or the current directory if none is passed.
+
+### `link-rc [<file>]`
+
+Create a symlink from the file to the home directory (`~`).
+
 ## git utilities
 
-### `ga`
+### `wip [message]`
 
-Like git add, but defaults to `.` if no arguments given, rather than erroring.
+Adds untracked changes and commits them with a WIP message. Additional arguments are added to the WIP message.
 
-### `gc`
+I use this instead of `git stash` so that changes are associated with the branch they're on, and the commit is tracked in the reflog.
 
-`git commit -m` without the need to quote the commit message.
+```fish
+$ git stat
+## master
+M      tests.py
+$ git switch -c testing
+$ wip failing tests
+[testing 0078f7f] WIP failing tests
+$ git switch -
+```
 
-If no commit message is given and there's only 1 file, commit "Update (that file)".
+### `git-add`
+
+Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
+
+### `git-commit`
+
+Like `git commit -m` without the need to quote the commit message.
+
+If no commit message is given and there's only 1 file changed, commit "(Add / Update / Delete) (that file)".
 
 ```
 $ gc Fix typo in README.md
@@ -139,85 +299,60 @@ $ gc Fix typo in README.md
 $ git reset @^
 Unstaged changes after reset:
 M       README.md
-$ ga
-$ gc
+$ git-add
+$ git-commit
 [master c77868d] Update README.md
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
-### `git`
+### `git-add-commit`
 
-Alias for [hub](https://github.com/github/hub)
+Combines `git add -u` with `git-commit`.
 
-## Database utilities
+```
+$ git status -s
+M       README.md
+$ git-add-commit Add installation instructions
+[master c77868d] Add installation instructions
+ 1 file changed, 57 insertions(+), 18 deletions(-)
+```
+
+## Postgres Utilities
 
 ### `ensuredb <name>`
 
 Ensure that a fresh database by the name given is created.
-Drops a database by that name if it exists.
-Clears database connections as necessary.
+Drops a database by that name if it exists, clearing database connections as necessary.
 
-## Fish utilities
+### `renamedb <from> <to>`
 
-### `fs`
+Renames a database.
 
-Save the last-edited `fish` function.
+## Date Utilities
 
-```
-$ function hi
-  echo hi
-end
-$ fs
-Saved hi
-```
+### `isodate`
 
-## Environment utilities
-
-### `readpass <password>`
-
-Prompt for a password. Does not echo entered characters.
+Prints the date in ISO format.
 
 ```
-$ readpass email
-$ echo $email
-razzi@abuissa.net
+$ isodate
+2020-01-28
 ```
 
-### `ev <envvar>`
+## MacOS Utilities
 
-Short for "echo variable".
+### `move-last-download`
 
-Like `echo`, but doesn't need the `$` or capitalization. Useful for testing environment variables.
+Move the latest download to the current directory.
 
-```
-$ ev user
-razzi
-$ echo $USER
-razzi
-```
+### `wifi-network-name`
 
-## Command utilities
+Prints the current wifi network name.
 
-### `dollar`
+### `wifi-password`
 
-Remove the starting $ from a shell command and run it. Useful if you're copying stuff and it has `$` signs before commands you're meant to run.
+Prints the current wifi network password.
 
-```
-$ echo '$ echo hi' | dollar
-hi
-$ pbpaste | dollar
-Somebody made commands
-That started with dollars
-```
+### `wifi-reset`
 
-## Markdown utilities
-
-### `md <file>`
-
-Convert a file to markdown and open the resulting html.
-
-## TODO
-
-### `unzip-cd`
-
-Unzip a tar or zip directory and cd into it. If it's a messy tar and doesn't have a toplevel folder, create the folder and move its files into it.
+Turns the wifi off and on again.
