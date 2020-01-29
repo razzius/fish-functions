@@ -12,6 +12,6 @@ function song
             echo empty
         else
             afplay (echo $songs | head -1)
-	      end
-	  end
+        end
+    end
 end

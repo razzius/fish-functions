@@ -1,3 +1,3 @@
 function reset-date
-	sudo sntp -sS time.apple.com
+    sudo sntp -sS time.apple.com
 end

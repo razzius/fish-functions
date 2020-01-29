@@ -1,3 +1,3 @@
 function exists --argument file
-	test -e $file
+    test -e $file
 end

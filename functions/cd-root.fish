@@ -1,3 +1,3 @@
 function cd-root
-	cd (git root)
+    cd (git root)
 end

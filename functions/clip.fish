@@ -1,3 +1,3 @@
 function clip
-	echo -n $argv | pbcopy
+    echo -n $argv | pbcopy
 end

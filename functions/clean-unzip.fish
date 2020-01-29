@@ -1,5 +1,5 @@
 function clean-unzip --argument zipfile
-	if not test (echo $zipfile | string sub --start=-4) = .zip
+    if not test (echo $zipfile | string sub --start=-4) = .zip
         echo (status function): argument must be a zipfile
         return 1
     end
