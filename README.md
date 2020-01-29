@@ -22,33 +22,33 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`skip-lines`](#skip-lines-number-source)
   * [`take`](#take-lines-number-source)
 - [`fish` Utilities](#fish-utilities)
-  * [`exists`](#exists-file)
-  * [`funcsave-last`](#funcsave-last)
-  * [`any-arguments`](#any-arguments-argv)
-  * [`confirm`](#confirm)
+  * [`exists`](#exists-file-source)
+  * [`funcsave-last`](#funcsave-last-source)
+  * [`any-arguments`](#any-arguments-argv-source)
+  * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)
-  * [`echo-variable`](#echo-variable-envvar)
-  * [`readpass`](#readpass-variable)
+  * [`echo-variable`](#echo-variable-envvar-source)
+  * [`readpass`](#readpass-variable-source)
 - [Symlink Utilities](#symlink-utilities)
-  * [`symlink`](#symlink-from-to)
-  * [`unsymlink`](#unsymlink-file)
-  * [`symlinks`](#symlinks-directory)
-  * [`link-rc`](#link-rc-file)
+  * [`symlink`](#symlink-from-to-source)
+  * [`unsymlink`](#unsymlink-file-source)
+  * [`symlinks`](#symlinks-directory-source)
+  * [`link-rc`](#link-rc-file-source)
 - [`git` Utilities](#git-utilities)
-  * [`wip`](#wip-message)
+  * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-arguments)
-  * [`git-commit`](#git-commit-message)
-  * [`git-add-commit`](#git-add-commit-message)
+  * [`git-commit`](#git-commit-message-source)
+  * [`git-add-commit`](#git-add-commit-message-source)
 - [Postgres Utilities](#postgres-utilities)
-  * [`ensuredb`](#ensuredb-name)
-  * [`renamedb`](#renamedb-from-to)
+  * [`ensuredb`](#ensuredb-name-source)
+  * [`renamedb`](#renamedb-from-to-source)
 - [Date Utilities](#date-utilities)
-  * [`isodate`](#isodate)
+  * [`isodate`](#isodate-source)
 - [MacOS Utilities](#macos-utilities)
-  * [`move-last-download`](#move-last-download)
-  * [`wifi-network-name`](#wifi-network-name)
-  * [`wifi-password`](#wifi-password)
-  * [`wifi-reset`](#wifi-reset)
+  * [`move-last-download`](#move-last-download-source)
+  * [`wifi-network-name`](#wifi-network-name-source)
+  * [`wifi-password`](#wifi-password-source)
+  * [`wifi-reset`](#wifi-reset-source)
 
 ## File Manipulation
 
@@ -80,18 +80,18 @@ README.md
 
 Recommended abbreviation: `abbr -a re restore`
 
-### `mkdir-cd <directory>`
+### `mkdir-cd <directory>` [(source)](functions/mkdir-cd.fish)
 
 Make a directory and cd into it.
 
-```
+```fish
 $ mkdir-cd folder
 folder $
 ```
 
 Recommended abbreviation: `abbr -a mc mkdir-cd`
 
-### `copy <source> ... [<destination>]`
+### `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
 
 `cp` with some extra behaviors.
 
@@ -101,13 +101,13 @@ If only 1 argument is given, move the argument file into the current directory.
 
 Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
 
-### `remove <target>`
+### `remove <target>` [(source)](functions/remove.fish)
 
 `rm` with an extra behavior.
 
 If removing a directory with write-protected `.git`, confirm once to ensure the git directory is desired to be removed.
 
-```
+```fish
 $ ls -a dodo
 .  ..  .git  x
 $ remove dodo
@@ -116,7 +116,7 @@ Remove .git directory dodo/.git?> y
 
 Using plain `rm`:
 
-```
+```fish
 $ rm -r dodo
 override r--r--r--  razzi/staff for dodo/.git/objects/58/05b676e247eb9a8046ad0c4d249cd2fb2513df? y
 override r--r--r--  razzi/staff for dodo/.git/objects/f3/7f81fa1f16e78ac451e2d9ce42eab8933bd99f? y
@@ -126,36 +126,51 @@ $ rm -rf dodo
 
 Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-### `unzip-cd`
+### `clean-unzip` [(source)](functions/clean-unzip`.fish)
 
-Unzip a zip directory and cd into it. If doesn't have a toplevel folder, create a folder and move its files into it.
+Unzips a `.zip` archive without polluting the current directory, by creating a
+directory even if the zipfile does not have a folder level.
+
+### `unzip-cd` [(source)](functions/unzip-cd`.fish)
+
+Unzip a zip directory and cd into it. Uses `clean-unzip` to create a folder if
+the zipfile doesn't have one.
+
+```fish
+$ unzip-cd files.zip
+Archive:  files.zip
+ extracting: out/a.txt
+ extracting: out/b.txt
+files $ ls
+a.txt  b.txt
+```
 
 ## Text Utilities
 
-### `coln <column>`
+### `coln <column>` [(source)](functions/coln.fish)
 
 Splits its input on whitespace and prints the column indicated.
 
-```
+```fish
 $ echo 1 2 | coln 2
 2
 ```
 
-### `skip-lines <n>`
+### `skip-lines <n>` [(source)](functions/skip-lines.fish)
 
 Skips the first n lines of stdin.
 
-```
+```fish
 $ seq 5 | skip-lines 2
 3
 4
 5
 ```
 
-### `take <n>`
+### `take <n>` [(source)](functions/take.fish)
 
 Take the first `n` lines of stdin.
-```
+```fish
 $ seq 5 | take 3
 1
 2
@@ -164,15 +179,15 @@ $ seq 5 | take 3
 
 ## `fish` utilities
 
-### `exists <file>`
+### `exists <file>` [(source)](functions/exists.fish)
 
 Test if `$file` exists.
 
-### `funcsave-last`
+### `funcsave-last` [(source)](functions/funcsave-last`.fish)
 
 Save the last-edited `fish` function.
 
-```
+```fish
 $ function hi
   echo hi
 end
@@ -182,11 +197,11 @@ Saved hi
 
 Recommended abbreviation: `abbr -a fs funcsave-last`.
 
-### any-arguments
+### `any-arguments <argv>` [(source)](functions/any-arguments.fish)
 
 Check if any arguments were passed to a fish function.
 
-```
+```fish
 $ function something
     if any-arguments $argv
         echo Arguments were passed
@@ -200,17 +215,17 @@ $ something 1
 Arguments were passed
 ```
 
-### `confirm`
+### `confirm` [(source)](functions/confirm`.fish)
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
 
 ## Environment Utilities
 
-### `echo-variable <envvar>`
+### `echo-variable <envvar>` [(source)](functions/echo-variable.fish)
 
 Like `echo`, but doesn't need the `$` or capitalization.
 
-```
+```fish
 $ echo-variable user
 razzi
 $ echo $USER
@@ -219,11 +234,11 @@ razzi
 
 Recommended abbreviation: `abbr -a ev echo-variable`.
 
-### `readpass <name>`
+### `readpass <name>` [(source)](functions/readpass.fish)
 
 Prompt for a password. Does not echo entered characters.
 
-```
+```fish
 $ readpass email
 ●●●●●●●●●●●●●●●●●
 $ echo $email
@@ -232,11 +247,11 @@ razzi@abuissa.net
 
 ## symlink utilities
 
-### `symlink <from> <to>`
+### `symlink <from> <to>` [(source)](functions/symlink.fish)
 
 Create a symbolic link, using absolute paths.
 
-```
+```fish
 ~/dotfiles $ symlink .prettierrc ~
 ~/dotfiles $ cat ~/.prettierrc
 singleQuote: true
@@ -245,28 +260,28 @@ semi: false
 
 Without using absolute paths:
 
-```
+```fish
 ~/dotfiles $ ln -s .prettierrc ~
 ~/dotfiles $ cat ~/.prettierrc
 cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
 ```
 
 
-### `unsymlink <file>`
+### `unsymlink <file>` [(source)](functions/unsymlink.fish)
 
 Removes a symlink. Errors if the file is not a symlink.
 
-### `symlinks [<dir>]`
+### `symlinks [<dir>]` [(source)](functions/symlinks.fish)
 
 Lists symlinks in the given directory, or the current directory if none is passed.
 
-### `link-rc [<file>]`
+### `link-rc [<file>]` [(source)](functions/link-rc.fish)
 
 Create a symlink from the file to the home directory (`~`).
 
 ## git utilities
 
-### `wip [message]`
+### `wip [message]` [(source)](functions/wip.fish)
 
 Adds untracked changes and commits them with a WIP message. Additional arguments are added to the WIP message.
 
@@ -282,17 +297,17 @@ $ wip failing tests
 $ git switch -
 ```
 
-### `git-add`
+### `git-add` [(source)](functions/git-add`.fish)
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
-### `git-commit`
+### `git-commit` [(source)](functions/git-commit`.fish)
 
 Like `git commit -m` without the need to quote the commit message.
 
 If no commit message is given and there's only 1 file changed, commit "(Add / Update / Delete) (that file)".
 
-```
+```fish
 $ gc Fix typo in README.md
 [master 0078f7f] Fix typo in README.md
 1 file changed, 57 insertions(+), 18 deletions(-)
@@ -305,11 +320,11 @@ $ git-commit
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
-### `git-add-commit`
+### `git-add-commit` [(source)](functions/git-add-commit`.fish)
 
 Combines `git add -u` with `git-commit`.
 
-```
+```fish
 $ git status -s
 M       README.md
 $ git-add-commit Add installation instructions
@@ -319,40 +334,40 @@ $ git-add-commit Add installation instructions
 
 ## Postgres Utilities
 
-### `ensuredb <name>`
+### `ensuredb <name>` [(source)](functions/ensuredb.fish)
 
 Ensure that a fresh database by the name given is created.
 Drops a database by that name if it exists, clearing database connections as necessary.
 
-### `renamedb <from> <to>`
+### `renamedb <from> <to>` [(source)](functions/renamedb.fish)
 
 Renames a database.
 
 ## Date Utilities
 
-### `isodate`
+### `isodate` [(source)](functions/isodate`.fish)
 
 Prints the date in ISO format.
 
-```
+```fish
 $ isodate
 2020-01-28
 ```
 
 ## MacOS Utilities
 
-### `move-last-download`
+### `move-last-download` [(source)](functions/move-last-download`.fish)
 
 Move the latest download to the current directory.
 
-### `wifi-network-name`
+### `wifi-network-name` [(source)](functions/wifi-network-name`.fish)
 
 Prints the current wifi network name.
 
-### `wifi-password`
+### `wifi-password` [(source)](functions/wifi-password`.fish)
 
 Prints the current wifi network password.
 
-### `wifi-reset`
+### `wifi-reset` [(source)](functions/wifi-reset`.fish)
 
 Turns the wifi off and on again.
