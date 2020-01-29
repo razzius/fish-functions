@@ -35,6 +35,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`symlinks`](#symlinks-directory-source)
   * [`link-rc`](#link-rc-file-source)
 - [`git` Utilities](#git-utilities)
+  * [`clone-cd`](#clone-cd-url-source)
   * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-arguments)
   * [`git-commit`](#git-commit-message-source)
@@ -280,6 +281,10 @@ Lists symlinks in the given directory, or the current directory if none is passe
 Create a symlink from the file to the home directory (`~`).
 
 ## git utilities
+
+### `clone-cd url` [(source)](functions/clone-cd.fish)
+
+Clones a `git` repository and `cd`s into it.
 
 ### `wip [message]` [(source)](functions/wip.fish)
 
