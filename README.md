@@ -127,12 +127,12 @@ $ rm -rf dodo
 
 Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-### `clean-unzip` [(source)](functions/clean-unzip`.fish)
+### `clean-unzip` [(source)](functions/clean-unzip.fish)
 
 Unzips a `.zip` archive without polluting the current directory, by creating a
 directory even if the zipfile does not have a folder level.
 
-### `unzip-cd` [(source)](functions/unzip-cd`.fish)
+### `unzip-cd` [(source)](functions/unzip-cd.fish)
 
 Unzip a zip directory and cd into it. Uses `clean-unzip` to create a folder if
 the zipfile doesn't have one.
@@ -184,7 +184,7 @@ $ seq 5 | take 3
 
 Test if `$file` exists.
 
-### `funcsave-last` [(source)](functions/funcsave-last`.fish)
+### `funcsave-last` [(source)](functions/funcsave-last.fish)
 
 Save the last-edited `fish` function.
 
@@ -216,7 +216,7 @@ $ something 1
 Arguments were passed
 ```
 
-### `confirm` [(source)](functions/confirm`.fish)
+### `confirm` [(source)](functions/confirm.fish)
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
 
@@ -302,11 +302,11 @@ $ wip failing tests
 $ git switch -
 ```
 
-### `git-add` [(source)](functions/git-add`.fish)
+### `git-add` [(source)](functions/git-add.fish)
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
-### `git-commit` [(source)](functions/git-commit`.fish)
+### `git-commit` [(source)](functions/git-commit.fish)
 
 Like `git commit -m` without the need to quote the commit message.
 
@@ -325,7 +325,7 @@ $ git-commit
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
-### `git-add-commit` [(source)](functions/git-add-commit`.fish)
+### `git-add-commit` [(source)](functions/git-add-commit.fish)
 
 Combines `git add -u` with `git-commit`.
 
@@ -350,7 +350,7 @@ Renames a database.
 
 ## Date Utilities
 
-### `isodate` [(source)](functions/isodate`.fish)
+### `isodate` [(source)](functions/isodate.fish)
 
 Prints the date in ISO format.
 
@@ -361,18 +361,18 @@ $ isodate
 
 ## MacOS Utilities
 
-### `move-last-download` [(source)](functions/move-last-download`.fish)
+### `move-last-download` [(source)](functions/move-last-download.fish)
 
 Move the latest download to the current directory.
 
-### `wifi-network-name` [(source)](functions/wifi-network-name`.fish)
+### `wifi-network-name` [(source)](functions/wifi-network-name.fish)
 
 Prints the current wifi network name.
 
-### `wifi-password` [(source)](functions/wifi-password`.fish)
+### `wifi-password` [(source)](functions/wifi-password.fish)
 
 Prints the current wifi network password.
 
-### `wifi-reset` [(source)](functions/wifi-reset`.fish)
+### `wifi-reset` [(source)](functions/wifi-reset.fish)
 
 Turns the wifi off and on again.
