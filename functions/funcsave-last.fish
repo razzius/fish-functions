@@ -1,5 +1,4 @@
-# Defined in /Users/razzi/.config/fish/functions/fs.fish @ line 1
-function fs
+function funcsave-last
     set function_name (last-function-name)
     funcsave $function_name
     echo Saved $function_name
