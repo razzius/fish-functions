@@ -24,11 +24,11 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 - [`fish` Utilities](#fish-utilities)
   * [`string-empty`](#string-emptyring-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
-  * [`funcsave-last`](#funcsave-last-source)
   * [`any-arguments`](#any-arguments-argv-source)
+  * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)
-  * [`echo-variable`](#echo-variable-envvar-source)
+  * [`echo-variable`](#echo-variable-variable-source)
   * [`readpass`](#readpass-variable-source)
 - [Symlink Utilities](#symlink-utilities)
   * [`symlink`](#symlink-from-to-source)
@@ -195,20 +195,6 @@ $ echo $status
 
 Test if `$file` exists.
 
-### `funcsave-last` [(source)](functions/funcsave-last.fish)
-
-Save the last-edited `fish` function.
-
-```fish
-$ function hi
-  echo hi
-end
-$ funcsave-last
-Saved hi
-```
-
-Recommended abbreviation: `abbr -a fs funcsave-last`.
-
 ### `any-arguments <argv>` [(source)](functions/any-arguments.fish)
 
 Check if any arguments were passed to a fish function.
@@ -227,15 +213,29 @@ $ something 1
 Arguments were passed
 ```
 
+### `funcsave-last` [(source)](functions/funcsave-last.fish)
+
+Save the last-edited `fish` function.
+
+```fish
+$ function hi
+  echo hi
+end
+$ funcsave-last
+Saved hi
+```
+
+Recommended abbreviation: `abbr -a fs funcsave-last`.
+
 ### `confirm` [(source)](functions/confirm.fish)
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
 
 ## Environment Utilities
 
-### `echo-variable <envvar>` [(source)](functions/echo-variable.fish)
+### `echo-variable <variable>` [(source)](functions/echo-variable.fish)
 
-Like `echo`, but doesn't need the `$` or capitalization.
+Like `echo`, but without the `$` or capitalization.
 
 ```fish
 $ echo-variable user
