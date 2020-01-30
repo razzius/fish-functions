@@ -303,9 +303,9 @@ Create a symlink from the file to the home directory (`~`).
 
 ## git utilities
 
-### `clone-cd url` [(source)](functions/clone-cd.fish)
+### `clone-cd url [destination]` [(source)](functions/clone-cd.fish)
 
-Clones a `git` repository and `cd`s into it.
+Clones a `git` repository into the current directory or the `$destination` if given, and `cd`s into it. Clones with depth 1 for speed.
 
 ### `wip [message]` [(source)](functions/wip.fish)
 
