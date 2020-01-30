@@ -299,7 +299,7 @@ Lists symlinks in the given directory, or the current directory if none is passe
 
 ### `link-rc [<file>]` [(source)](functions/link-rc.fish)
 
-Create a symlink from the file to the home directory (`~`).
+Creates a symlink from `$file` to the home directory (`~`).
 
 ## git utilities
 
@@ -327,6 +327,8 @@ $ git switch -
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
+Recommended abbreviation: `abbr -a ga git-add`
+
 ### `git-commit [message]` [(source)](functions/git-commit.fish)
 
 Like `git commit -m` without the need to quote the commit message.
@@ -334,17 +336,19 @@ Like `git commit -m` without the need to quote the commit message.
 If no commit message is given and there's only 1 file changed, commit "(Add / Update / Delete) (that file)".
 
 ```fish
-$ gc Fix typo in README.md
-[master 0078f7f] Fix typo in README.md
-1 file changed, 57 insertions(+), 18 deletions(-)
+$ git-commit
+[master c77868d] Update README.md
+ 1 file changed, 57 insertions(+), 18 deletions(-)
 $ git reset @^
 Unstaged changes after reset:
 M       README.md
 $ git-add
-$ git-commit
-[master c77868d] Update README.md
- 1 file changed, 57 insertions(+), 18 deletions(-)
+$ git-commit Fix typo in README.md
+[master 0078f7f] Fix typo in README.md
+1 file changed, 57 insertions(+), 18 deletions(-)
 ```
+
+Recommended abbreviation: `abbr -a gc git-commit`
 
 ### `git-add-commit [message]` [(source)](functions/git-add-commit.fish)
 
