@@ -22,7 +22,8 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`skip-lines`](#skip-lines-number-source)
   * [`take`](#take-lines-number-source)
 - [`fish` Utilities](#fish-utilities)
-  * [`exists`](#exists-file-source)
+  * [`string-empty`](#string-emptyring-empty-value-source)
+  * [`file-exists`](#file-exists-file-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`any-arguments`](#any-arguments-argv-source)
   * [`confirm`](#confirm-source)
@@ -180,7 +181,17 @@ $ seq 5 | take 3
 
 ## `fish` utilities
 
-### `exists <file>` [(source)](functions/exists.fish)
+### `string-empty <value>` [(source)](functions/string-empty.fish)
+
+Test if the value is the empty string.
+
+```
+$ string-empty ''
+$ echo $status
+0
+```
+
+### `file-exists <file>` [(source)](functions/file-exists.fish)
 
 Test if `$file` exists.
 
