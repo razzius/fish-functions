@@ -11,7 +11,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 
 - [File Manipulation](#file-manipulation)
   * [`backup`](#backup-file-source)
-  * [`restore`](#restore-file-source)
+  * [`restore`](#restore-backup-source)
   * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`copy`](#copy-source-destination-source)
   * [`remove`](#remove-target-source)
@@ -364,6 +364,8 @@ $ isodate
 ### `move-last-download` [(source)](functions/move-last-download.fish)
 
 Move the latest download to the current directory.
+
+Recommended abbreviation: `abbr -a mvl move-last-download`.
 
 ### `wifi-network-name` [(source)](functions/wifi-network-name.fish)
 

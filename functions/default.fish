@@ -1,7 +1,7 @@
 function default --argument val default
-    if set -q val[1]
-        echo $val
+    if not empty-string $val
+        echo "$val"
     else
-        echo $default
+        echo "$default"
     end
 end
