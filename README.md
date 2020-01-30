@@ -15,30 +15,31 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`copy`](#copy-source-destination-source)
   * [`remove`](#remove-target-source)
-  * [`unzip-cd`](#unzip-cd-zipfile)
+  * [`clean-unzip`](#clean-unzip-zipfile-source)
+  * [`unzip-cd`](#unzip-cd-zipfile-source)
 - [Text Utilities](#text-utilities)
   * [`coln`](#coln-number-source)
   * [`row`](#row-number-source)
   * [`skip-lines`](#skip-lines-number-source)
   * [`take`](#take-lines-number-source)
 - [`fish` Utilities](#fish-utilities)
-  * [`string-empty`](#string-emptyring-empty-value-source)
+  * [`string-empty`](#string-empty-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
   * [`any-arguments`](#any-arguments-argv-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)
   * [`echo-variable`](#echo-variable-variable-source)
-  * [`readpass`](#readpass-variable-source)
+  * [`readpass`](#readpass-name-source)
 - [Symlink Utilities](#symlink-utilities)
   * [`symlink`](#symlink-from-to-source)
   * [`unsymlink`](#unsymlink-file-source)
-  * [`symlinks`](#symlinks-directory-source)
+  * [`symlinks`](#symlinks-dir-source)
   * [`link-rc`](#link-rc-file-source)
 - [`git` Utilities](#git-utilities)
   * [`clone-cd`](#clone-cd-url-source)
   * [`wip`](#wip-message-source)
-  * [`git-add`](#git-add-arguments)
+  * [`git-add`](#git-add-message-source)
   * [`git-commit`](#git-commit-message-source)
   * [`git-add-commit`](#git-add-commit-message-source)
 - [Postgres Utilities](#postgres-utilities)
@@ -128,12 +129,12 @@ $ rm -rf dodo
 
 Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-### `clean-unzip` [(source)](functions/clean-unzip.fish)
+### `clean-unzip <zipfile>` [(source)](functions/clean-unzip.fish)
 
 Unzips a `.zip` archive without polluting the current directory, by creating a
 directory even if the zipfile does not have a folder level.
 
-### `unzip-cd` [(source)](functions/unzip-cd.fish)
+### `unzip-cd <zipfile>` [(source)](functions/unzip-cd.fish)
 
 Unzip a zip directory and cd into it. Uses `clean-unzip` to create a folder if
 the zipfile doesn't have one.
@@ -149,16 +150,25 @@ a.txt  b.txt
 
 ## Text Utilities
 
-### `coln <column>` [(source)](functions/coln.fish)
+### `coln <number>` [(source)](functions/coln.fish)
 
-Splits its input on whitespace and prints the column indicated.
+Splits input on whitespace and prints the column indicated.
 
 ```fish
 $ echo 1 2 | coln 2
 2
 ```
 
-### `skip-lines <n>` [(source)](functions/skip-lines.fish)
+### `row <number>` [(source)](functions/row.fish)
+
+Prints the row of input indicated.
+
+```fish
+$ seq 3 | row 2
+2
+```
+
+### `skip-lines <number>` [(source)](functions/skip-lines.fish)
 
 Skips the first n lines of stdin.
 
@@ -313,11 +323,11 @@ $ wip failing tests
 $ git switch -
 ```
 
-### `git-add` [(source)](functions/git-add.fish)
+### `git-add [message]` [(source)](functions/git-add.fish)
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
-### `git-commit` [(source)](functions/git-commit.fish)
+### `git-commit [message]` [(source)](functions/git-commit.fish)
 
 Like `git commit -m` without the need to quote the commit message.
 
@@ -336,7 +346,7 @@ $ git-commit
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
-### `git-add-commit` [(source)](functions/git-add-commit.fish)
+### `git-add-commit [message]` [(source)](functions/git-add-commit.fish)
 
 Combines `git add -u` with `git-commit`.
 
@@ -347,6 +357,8 @@ $ git-add-commit Add installation instructions
 [master c77868d] Add installation instructions
  1 file changed, 57 insertions(+), 18 deletions(-)
 ```
+
+Recommended abbreviation: `abbr -a gac git-add-commit`.
 
 ## Postgres Utilities
 
