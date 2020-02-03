@@ -1,5 +1,5 @@
 function remove
-    set original_args "$argv"
+    set original_args $argv
 
     argparse r f -- $argv
 
