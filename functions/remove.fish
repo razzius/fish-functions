@@ -16,7 +16,7 @@ function remove
     end
 
     for f in $argv
-        if exists $f/.git
+        if file-exists $f/.git
             confirm-remove "Remove .git directory $f/.git?"
             rm -rf $f/.git
         end
