@@ -1,3 +1,3 @@
 function string-empty --argument val
-	test "$val" = ''
+    test "$val" = ''
 end

@@ -1,3 +1,3 @@
 function char-count
-	wc -c | string trim
+    wc -c | string trim
 end

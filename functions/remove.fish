@@ -22,5 +22,5 @@ function remove
         end
     end
 
-    eval "rm $original_args"
+    rm $original_args
 end

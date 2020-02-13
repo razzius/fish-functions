@@ -1,3 +1,3 @@
 function line-count
-	wc -l | string trim
+    wc -l | string trim
 end

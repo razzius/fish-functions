@@ -1,7 +1,8 @@
 function album --argument the_album
     set script (echo "\
-    for f in \"$the_album\"*.{flac,mp3,m4a};
-      afplay \"\$f\";
+    for f in \"$the_album\"*.{flac,mp3,m4a,wav}
+      echo \"\$f\"
+      afplay \"\$f\"
     end
     ")
     begin
