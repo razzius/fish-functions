@@ -295,6 +295,8 @@ razzi
 
 Recommended abbreviation: `abbr -a ev echo-variable`.
 
+[Completion](completions/echo-variable.fish): completes environment variable names.
+
 ### `readpass <name>` [(source)](functions/readpass.fish)
 
 Prompt for a password. Does not echo entered characters.
