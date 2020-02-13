@@ -22,6 +22,9 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`row`](#row-number-source)
   * [`skip-lines`](#skip-lines-number-source)
   * [`take`](#take-lines-number-source)
+  * [`word-count`](#word-count-source)
+  * [`line-count`](#line-count-source)
+  * [`char-count`](#char-count-source)
 - [`fish` Utilities](#fish-utilities)
   * [`string-empty`](#string-empty-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
@@ -181,12 +184,48 @@ $ seq 5 | skip-lines 2
 
 ### `take <n>` [(source)](functions/take.fish)
 
-Take the first `n` lines of stdin.
+Take the first `n` lines of standard input.
 ```fish
 $ seq 5 | take 3
 1
 2
 3
+```
+
+### `word-count` [(source)](functions/word-count.fish)
+
+Count the words from standard input. Like `wc -w` but does not put spaces around the number.
+
+```fish
+$ echo a b | word-count
+2
+# Compare to:
+$ echo a b | wc -w
+       2
+```
+
+### `line-count` [(source)](functions/line-count.fish)
+
+Count the lines from standard input. Like `wc -l` but does not put spaces around the number.
+
+```fish
+$ seq 3 | line-count
+3
+# Compare to:
+$ seq 3 | wc -l
+       3
+```
+
+### `char-count` [(source)](functions/char-count.fish)
+
+Count the characters from standard input. Like `wc -c` but does not put spaces around the number.
+
+```fish
+$ echo -n a b | char-count
+3
+# Compare to:
+$ echo -n a b | wc -c
+       3
 ```
 
 ## `fish` utilities
