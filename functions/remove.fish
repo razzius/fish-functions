@@ -1,3 +1,4 @@
+# Defined in /var/folders/7v/b0z6dsqj1fx8k5rf8x121l580000gn/T//fish.brfIj0/remove.fish @ line 1
 function remove
     set original_args $argv
 
@@ -16,9 +17,10 @@ function remove
     end
 
     for f in $argv
-        if file-exists $f/.git
-            confirm-remove "Remove .git directory $f/.git?"
-            rm -rf $f/.git
+        set gitdirs (find $f -name .git)
+        for gitdir in $gitdirs
+            confirm-remove "Remove .git directory $gitdir?"
+            rm -rf $gitdir
         end
     end
 
