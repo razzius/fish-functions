@@ -6,8 +6,17 @@ for f in ~/.config/fish/functions/private/*
   source $f
 end
 
+# Binds option-up
 bind \e\[1\;5A history-token-search-backward
+# Binds super-up (for emacs vterm integration, where there is no "option"
+bind \e\[1\;2A history-token-search-backward
+
+# option-down
 bind \e\[1\;5B history-token-search-forward
+# super-down
+bind \e\[1\;2B history-token-search-forward
+
+# Make C-t transpose characters :)
 bind \ct transpose-chars
 
 source ~/.profile
