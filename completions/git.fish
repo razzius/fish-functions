@@ -1,14 +1,3 @@
-function __fish_using_command
-    set cmd (commandline -opc)
-    if [ (count $cmd) -eq (count $argv)  ]
-        for i in (seq (count $argv))
-            if [ $cmd[$i] != $argv[$i]  ]
-                return 1
-            end
-        end
-        return 0
-    end
-    return 1
-end
+source /usr/local/share/fish/completions/git.fish
 
-complete -x -c git -n '__fish_using_command git to' -a '(git branch-names)'
+complete -f -c git -n '__fish_git_using_command to' -a '(git branch-names)' --description 'Branch'
