@@ -42,7 +42,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 - [`git` Utilities](#git-utilities)
   * [`clone-cd`](#clone-cd-url-source)
   * [`wip`](#wip-message-source)
-  * [`git-add`](#git-add-message-source)
+  * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
   * [`git-add-commit`](#git-add-commit-message-source)
 - [Postgres Utilities](#postgres-utilities)
@@ -364,7 +364,7 @@ $ wip failing tests
 $ git switch -
 ```
 
-### `git-add [message]` [(source)](functions/git-add.fish)
+### `git-add [paths]` [(source)](functions/git-add.fish)
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
