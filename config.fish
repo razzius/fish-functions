@@ -36,6 +36,9 @@ function postexec_source_profile --on-event fish_postexec
     end
 end
 
-function fish_vterm_prompt_end --on-event fish_prompt
-    printf '\e]51;A'(whoami)'@'(hostname)':'(pwd)'\e\\'
+# Emacs vterm integration causes an error in vim :terminal
+if string-empty $VIM
+    function fish_vterm_prompt_end --on-event fish_prompt
+        printf '\e]51;A'(whoami)'@'(hostname)':'(pwd)'\e\\'
+    end
 end
