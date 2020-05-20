@@ -40,7 +40,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`symlinks`](#symlinks-dir-source)
   * [`link-rc`](#link-rc-file-source)
 - [`git` Utilities](#git-utilities)
-  * [`clone-cd`](#clone-cd-url-source)
+  * [`clone-cd`](#clone-cd-url-destination-source)
   * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
