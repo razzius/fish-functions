@@ -101,9 +101,27 @@ Recommended abbreviation: `abbr -a mc mkdir-cd`
 
 `cp` with some extra behaviors.
 
-Automatic recursive copy for directories.
+Automatic recursive copy for directories. Rather than only copying the files from a directory, copies the directory itself.
 
-If only 1 argument is given, move the argument file into the current directory.
+Example:
+
+```
+$ mkdir testdir
+$ touch testdir/file.txt
+$ mkdir destdir
+# Standard cp needs -r flag
+$ cp testdir/ destdir/
+cp: testdir/ is a directory (not copied).
+# And does not preserve the source folder
+$ ls destdir/
+file.txt
+# Cleaning up...
+$ rm destdir/file.txt
+# In contrast, using `copy` function:
+$ copy testdir/ destdir/
+$ ls destdir/
+testdir
+```
 
 Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
 
