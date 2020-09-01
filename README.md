@@ -113,6 +113,7 @@ $ mkdir destdir
 $ cp testdir/ destdir/
 cp: testdir/ is a directory (not copied).
 # And does not preserve the source folder
+$ cp -r testdir/ destdir/
 $ ls destdir/
 file.txt
 # Cleaning up...
