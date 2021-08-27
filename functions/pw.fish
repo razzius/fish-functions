@@ -12,8 +12,9 @@ function pw --wraps=pass --argument url
         set domain (echo $url | domain)
     end
 
-    if pass list $domain >/dev/null
-        pass -c $domain
+    set match (ls ~/.password-store/*$domain* | trim-right .gpg | trim-left ~/.password-store/)
+    if not string-empty $match
+        pass -c $match
     else
         pass generate -c $domain
     end
