@@ -12,7 +12,13 @@ function pw --wraps=pass --argument url
         set domain (echo $url | domain)
     end
 
-    set match (ls ~/.password-store/*$domain* | trim-right .gpg | trim-left ~/.password-store/)
+    set matches (ls ~/.password-store/*$domain*) 
+    if test (echo $matches | word-count) != 1
+        echo 'pw: more than 1'
+        return 1
+    end
+
+    set match (echo $matches | trim-right .gpg | trim-left ~/.password-store/)
     if not string-empty $match
         pass -c $match
     else
