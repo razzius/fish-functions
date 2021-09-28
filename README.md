@@ -14,7 +14,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`restore`](#restore-backup-source)
   * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`copy`](#copy-source-destination-source)
-  * [`move`](#move-target-source)
+  * [`move`](#move-source-destination-source)
   * [`remove`](#remove-target-source)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
@@ -105,6 +105,8 @@ Recommended abbreviation: `abbr -a mc mkdir-cd`
 
 Automatic recursive copy for directories. Rather than only copying the files from a directory, copies the directory itself.
 
+Also uses -i flag by default, which will warn you if a copy would overwrite a destination file.
+
 Example:
 
 ```
@@ -128,11 +130,9 @@ testdir
 
 Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
 
-### `move <source> ... [<destination>]` [(source)](functions/move.fish)
+### `move <source> ... <destination>` [(source)](functions/move.fish)
 
-`mv` with some an behavior.
-
-If mv is invoked with a `source` file and a single `destination` directory, and the move operation would overwrite a file by the same name as the `source` file in the `destination` directory, backup the file that would have been overwritten to `/tmp`.
+Uses -i flag by default, which will warn you if `mv` would overwrite a destination file.
 
 ### `remove <target>` [(source)](functions/remove.fish)
 
