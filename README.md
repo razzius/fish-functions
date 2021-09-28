@@ -14,6 +14,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`restore`](#restore-backup-source)
   * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`copy`](#copy-source-destination-source)
+  * [`move`](#move-target-source)
   * [`remove`](#remove-target-source)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
@@ -28,6 +29,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 - [`fish` Utilities](#fish-utilities)
   * [`string-empty`](#string-empty-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
+  * [`is-dir`](#is-dir-file-source)
   * [`any-arguments`](#any-arguments-argv-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
@@ -125,6 +127,12 @@ testdir
 ```
 
 Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
+
+### `move <source> ... [<destination>]` [(source)](functions/move.fish)
+
+`mv` with some an behavior.
+
+If mv is invoked with a `source` file and a single `destination` directory, and the move operation would overwrite a file by the same name as the `source` file in the `destination` directory, backup the file that would have been overwritten to `/tmp`.
 
 ### `remove <target>` [(source)](functions/remove.fish)
 
@@ -262,6 +270,10 @@ $ echo $status
 ### `file-exists <file>` [(source)](functions/file-exists.fish)
 
 Test if `$file` exists.
+
+### `is-dir <path>` [(source)](functions/is-dir.fish)
+
+Check if if `$path` is a directory.
 
 ### `any-arguments <argv>` [(source)](functions/any-arguments.fish)
 
