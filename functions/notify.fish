@@ -1,3 +1,3 @@
 function notify
-  say notify
+    say notify
 end

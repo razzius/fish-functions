@@ -1,3 +1,3 @@
 function goto --argument where
-cd (fd $where)
+    cd (fd $where)
 end

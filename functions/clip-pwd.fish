@@ -1,3 +1,3 @@
 function clip-pwd
-pwd | string replace ~ '~' | pbcopy
+    pwd | string replace ~ '~' | pbcopy
 end

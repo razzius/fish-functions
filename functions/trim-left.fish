@@ -1,3 +1,3 @@
 function trim-left --argument str
-sed "s|^$str||"
+    sed "s|^$str||"
 end
