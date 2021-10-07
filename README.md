@@ -1,4 +1,4 @@
-Config and functions for the [Fish Shell](https://fishshell.org), making common tasks more convenient.
+Functions for the [Fish Shell](https://fishshell.org), making common tasks more convenient.
 
 ## Installation
 
@@ -47,6 +47,8 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
   * [`git-add-commit`](#git-add-commit-message-source)
+- [`vim` Utilities](#vim-utilities)
+  * [`vim-plugin`](#vim-plugin-url)
 - [Postgres Utilities](#postgres-utilities)
   * [`ensuredb`](#ensuredb-name-source)
   * [`renamedb`](#renamedb-from-to-source)
@@ -363,21 +365,25 @@ cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
 
 ### `unsymlink <file>` [(source)](functions/unsymlink.fish)
 
-Removes a symlink. Errors if the file is not a symlink.
+Remove a symlink. Errors if the file is not a symlink.
 
 ### `symlinks [<dir>]` [(source)](functions/symlinks.fish)
 
-Lists symlinks in the given directory, or the current directory if none is passed.
+List symlinks in the given directory, or the current directory if none is passed.
 
 ### `link-rc [<file>]` [(source)](functions/link-rc.fish)
 
-Creates a symlink from `$file` to the home directory (`~`).
+Create a symlink from `$file` to the home directory (`~`).
 
 ## git utilities
 
 ### `clone-cd url [destination]` [(source)](functions/clone-cd.fish)
 
-Clones a `git` repository into the current directory or the `$destination` if given, and `cd`s into it. Clones with depth 1 for speed.
+Clone a `git` repository into the current directory (or the optional `$destination`), and `cd` into it. Clones with depth 1 for speed.
+
+If a folder by that name already exists, great, you probably already cloned it, just cd into the directory and pull.
+
+If it's trying to clone into a non-empty directory, make a new folder in that directory with the repository name and clone into that, instead of erroring.
 
 ### `wip [message]` [(source)](functions/wip.fish)
 
@@ -435,6 +441,12 @@ $ git-add-commit Add installation instructions
 ```
 
 Recommended abbreviation: `abbr -a gac git-add-commit`.
+
+## Vim Utilities
+
+### `vim-plugin <url>` [(source)](functions/vim-plugin.fish)
+
+Install a vim plugin using the builtin vim plugin mechanism.
 
 ## Postgres Utilities
 
