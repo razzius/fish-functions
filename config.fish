@@ -19,6 +19,9 @@ bind \e\[1\;2B history-token-search-forward
 # Make C-t transpose characters :)
 bind \ct transpose-chars
 
+# Make C-s accept autocompletion and submit :))
+bind \cs end-of-line execute
+
 source ~/.profile
 source ~/.fish_abbrs.fish
 
