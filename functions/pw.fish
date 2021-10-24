@@ -24,5 +24,6 @@ function pw --wraps=pass --argument url
         pass -c $match
     else
         pass generate -c $domain
+        git -C ~/.password-store push
     end
 end
