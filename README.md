@@ -405,6 +405,10 @@ $ git switch -
 
 Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
 
+Also understand `...` to mean `../..`. If you need more levels of `../..` I guess they could be added.
+
+Did I mention I have a function called `...` that `cd`s up 2 levels?
+
 Recommended abbreviation: `abbr -a ga git-add`
 
 ### `git-commit [message]` [(source)](functions/git-commit.fish)
