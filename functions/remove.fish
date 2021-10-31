@@ -1,4 +1,3 @@
-# Defined in /var/folders/7v/b0z6dsqj1fx8k5rf8x121l580000gn/T//fish.brfIj0/remove.fish @ line 1
 function remove
     set original_args $argv
 
@@ -12,7 +11,7 @@ function remove
     function confirm-remove --argument message
         if not confirm $message
             echo 'Cancelling.'
-            exit 1
+            return 1
         end
     end
 
