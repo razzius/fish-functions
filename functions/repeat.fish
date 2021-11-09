@@ -1,6 +1,6 @@
 function repeat
     while true
-        $argv && break
+        $argv
         sleep 1
     end
 end

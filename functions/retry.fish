@@ -1,6 +1,6 @@
-function keep
+function retry
     while true
-        $argv
+        $argv && break
         sleep 1
     end
 end
