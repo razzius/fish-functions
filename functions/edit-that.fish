@@ -1,3 +1,3 @@
 function edit-that
-edit (last-thing)
+    edit (last-thing)
 end

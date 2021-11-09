@@ -1,3 +1,3 @@
 function edit
-$VISUAL $argv
+    $VISUAL $argv
 end

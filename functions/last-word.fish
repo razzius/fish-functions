@@ -1,3 +1,3 @@
 function last-word
-awk '{print $NF}'
+    awk '{print $NF}'
 end

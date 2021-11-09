@@ -1,3 +1,3 @@
 function pull --argument path
-git -C path pull
+    git -C path pull
 end
