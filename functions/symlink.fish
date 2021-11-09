@@ -1,6 +1,5 @@
-# Defined in /var/folders/7v/b0z6dsqj1fx8k5rf8x121l580000gn/T//fish.sobL17/symlink.fish @ line 2
 function symlink --argument _from _to
-    if string-empty $from; or string-empty _to
+    if string-empty $_from; or string-empty $_to
         echo "symlink: must provide from and to arguments"
         return 1
     end
