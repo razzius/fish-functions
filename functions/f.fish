@@ -1,4 +1,8 @@
-function f --description 'Jump to a folder in ~/forks' --argument project
-    set match (ls ~/forks/ | string match $project'*' | head -1)
-    cd ~/forks/$match
+function f --description 'Jump to a folder in ~/forks' --argument name
+  if string-empty $name
+    cd ~/forks
+    return
+  end
+
+  cd (find ~/forks/ -maxdepth 1 -name '*'$name'*')
 end
