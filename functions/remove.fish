@@ -18,7 +18,8 @@ function remove
     for f in $argv
         set gitdirs (find $f -name .git)
         for gitdir in $gitdirs
-            confirm-remove "Remove .git directory $gitdir?"
+            set display_dir (echo $gitdir | unexpand-home-tilde)
+            confirm-remove "Remove .git directory $display_dir?"
             rm -rf $gitdir
         end
     end
