@@ -13,7 +13,7 @@ function pw --wraps=pass --argument url
     end
 
     # TODO doesn't handle subdirectories
-    set matches (find ~/.password-store -type f -maxdepth 1 | grep $domain)
+    set matches (find ~/.password-store -maxdepth 1 -type f | grep $domain)
     if test (echo $matches | word-count) -gt 1
         echo "pw: more than 1: $matches"
         return 1
