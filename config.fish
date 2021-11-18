@@ -26,16 +26,16 @@ source ~/.profile
 source ~/.fish_abbrs.fish
 
 function postexec_source_profile --on-event fish_postexec
-    if test "$argv" = "vi ~/.profile"
+    if test "$argv" = "$EDITOR ~/.profile"
         echo -n 'Sourcing .profile... '
         source ~/.profile
-        echo Done.
+        echo done.
     end
 
-    if test "$argv" = "vi /etc/hosts"
+    if test "$argv" = "$EDITOR /etc/hosts"
         echo -n 'Flushing dns... '
         dscacheutil -flushcache
-        echo Done.
+        echo done.
     end
 end
 
