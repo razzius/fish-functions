@@ -40,7 +40,7 @@ function postexec_source_profile --on-event fish_postexec
     end
 end
 
-test -q zoxide && zoxide init fish | source
+type -q zoxide && zoxide init fish | source
 
 # Emacs vterm integration causes an error in vim :terminal
 if string-empty $VIM
