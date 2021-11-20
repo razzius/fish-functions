@@ -11,11 +11,14 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 
 - [File Manipulation](#file-manipulation)
   * [`backup`](#backup-file-source)
-  * [`restore`](#restore-backup-source)
-  * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`copy`](#copy-source-destination-source)
+  * [`create-file`](#create-file-target)
+  * [`eat`](#eat-target)
+  * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`move`](#move-source-destination-source)
   * [`remove`](#remove-target-source)
+  * [`restore`](#restore-backup-source)
+- [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
 - [Text Utilities](#text-utilities)
@@ -131,6 +134,65 @@ testdir
 ```
 
 Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
+
+### `create-file <target>` [(source)](functions/create-file.fish)
+
+Creates a file, including parent directories as necessary.
+
+```fish
+$ create-file a/b/c
+$ tree
+.
+└── a
+    └── b
+        └── c
+```
+
+### `eat <target>` [(source)](functions/eat.fish)
+
+Moves a directory's contents to the current directory and removes the empty directory.
+
+```fish
+$ tree
+.
+└── a
+    └── b
+        └── c
+$ eat a
+$ tree
+.
+└── b
+    └── c
+```
+
+#### ⚠ Warning ⚠️
+
+If there is a local directory with the same name as one that would be moved, that directory will be overwritten.
+
+This could be changed in a later version; at the very least having a [--dry-run flag](https://github.com/razzius/fish-functions/issues/5) would be useful.
+
+An illustration of this:
+
+```fish
+$ tree
+.
+├── dir-a
+│   └── dir-b
+│       ├── some_file
+│       └── some_other_file
+└── dir-b
+    └── will_be_overwritten
+
+3 directories, 3 files
+$ eat dir-a/
+$ tree
+.
+└── dir-b
+    ├── some_file
+    └── some_other_file
+
+1 directory, 2 files
+```
 
 ### `move <source> ... <destination>` [(source)](functions/move.fish)
 

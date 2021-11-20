@@ -9,7 +9,7 @@ function sync-repos
         seq $COLUMNS | string replace -r '\d+' - | string join ''
     end
 
-    for repo in ~/.config/fish ~/.spacemacs.d ~/.dotfiles ~/.password-store/ ~/.config/karabiner/
+    for repo in ~/.config/fish ~/.spacemacs.d ~/.dotfiles ~/.password-store/ ~/.config/karabiner/ ~/forks/reference
         if dir-exists $repo
             draw-line
             echo Syncing repository $repo...
