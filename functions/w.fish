@@ -1,3 +1,3 @@
 function w
-t --list work $argv
+    t --list work $argv
 end

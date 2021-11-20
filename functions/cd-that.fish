@@ -1,3 +1,3 @@
 function cd-that
-cd (last-thing)
+    cd (last-thing)
 end
