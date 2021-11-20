@@ -1,9 +1,10 @@
+# This is a hack to prevent this file from being sourced twice
 if not status is-interactive
     exit
 end
 
 for f in ~/.config/fish/functions/private/*
-  source $f
+    source $f
 end
 
 # Binds option-up
@@ -38,6 +39,8 @@ function postexec_source_profile --on-event fish_postexec
         echo done.
     end
 end
+
+test -q zoxide && zoxide init fish | source
 
 # Emacs vterm integration causes an error in vim :terminal
 if string-empty $VIM
