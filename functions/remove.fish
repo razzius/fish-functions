@@ -8,19 +8,26 @@ function remove
         return
     end
 
-    function confirm-remove --argument message
-        if not confirm $message
-            echo 'Cancelling.'
-            return 1
+    function confirm-remove --argument dir
+        set display_dir (echo $dir | unexpand-home-tilde)
+
+        if confirm "Remove .git directory $display_dir?"
+            rm -rf $dir
         end
+
+        echo 'Cancelling.'
+        return 1
     end
 
     for f in $argv
+        if test (basename $f) = ".git"
+            confirm-remove $f
+            continue
+        end
+
         set gitdirs (find $f -name .git)
         for gitdir in $gitdirs
-            set display_dir (echo $gitdir | unexpand-home-tilde)
-            confirm-remove "Remove .git directory $display_dir?"
-            rm -rf $gitdir
+            confirm-remove $display_dir
         end
     end
 
