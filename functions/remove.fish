@@ -13,6 +13,7 @@ function remove
 
         if confirm "Remove .git directory $display_dir?"
             rm -rf $dir
+            return
         end
 
         echo 'Cancelling.'
@@ -20,14 +21,9 @@ function remove
     end
 
     for f in $argv
-        if test (basename $f) = ".git"
-            confirm-remove $f
-            continue
-        end
-
         set gitdirs (find $f -name .git)
         for gitdir in $gitdirs
-            confirm-remove $display_dir
+            confirm-remove $gitdir
         end
     end
 
