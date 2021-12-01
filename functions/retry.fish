@@ -1,6 +1,6 @@
 function retry
     while true
-        $argv && break
+        eval $argv && break
         sleep 1
     end
 end
