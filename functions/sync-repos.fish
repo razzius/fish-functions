@@ -10,14 +10,14 @@ function sync-repos
     end
 
     for repo in ~/.config/fish ~/.spacemacs.d ~/.dotfiles ~/.password-store/ ~/.config/karabiner/ ~/forks/reference
-        if dir-exists $repo
-            draw-line
-            echo Syncing repository $repo...
-            draw-line
-            sync-repo $repo
-        else
+        if not dir-exists $repo
             echo $repo not present
+            continue
         end
+        draw-line
+        echo Syncing repository $repo...
+        draw-line
+        sync-repo $repo
         echo
     end
 end
