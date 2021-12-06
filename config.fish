@@ -27,7 +27,7 @@ test -e ~/.profile && source ~/.profile
 test -e ~/.fish_abbrs.fish && source ~/.fish_abbrs.fish
 
 function postexec_source_profile --on-event fish_postexec
-    if test "$argv" = "$EDITOR ~/.profile"
+    if test (echo "$argv" | string trim) = "$EDITOR ~/.profile"
         echo -n 'Sourcing .profile... '
         source ~/.profile
         echo done.
