@@ -1,14 +1,12 @@
 function deezer-cli
     pbpaste | read _clipboard
     echo $argv | pbcopy
-    osascript -e 'tell application "Deezer" to activate'
-    cliclick -r \
+    open /Applications/Deezer.app/
+    cliclick \
         kd:cmd kp:arrow-left ku:cmd \
-        c:80,120 c:300,50 w:100 \
+        t:s \
         kd:cmd t:a ku:cmd \
         kd:cmd t:v ku:cmd \
-        kp:enter \
-        w:1500 \
-        c:280,350
+        kp:enter
     echo $_clipboard | pbcopy
 end
