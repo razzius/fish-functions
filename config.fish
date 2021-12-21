@@ -27,15 +27,11 @@ test -e ~/.profile && source ~/.profile
 test -e ~/.fish_abbrs.fish && source ~/.fish_abbrs.fish
 
 function postexec_source_profile --on-event fish_postexec
-    if test (echo "$argv" | string trim) = "$EDITOR ~/.profile"
+    set command_line (echo $argv | string collect | string trim)
+
+    if test "$command_line" = "$EDITOR ~/.profile"
         echo -n 'Sourcing .profile... '
         source ~/.profile
-        echo done.
-    end
-
-    if test "$argv" = "$EDITOR /etc/hosts"
-        echo -n 'Flushing dns... '
-        dscacheutil -flushcache
         echo done.
     end
 end
