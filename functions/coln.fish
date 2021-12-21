@@ -1,5 +1,3 @@
 function coln
-    while read -l input
-        echo $input | awk '{print $'$argv[1]'}'
-    end
+  awk '{print $'$argv[1]'}'
 end
