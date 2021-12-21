@@ -11,13 +11,13 @@ function fish_prompt --description 'Write out the prompt'
 
     # PWD
     set_color $fish_color_cwd
-    echo -n (prompt_pwd)
+    # echo -n (prompt_pwd)
+    if not test $PWD = $HOME
+      echo -n (basename $PWD)' '
+    end
     set_color normal
 
-
-    printf ' %s' (date "+%H:%M")
-
-    printf '%s ' (__fish_git_prompt)
+    # printf '%s ' (__fish_git_prompt)
 
     if not test $last_status -eq 0
         set_color $fish_color_error
