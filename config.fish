@@ -26,21 +26,37 @@ bind \cs end-of-line execute
 test -e ~/.profile && source ~/.profile
 test -e ~/.fish_abbrs.fish && source ~/.fish_abbrs.fish
 
-function postexec_source_profile --on-event fish_postexec
+function postexec-source-profile --on-event fish_postexec
     set command_line (echo $argv | string collect | string trim)
 
-    if test "$command_line" = "$EDITOR ~/.profile"
-        echo -n 'Sourcing .profile... '
-        source ~/.profile
-        echo done.
+    if string match -qr "^$EDITOR " $command_line
+        set file (echo $command_line | coln 2 | string replace '~' $HOME)
+        for config_file in ~/.profile ~/.config/fish/config.fish
+            if test (realpath $file) = "$config_file"
+                echo -n "Sourcing "(echo $file | unexpand-home-tilde)"... "
+                source $file
+                echo done.
+            end
+        end
+    end
+end
+
+function save-error --on-event fish_postexec
+    set exit_status $status
+    set cancel_status 130
+
+    if not contains $exit_status 0 $cancel_status && not contains "$argv" retry sudo-retry
+        set -g failed_command $argv
+        echo "retry: can retry $failed_command"
+    end
+end
+
+function save-edited-file --on-event fish_postexec
+    set command_line (echo $argv | string collect | string trim)
+    if string match -qr "^($EDITOR|edit) " "$command_line"
+        set -g editor_command $argv
     end
 end
 
 type -q zoxide && zoxide init fish | source
-
-# Emacs vterm integration causes an error in vim :terminal
-if string-empty $VIM
-    function fish_vterm_prompt_end --on-event fish_prompt
-        printf '\e]51;A'(whoami)'@'(hostname)':'(pwd)'\e\\'
-    end
-end
+exit 0
