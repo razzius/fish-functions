@@ -32,7 +32,7 @@ function postexec-source-profile --on-event fish_postexec
     if string match -qr "^$EDITOR " $command_line
         set file (echo $command_line | coln 2 | string replace '~' $HOME)
         for config_file in ~/.profile ~/.config/fish/config.fish
-            if test (realpath $file) = "$config_file"
+            if test (realpath -- $file) = "$config_file"
                 echo -n "Sourcing "(echo $file | unexpand-home-tilde)"... "
                 source $file
                 echo done.
