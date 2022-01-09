@@ -13,7 +13,7 @@ function fish_prompt --description 'Write out the prompt'
     set_color $fish_color_cwd
     # echo -n (prompt_pwd)
     if not test $PWD = $HOME
-      echo -n (basename $PWD)' '
+        echo -n (basename $PWD)' '
     end
     set_color normal
 

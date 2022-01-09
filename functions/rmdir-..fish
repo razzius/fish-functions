@@ -1,4 +1,4 @@
 function rmdir-.
-set dir (pwd)
-rmdir $dir && cd ..
+    set dir (pwd)
+    rmdir $dir && cd ..
 end
