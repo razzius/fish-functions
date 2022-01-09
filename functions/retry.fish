@@ -1,6 +1,3 @@
 function retry
-    while true
-        eval $argv && break
-        sleep 1
-    end
+    eval "$failed_command"
 end
