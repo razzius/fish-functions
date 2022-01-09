@@ -1,3 +1,8 @@
 function edit
-    $VISUAL $argv
+    if not any-arguments $argv
+        eval "$editor_command"
+        return
+    end
+
+    $EDITOR $argv
 end
