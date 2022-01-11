@@ -37,6 +37,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)
+  * [`curdir`](#curdir-source)
   * [`echo-variable`](#echo-variable-variable-source)
   * [`readpass`](#readpass-name-source)
 - [Symlink Utilities](#symlink-utilities)
@@ -50,6 +51,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
   * [`git-add-commit`](#git-add-commit-message-source)
+  * [`gitignore`](#gitignore-pattern-source)
 - [`vim` Utilities](#vim-utilities)
   * [`vim-plugin`](#vim-plugin-url)
 - [Postgres Utilities](#postgres-utilities)
@@ -377,6 +379,18 @@ Prompts the user for confirmation. Exit with status according to whether they an
 
 ## Environment Utilities
 
+### `curdir` [(source)](functions/curdir.fish)
+
+Just the current directory name, please.
+
+```fish
+mydir $ curdir
+mydir
+```
+
+You probably won't need this interactively since the current directory is usually part of your `fish_prompt`,
+but this is useful for scripting.
+
 ### `echo-variable <variable>` [(source)](functions/echo-variable.fish)
 
 Like `echo`, but without the `$` or capitalization.
@@ -507,6 +521,12 @@ $ git-add-commit Add installation instructions
 ```
 
 Recommended abbreviation: `abbr -a gac git-add-commit`.
+
+### `gitignore <pattern>` [(source)](functions/gitignore.fish)
+
+Add a pattern to the `.gitignore`.
+
+Recommended abbreviation: `abbr -a giti gitignore`.
 
 ## Vim Utilities
 

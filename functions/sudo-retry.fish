@@ -1,3 +1,3 @@
 function sudo-retry
-    sudo sh -c "$failed_command"
+    sudo fish -c "eval $failed_command"
 end
