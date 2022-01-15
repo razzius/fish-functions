@@ -1,3 +1,3 @@
 function curdir
-basename $PWD
+    basename $PWD
 end

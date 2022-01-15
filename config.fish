@@ -47,7 +47,6 @@ function save-error --on-event fish_postexec
 
     if not contains $exit_status 0 $cancel_status && not contains "$argv" retry sudo-retry
         set -g failed_command $argv
-        echo "retry: can retry $failed_command"
     end
 end
 
