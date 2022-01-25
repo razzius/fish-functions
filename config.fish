@@ -21,7 +21,7 @@ bind \e\[1\;2B history-token-search-forward
 bind \ct transpose-chars
 
 # Make C-s accept autocompletion and submit :))
-bind \cs end-of-line execute
+bind \cs accept-autosuggestion execute
 
 test -e ~/.profile && source ~/.profile
 test -e ~/.fish_abbrs.fish && source ~/.fish_abbrs.fish
@@ -41,12 +41,15 @@ function postexec-source-profile --on-event fish_postexec
     end
 end
 
+# TODO rewrite this using event emitters
 function save-error --on-event fish_postexec
     set exit_status $status
     set cancel_status 130
 
-    if not contains $exit_status 0 $cancel_status && not contains "$argv" retry sudo-retry
-        set -g failed_command $argv
+    if not contains $exit_status 0 $cancel_status && \
+      not startswith retry "$argv" && \
+      not startswith sudo-retry "$argv"
+        set -g failed_command "$argv"
     end
 end
 
