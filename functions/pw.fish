@@ -12,6 +12,11 @@ function pw --wraps=pass --argument url
         set domain (echo $url | domain)
     end
 
+    if file-exists ~/.password-store/$domain.gpg
+      pass -c $domain
+      return 0
+    end
+
     # TODO doesn't handle subdirectories
     set matches (find ~/.password-store -maxdepth 1 -type f | grep $domain)
     if test (echo $matches | word-count) -gt 1

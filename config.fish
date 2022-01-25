@@ -32,7 +32,7 @@ function postexec-source-profile --on-event fish_postexec
     if string match -qr "^$EDITOR " $command_line
         set file (echo $command_line | coln 2 | string replace '~' $HOME)
         for config_file in ~/.profile ~/.config/fish/config.fish
-            if test (realpath -- $file) = "$config_file"
+            if test (realpath -- $file) = (realpath $config_file)
                 echo -n "Sourcing "(echo $file | unexpand-home-tilde)"... "
                 source $file
                 echo done.
@@ -55,6 +55,13 @@ function save-edited-file --on-event fish_postexec
     if string match -qr "^($EDITOR|edit) " "$command_line"
         set -g editor_command $argv
     end
+end
+
+function try-help-man --on-event fish_postexec
+  if startswith man "$argv"
+    set command (echo $argv | cut -d ' ' -f 2)
+    $command --help
+  end
 end
 
 type -q zoxide && zoxide init fish | source
