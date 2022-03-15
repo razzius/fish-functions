@@ -7,10 +7,12 @@ function pw --wraps=pass --argument url
             return 1
         end
 
-        set domain (pbpaste | domain)
+        set domain_raw (pbpaste)
     else
-        set domain (echo $url | domain)
+        set domain_raw $url
     end
+
+    set domain (echo $domain_raw | domain | trim-left www.)
 
     if file-exists ~/.password-store/$domain.gpg
       pass -c $domain

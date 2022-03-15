@@ -4,7 +4,7 @@ function tunnel --argument host port
     set ssh_pid $last_pid
     sleep .5
     kill -0 $ssh_pid 2>/dev/null || return
-    retry "nc -z localhost $port 2> /dev/null"
+    retry sh -c "nc -z localhost $port 2> /dev/null"
     echo "Opening http://localhost:$port in browser..."
     open http://localhost:$port
     trap "kill $ssh_pid" SIGINT
