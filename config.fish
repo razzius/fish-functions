@@ -24,7 +24,6 @@ bind \ct transpose-chars
 bind \cs accept-autosuggestion execute
 
 test -e ~/.profile && source ~/.profile
-test -e ~/.fish_abbrs.fish && source ~/.fish_abbrs.fish
 
 function postexec-source-profile --on-event fish_postexec
     set command_line (echo $argv | string collect | string trim)
@@ -59,13 +58,3 @@ function save-edited-file --on-event fish_postexec
         set -g editor_command $argv
     end
 end
-
-function try-help-man --on-event fish_postexec
-  if startswith man "$argv"
-    set command (echo $argv | cut -d ' ' -f 2)
-    $command --help
-  end
-end
-
-type -q zoxide && zoxide init fish | source
-exit 0
