@@ -50,7 +50,6 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
-  * [`git-add-commit`](#git-add-commit-message-source)
   * [`gitignore`](#gitignore-pattern-source)
 - [`vim` Utilities](#vim-utilities)
   * [`vim-plugin`](#vim-plugin-url-source)
@@ -507,20 +506,6 @@ $ git-commit Fix typo in README.md
 ```
 
 Recommended abbreviation: `abbr -a gc git-commit`
-
-### `git-add-commit [message]` [(source)](functions/git-add-commit.fish)
-
-Combines `git add -u` with `git-commit`.
-
-```fish
-$ git status -s
-M       README.md
-$ git-add-commit Add installation instructions
-[master c77868d] Add installation instructions
- 1 file changed, 57 insertions(+), 18 deletions(-)
-```
-
-Recommended abbreviation: `abbr -a gac git-add-commit`.
 
 ### `gitignore <pattern>` [(source)](functions/gitignore.fish)
 
