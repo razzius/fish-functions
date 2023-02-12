@@ -1,3 +1,4 @@
 function move-last-download
-    mv ~/Downloads/(ls -t -A ~/Downloads/ | head -1) .
+    set destination (default $argv[1] .)
+    mv ~/Downloads/(ls -t -A ~/Downloads/ | head -1) $destination
 end

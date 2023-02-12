@@ -28,7 +28,7 @@ test -e ~/.profile && source ~/.profile
 function postexec-source-profile --on-event fish_postexec
     set command_line (echo $argv | string collect | string trim)
 
-    if string match -qr "^$EDITOR " $command_line
+    if string match -qr "^$EDITOR " "$command_line"
         set file (echo $command_line | coln 2 | string replace '~' $HOME)
         for config_file in ~/.profile ~/.config/fish/config.fish
             if test (realpath -- $file) = (realpath $config_file)
