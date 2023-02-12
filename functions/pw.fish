@@ -15,8 +15,8 @@ function pw --wraps=pass --argument url
     set domain (echo $domain_raw | domain | trim-left www.)
 
     if file-exists ~/.password-store/$domain.gpg
-      pass -c $domain
-      return 0
+        pass -c $domain
+        return 0
     end
 
     # TODO doesn't handle subdirectories
