@@ -18,6 +18,7 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
   * [`move`](#move-source-destination-source)
   * [`remove`](#remove-target-source)
   * [`restore`](#restore-backup-source)
+  * [`move-last-download`](#move-last-download-dest-source)
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
@@ -59,7 +60,6 @@ $ git clone https://github.com/razzius/fish-functions ~/.config/fish
 - [Date Utilities](#date-utilities)
   * [`isodate`](#isodate-source)
 - [MacOS Utilities](#macos-utilities)
-  * [`move-last-download`](#move-last-download-source)
   * [`wifi-network-name`](#wifi-network-name-source)
   * [`wifi-password`](#wifi-password-source)
   * [`wifi-reset`](#wifi-reset-source)
@@ -213,6 +213,14 @@ $ rm -rf dodo
 ```
 
 Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
+
+### `move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+
+Move the latest download to destination directory, which is the current directory if none is specified..
+
+Recommended abbreviation: `abbr -a mvl move-last-download`.
+
+## Zipfile Utilities
 
 ### `clean-unzip <zipfile>` [(source)](functions/clean-unzip.fish)
 
@@ -532,12 +540,6 @@ $ isodate
 ```
 
 ## MacOS Utilities
-
-### `move-last-download` [(source)](functions/move-last-download.fish)
-
-Move the latest download to the current directory.
-
-Recommended abbreviation: `abbr -a mvl move-last-download`.
 
 ### `wifi-network-name` [(source)](functions/wifi-network-name.fish)
 
