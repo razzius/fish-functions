@@ -166,11 +166,7 @@ $ tree
     └── c
 ```
 
-#### ⚠ Warning ⚠️
-
-If there is a local directory with the same name as one that would be moved, that directory will be overwritten.
-
-This could be changed in a later version; at the very least having a [--dry-run flag](https://github.com/razzius/fish-functions/issues/5) would be useful.
+If a file in the current directory would be overwritten by `eat`, it will give an error and exit with status 1.
 
 An illustration of this:
 
@@ -182,17 +178,11 @@ $ tree
 │       ├── some_file
 │       └── some_other_file
 └── dir-b
-    └── will_be_overwritten
+    └── would_be_overwritten
 
 3 directories, 3 files
-$ eat dir-a/
-$ tree
-.
-└── dir-b
-    ├── some_file
-    └── some_other_file
-
-1 directory, 2 files
+$ eat dir-a
+eat: file would be overwritten: ./dir-b
 ```
 
 ### `move <source> ... <destination>` [(source)](functions/move.fish)
