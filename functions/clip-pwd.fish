@@ -1,3 +1,3 @@
 function clip-pwd
-    pwd | string replace ~ '~' | pbcopy
+    pwd | unexpand-home-tilde | pbcopy
 end
