@@ -5,7 +5,7 @@ function clone-cd --argument url _destination
         return
     end
 
-    if test (ls $destination &> /dev/null | word-count) != 0
+    if not dir-exists $destination
         mkdir $destination
     end
 

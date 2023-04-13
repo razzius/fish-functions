@@ -1,3 +1,4 @@
-function mkdir-cd
-    mkdir -p -- $argv && cd -- $argv
+function mkdir-cd --argument dir
+    mkdir -p -- $dir
+    and cd -- $dir
 end
