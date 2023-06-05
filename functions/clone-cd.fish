@@ -5,9 +5,5 @@ function clone-cd --argument url _destination
         return
     end
 
-    if not dir-exists $destination
-        mkdir $destination
-    end
-
-    git clone --depth=1 $url $destination && cd $destination
+    git clone --depth=1 $url && cd $destination
 end
