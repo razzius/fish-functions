@@ -45,9 +45,7 @@ function save-error --on-event fish_postexec
     set exit_status $status
     set cancel_status 130
 
-    if not contains $exit_status 0 $cancel_status && \
-      not startswith retry "$argv" && \
-      not startswith sudo-retry "$argv"
+    if not contains $exit_status 0 $cancel_status && not startswith retry "$argv" && not startswith sudo-retry "$argv"
         set -g failed_command "$argv"
     end
 end

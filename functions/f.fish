@@ -5,8 +5,8 @@ function f --description 'Jump to a folder in ~/forks' --argument name
     end
 
     if test -d ~/forks/$name
-      cd ~/forks/$name
-      return
+        cd ~/forks/$name
+        return
     end
 
     cd (find ~/forks/ -maxdepth 1 -name '*'$name'*')
