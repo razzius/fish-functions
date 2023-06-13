@@ -26,16 +26,16 @@ bind \cs accept-autosuggestion execute
 test -e ~/.profile && source ~/.profile
 
 function postexec-source-profile --on-event fish_postexec
-    set command_line (echo $argv | string collect | string trim)
+    set command_line (echo $argv | string collect)
 
     if string match -qr "^$EDITOR " "$command_line"
         set file (echo $command_line | coln 2 | string replace '~' $HOME)
-        for config_file in ~/.profile ~/.config/fish/config.fish
-            if test (realpath -- $file) = (realpath $config_file)
-                echo -n "Sourcing "(echo $file | unexpand-home-tilde)"... "
-                source $file
-                echo done.
-            end
+        set fish_config_files ~/.profile ~/.config/fish/config.fish
+
+        if contains -- $file $fish_config_files
+            echo -n "Sourcing "(echo $file | unexpand-home-tilde)"... "
+            source $file
+            echo done.
         end
     end
 end
