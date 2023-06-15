@@ -4,7 +4,7 @@ Functions for the [Fish Shell](https://fishshell.org), making common tasks more 
 
 ```sh
 # Backup your old ~/.config/fish first, then:
-$ git clone https://github.com/razzius/fish-functions ~/.config/fish
+$ git clone https://git.sr.ht/razzi/fish-functions ~/.config/fish
 ```
 
 ## Contents
