@@ -33,7 +33,7 @@ function git-commit
                 else if [ $n_updated_files = 1 ]
                     git commit -m "Update $updated_files"
                 else if [ $n_renamed_files = 1 ]
-                    git diff --cached --name-status | read _ from to
+                    git diff --cached --name-status | read _unused from to
                     git commit -m "Rename $from to $to"
                 end
             case '*'

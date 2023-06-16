@@ -27,5 +27,6 @@ function remove
         end
     end
 
+    # could be cool to allow remove .
     rm $original_args
 end
