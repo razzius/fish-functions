@@ -23,6 +23,10 @@ bind \ct transpose-chars
 # Make C-s accept autocompletion and submit :))
 bind \cs accept-autosuggestion execute
 
+# Bind paste using function to avoid 'clone-cd git clone'
+bind \cv paste_avoiding_double_git_clone
+bind \ev paste_avoiding_double_git_clone
+
 test -e ~/.profile && source ~/.profile
 
 function postexec-source-profile --on-event fish_postexec
