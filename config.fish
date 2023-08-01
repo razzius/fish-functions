@@ -61,7 +61,6 @@ function save-edited-file --on-event fish_postexec
     end
 end
 
-
 if test -n "$VIM_TERMINAL"
     function _vim_sync_PWD --on-variable=PWD
         printf '\033]7;file://%s\033\\' "$PWD"
