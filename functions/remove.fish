@@ -21,7 +21,7 @@ function remove
     end
 
     for f in $argv
-        set gitdirs (find $f -name .git)
+        set gitdirs (find $f -mindepth 1 -name .git)
         for gitdir in $gitdirs
             confirm-remove $gitdir
         end
