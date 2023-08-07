@@ -1,16 +1,5 @@
 function pw --wraps=pass --argument url
-    if string-empty $url
-        set clipboard (pbpaste)
-
-        if not echo $clipboard | string match -rq '^https?://'
-            echo 'pw: clipboard does not contain http url'
-            return 1
-        end
-
-        set domain_raw (pbpaste)
-    else
-        set domain_raw $url
-    end
+    set domain_raw $url
 
     set domain (echo $domain_raw | domain | trim-left www.)
 
