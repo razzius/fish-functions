@@ -7,5 +7,5 @@ function clone-cd --argument url _destination
         return
     end
 
-    git clone --depth=1 $url && cd $destination
+    git clone --depth=1 $url $destination && cd $destination
 end
