@@ -1,3 +1,3 @@
 function bin --argument file
-    gln -sr $file /usr/local/bin/
+    ln -sr (realpath $file) /usr/local/bin/
 end
