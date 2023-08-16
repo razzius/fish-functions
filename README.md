@@ -552,3 +552,33 @@ Prints the current wifi network password.
 ### `wifi-reset` [(source)](functions/wifi-reset.fish)
 
 Turns the wifi off and on again.
+
+---
+
+## File Manipulation
+
+### `backup <file>`
+
+Creates a copy of `file` as `file.bak`.
+
+```fish
+$ ls
+README.md
+$ backup README.md
+$ ls
+README.md  README.md.bak
+```
+
+Recommended abbreviation: `abbr -a bk backup`
+
+
+<details>
+  <summary>Source | <a href="functions/backup.fish">Link</a></summary>
+
+  ```fish
+  function backup --argument filename
+    cp $filename $filename.bak
+  end
+  ```
+
+</details>
