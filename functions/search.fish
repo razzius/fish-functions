@@ -1,3 +1,6 @@
 function search
-    open https://duckduckgo.com/(echo $argv | string replace --all ' ' '%20')
+  if not file-exists $RIPGREP_CONFIG_PATH
+    echo search: warning: '$RIPGREP_CONFIG_PATH' not configured properly
+  end
+  rg "$argv"
 end
