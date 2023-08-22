@@ -10,7 +10,7 @@ function eat --argument dir
     end
 
     for f in $files_to_move
-        rsync --archive --remove-source-files $f .
+        mv $f .
     end
 
     rmdir $dir
