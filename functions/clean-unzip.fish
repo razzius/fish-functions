@@ -7,8 +7,9 @@ function clean-unzip --argument zipfile
     if is-clean-zip $zipfile
         unzip $zipfile
     else
-        set zipname (echo $zipfile | trim-right '.zip')
-        mkdir $zipname || return 1
-        unzip $zipfile -d $zipname
+        set folder_name (echo $zipfile | trim-right '.zip')
+        set target (basename $folder_name)
+        mkdir $target || return 1
+        unzip $zipfile -d $target
     end
 end
