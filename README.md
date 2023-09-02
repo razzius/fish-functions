@@ -330,6 +330,16 @@ $ echo $status
 0
 ```
 
+If you use this on a variable, be sure to use the variable's value using `$`:
+
+```fish
+$ if string-empty $VIRTUAL_ENV
+    echo in venv
+  end
+```
+
+since `string-empty VIRTUAL_ENV` will always return `true`.
+
 ### `file-exists <file>` [(source)](functions/file-exists.fish)
 
 Test if `$file` exists.
