@@ -1,3 +1,3 @@
 function play
-    cvlc --play-and-exit $argv
+    mplayer -vo null "$argv"
 end
