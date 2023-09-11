@@ -27,6 +27,8 @@ bind \cs accept-autosuggestion execute
 bind \cv paste_avoiding_double_git_clone
 bind \ev paste_avoiding_double_git_clone
 
+set -Ua fish_features ampersand-nobg-in-token,qmark-noglob
+
 test -e ~/.profile && source ~/.profile
 
 function postexec-source-profile --on-event fish_postexec
