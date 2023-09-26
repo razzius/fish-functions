@@ -1,6 +1,6 @@
 function abbr-add --argument shorthand
     set expansion (echo $argv[2..] | unexpand-home-tilde | trim-trailing-slash)
-    set base_abbr "abbr -a -- $shorthand"
+    set base_abbr "abbr -a -- $shorthand "
     set abbr_command "$base_abbr \"$expansion\""
     eval "$abbr_command"
     set abbr_file "$HOME/.config/fish/conf.d/abbrs.fish"
