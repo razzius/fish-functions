@@ -1,21 +1,19 @@
 function sync-repos
-    function sync-repo --argument-names repo
-        git -C $repo status -sb
-        git -C $repo pull
-        git -C $repo push
+    if not file-exists ~/.repos.txt
+        echo Put the repositories to sync in ~/.repos.txt
+        return 1
     end
 
-    function draw-line
-        seq $COLUMNS | string replace -r '\d+' - | string join ''
-    end
+    for path in (cat ~/.repos.txt | grep -v '^#')
+        set repo (echo $path | expand-home-tilde)
 
-    for repo in ~/.config/fish ~/.spacemacs.d ~/.dotfiles ~/.password-store/ ~/.config/karabiner/ ~/forks/reference
         if not dir-exists $repo
             echo $repo not present
             continue
         end
+
         draw-line
-        echo Syncing repository $repo...
+        echo Syncing repository $path...
         draw-line
         sync-repo $repo
         echo

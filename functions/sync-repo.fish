@@ -1,7 +1,7 @@
 function sync-repo --argument repo
-    git -C $repo status -sb
+    git -C "$repo" status -sb
     echo 'Pull: '
-    git -C $repo pull
+    git -C "$repo" pull
     echo 'Push: '
-    git -C $repo push
+    git -C "$repo" push
 end
