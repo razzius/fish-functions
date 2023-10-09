@@ -5,7 +5,7 @@ function abbr-add --argument shorthand
     eval "$abbr_command"
     set abbr_file "$HOME/.config/fish/conf.d/abbrs.fish"
 
-    set abbr_match (grep $base_abbr $abbr_file)
+    set abbr_match (grep --fixed-strings $base_abbr $abbr_file)
     if not string-empty $abbr_match
         echo Removing conflicting abbr $abbr_match
         sed -i /$base_abbr/d $abbr_file
