@@ -12,9 +12,7 @@ function sync-repos
             continue
         end
 
-        draw-line
-        echo Syncing repository $path...
-        draw-line
+        echo $path
         sync-repo $repo
         echo
     end
