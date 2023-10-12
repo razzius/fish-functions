@@ -16,14 +16,16 @@ function remove
             return
         end
 
-        echo 'Cancelling.'
         return 1
     end
 
     for f in $argv
         set gitdirs (find $f -mindepth 1 -name .git)
         for gitdir in $gitdirs
-            confirm-remove $gitdir
+            if not confirm-remove $gitdir
+                echo 'remove: cancelling.'
+                return 1
+            end
         end
     end
 
