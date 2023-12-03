@@ -14,5 +14,10 @@ function symlink --argument _from _to
 
     set from (realpath "$_from")
 
+    if not test -e $from
+        echo "symlink: `from` argument '$from' does not exist" >&2
+        return 1
+    end
+
     ln -s $from $to
 end
