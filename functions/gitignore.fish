@@ -1,3 +1,5 @@
 function gitignore --argument pattern
-    echo $pattern >>(git root)/.gitignore
+    set gitignore_file (git root)/.gitignore
+    ensure-trailing-newline $gitignore_file
+    echo $pattern >> $gitignore_file
 end
