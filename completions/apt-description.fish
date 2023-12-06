@@ -1,1 +1,1 @@
-complete -x -c apt-description -a '(dpkg --get-selections | grep -v deinstall | coln 1)'
+complete -x -c apt-description -a '(apt-mark showmanual) (apt-mark showauto)'
