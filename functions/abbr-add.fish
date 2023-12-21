@@ -12,5 +12,5 @@ function abbr-add --argument shorthand
     end
 
     echo "$abbr_command" >>$abbr_file
-    sort -o $abbr_file $abbr_file
+    env LC_ALL=C sort -o $abbr_file $abbr_file
 end
