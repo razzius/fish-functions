@@ -193,7 +193,32 @@ eat: file would be overwritten: ./dir-b
 
 ### `move <source> ... <destination>` [(source)](functions/move.fish)
 
-Uses -i flag by default, which will warn you if `mv` would overwrite a destination file.
+Like `mv` but uses -i flag by default,
+which will warn you if `mv` would overwrite a destination file.
+
+Also warns you if you are trying to move a directory symlink which is ending in slash (note: this arises because tab completion adds the slash. Completion for `move` could take this into account.):
+
+```
+$ mkdir mydir
+$ ln -s mydir mylink
+$ mv mylink/ renamed
+mv: cannot move 'mylink/' to 'renamed': Not a directory
+```
+
+`move` gives a more descriptive error:
+
+```
+$ move mylink/ renamed
+move: `from` argument "mylink/" is a symlink with a trailing slash.
+move: to rename a symlink, remove the trailing slash from the argument.
+```
+
+```
+$ mkdir mydir
+$ ln -s mydir mylink
+$ move mylink/ renamed
+move: cannot move 'mylink/' to 'renamed': Not a directory
+```
 
 ### `remove <target>` [(source)](functions/remove.fish)
 
