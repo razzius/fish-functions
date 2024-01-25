@@ -39,6 +39,7 @@ Now they are at https://git.sr.ht/~razzi/dotfiles (see that repository's README 
   * [`string-empty`](#string-empty-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
   * [`is-dir`](#is-dir-file-source)
+  * [`is-symlink`](#is-symlink-file-source)
   * [`any-arguments`](#any-arguments-argv-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
@@ -352,6 +353,10 @@ Test if `$file` exists.
 ### `is-dir <path>` [(source)](functions/is-dir.fish)
 
 Check if if `$path` is a directory.
+
+### `is-symlink <path>` [(source)](functions/is-symlink.fish)
+
+Check if if `$path` is a symlink.
 
 ### `any-arguments <argv>` [(source)](functions/any-arguments.fish)
 
