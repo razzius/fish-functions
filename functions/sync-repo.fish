@@ -1,7 +1,9 @@
 function sync-repo --argument repo
+    set repo_branch (git -C "$repo" current)
     git -C "$repo" status -sb
-    git -C "$repo" pull
-    if test (git -C "$repo" rev-list --count @{upstream}..HEAD) -gt 0
+    git -C "$repo" pull origin $repo_branch
+    set commits_behind (git -C "$repo" rev-list --count origin/$repo_branch..HEAD)
+    and if test $commits_behind -gt 0
         git -C "$repo" push
     end
 end
