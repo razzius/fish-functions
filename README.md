@@ -40,7 +40,6 @@ Now they are at https://git.sr.ht/~razzi/dotfiles (see that repository's README 
   * [`file-exists`](#file-exists-file-source)
   * [`is-dir`](#is-dir-file-source)
   * [`is-symlink`](#is-symlink-file-source)
-  * [`any-arguments`](#any-arguments-argv-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)

@@ -1,5 +1,5 @@
 function git-add
-    if any-arguments $argv
+    if not string-empty $argv
         if test "$argv" = '...'
             git add ../..
         else

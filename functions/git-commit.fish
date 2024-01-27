@@ -7,7 +7,7 @@ function git-commit
         awk NF | wc -l | string trim
     end
 
-    if not any-arguments $argv
+    if string-empty $argv
         set new_files (staged-files-matching-filter A)
         set n_new_files (echo -n "$new_files" | count-files)
 

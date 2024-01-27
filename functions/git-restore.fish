@@ -1,5 +1,5 @@
 function git-restore
-    if any-arguments $argv
+    if not string-empty $argv
         git restore $argv
     else
         git restore .

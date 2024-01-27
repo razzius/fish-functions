@@ -1,5 +1,5 @@
 function edit
-    if not any-arguments $argv
+    if string-empty $argv
         eval "$editor_command"
         return
     end
