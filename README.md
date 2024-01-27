@@ -2,8 +2,9 @@ Functions for the [Fish Shell](https://fishshell.com), making common tasks more 
 
 ## Installation
 
+Backup any existing `~/.config/fish`, then:
+
 ```sh
-# Backup your old ~/.config/fish first, then:
 git clone https://git.sr.ht/~razzi/fish-functions ~/.config/fish
 ```
 
