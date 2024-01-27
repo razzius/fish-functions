@@ -125,15 +125,19 @@ Example:
 $ mkdir testdir
 $ touch testdir/file.txt
 $ mkdir destdir
+
 # Standard cp needs -r flag
 $ cp testdir/ destdir/
 cp: testdir/ is a directory (not copied).
+
 # And does not preserve the source folder
 $ cp -r testdir/ destdir/
 $ ls destdir/
 file.txt
+
 # Cleaning up...
 $ rm destdir/file.txt
+
 # In contrast, using `copy` function:
 $ copy testdir/ destdir/
 $ ls destdir/
@@ -172,7 +176,7 @@ $ tree
     └── c
 ```
 
-If a file in the current directory would be overwritten by `eat`, it will give an error and exit with status 1.
+If a file in the current directory would be overwritten by `eat`, it will error with exit status 1.
 
 An illustration of this:
 
@@ -181,8 +185,7 @@ $ tree
 .
 ├── dir-a
 │   └── dir-b
-│       ├── some_file
-│       └── some_other_file
+│       └── some_file
 └── dir-b
     └── would_be_overwritten
 
@@ -193,10 +196,10 @@ eat: file would be overwritten: ./dir-b
 
 ### `move <source> ... <destination>` [(source)](functions/move.fish)
 
-Like `mv` but uses -i flag by default,
+Like `mv` but uses `-i` flag by default,
 which will warn you if `mv` would overwrite a destination file.
 
-Also warns you if you are trying to move a directory symlink which is ending in slash (note: this arises because tab completion adds the slash. Completion for `move` could take this into account.):
+Also warns you if you are trying to move a directory symlink which is ending in slash:
 
 ```
 $ mkdir mydir
@@ -213,12 +216,7 @@ move: `from` argument "mylink/" is a symlink with a trailing slash.
 move: to rename a symlink, remove the trailing slash from the argument.
 ```
 
-```
-$ mkdir mydir
-$ ln -s mydir mylink
-$ move mylink/ renamed
-move: cannot move 'mylink/' to 'renamed': Not a directory
-```
+This arises because tab completion adds the slash. Completion for `move` could avoid the slash, but then again you might want to move a file within the symlinked directory.
 
 ### `remove <target>` [(source)](functions/remove.fish)
 
@@ -247,7 +245,7 @@ Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use 
 
 ### `move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
 
-Move the latest download to destination directory, which is the current directory if none is specified..
+Move the latest download to destination directory, which is the current directory if none is specified.
 
 Recommended abbreviation: `abbr -a mvl move-last-download`.
 
@@ -355,13 +353,29 @@ $ echo -n a b | wc -c
 
 Test if the value is the empty string.
 
-```
+```fish
 $ string-empty ''
 $ echo $status
 0
 ```
 
-If you use this on a variable, be sure to use the variable's value using `$`:
+Can be used to test for arguments:
+
+```
+$ function something
+    if string-empty $argv
+        echo No arguments passed
+    else
+        echo Arguments were passed
+    end
+end
+$ something
+No arguments passed
+$ something 1
+Arguments were passed
+```
+
+If you use this on a variable, be sure to get the variable's *value* using `$`:
 
 ```fish
 $ if string-empty $VIRTUAL_ENV
@@ -369,7 +383,7 @@ $ if string-empty $VIRTUAL_ENV
   end
 ```
 
-since `string-empty VIRTUAL_ENV` will always return `true`.
+since `string-empty VIRTUAL_ENV` will always return `false`.
 
 ### `file-exists <file>` [(source)](functions/file-exists.fish)
 
@@ -382,24 +396,6 @@ Check if if `$path` is a directory.
 ### `is-symlink <path>` [(source)](functions/is-symlink.fish)
 
 Check if if `$path` is a symlink.
-
-### `any-arguments <argv>` [(source)](functions/any-arguments.fish)
-
-Check if any arguments were passed to a fish function.
-
-```fish
-$ function something
-    if any-arguments $argv
-        echo Arguments were passed
-    else
-        echo No arguments passed
-    end
-end
-$ something
-No arguments passed
-$ something 1
-Arguments were passed
-```
 
 ### `funcsave-last` [(source)](functions/funcsave-last.fish)
 
