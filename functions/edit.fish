@@ -4,6 +4,5 @@ function edit
         return
     end
 
-    vtab $argv
-    # $EDITOR $argv
+    $EDITOR $argv
 end
