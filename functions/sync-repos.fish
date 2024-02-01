@@ -7,7 +7,7 @@ function sync-repos
     for path in (cat ~/.repos.txt | grep -v '^#')
         set repo (echo $path | expand-home-tilde)
 
-        if not dir-exists $repo
+        if not is-dir $repo
             echo $repo not present
             continue
         end
