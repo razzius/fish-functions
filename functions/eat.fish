@@ -9,8 +9,10 @@ function eat --argument dir
         end
     end
 
+    set target (dirname $dir)
+
     for f in $files_to_move
-        mv $f .
+        mv $f $target
     end
 
     rmdir $dir
