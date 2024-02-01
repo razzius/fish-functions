@@ -1,3 +1,3 @@
 function bin --argument file
-    ln -sr (realpath $file) /usr/local/bin/
+    symlink $file /usr/local/bin/
 end
