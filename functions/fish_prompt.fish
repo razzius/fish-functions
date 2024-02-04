@@ -19,7 +19,7 @@ function fish_prompt --description 'Write out the prompt'
 
     # printf '%s ' (__fish_git_prompt)
     if in-git-dir
-        set stashes (git stash list | word-count)
+        set stashes (git stash list | line-count)
         if test $stashes -gt 0
             printf '%s ' $stashes
         end
