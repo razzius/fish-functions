@@ -1,1 +1,2 @@
-complete -c unsymlink -f -a '(find $PWD -type l -exec realpath --no-symlinks --relative-to $PWD {} \;)'
+complete -c unsymlink -f
+complete -c unsymlink -a '(find . -type l -maxdepth 1)'
