@@ -11,7 +11,7 @@ git clone https://git.sr.ht/~razzi/fish-functions ~/.config/fish
 In previous versions, other fish config including abbrs were included as well.
 That changed much more frequently than the functions, so I split them out.
 
-Now they are at https://git.sr.ht/~razzi/dotfiles (see that repository's README for installation instructions).
+Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README for installation instructions).
 
 ## Contents
 
