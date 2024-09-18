@@ -391,11 +391,11 @@ Test if `$file` exists.
 
 ### `is-dir <path>` [(source)](functions/is-dir.fish)
 
-Check if if `$path` is a directory.
+Check if `$path` is a directory.
 
 ### `is-symlink <path>` [(source)](functions/is-symlink.fish)
 
-Check if if `$path` is a symlink.
+Check if `$path` is a symlink.
 
 ### `funcsave-last` [(source)](functions/funcsave-last.fish)
 
