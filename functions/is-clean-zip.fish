@@ -1,4 +1,9 @@
 function is-clean-zip --argument zipfile
+    if string-empty $zipfile
+        echo 'is-clean-zip: missing filename' >&2
+        return 1
+    end
+
     set summary (zip -sf $zipfile | string split0)
     set first_file (echo $summary | row 2 | string trim)
     set first_file_last_char (echo $first_file | string sub --start=-1)
