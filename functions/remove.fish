@@ -20,6 +20,11 @@ function remove
     end
 
     for f in $argv
+        if not file-exists $f
+            echo "remove: $f: No such file or directory"
+            return 1
+        end
+
         set gitdirs (find $f -mindepth 1 -name .git)
         for gitdir in $gitdirs
             if not confirm-remove $gitdir
