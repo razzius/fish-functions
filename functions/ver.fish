@@ -5,7 +5,7 @@ function ver --argument program
         $program -version
     else if contains $program vi vim
         # vim version info is way too verbose
-        vi --version | take 1
+        $program --version | take 1
     else
         $program --version
     end
