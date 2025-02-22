@@ -1,6 +1,7 @@
 function lima-ssh
-    if test (limactl list default -f '{{.Status}}') = Stopped
-        limactl start
+    set default_status (limactl list default -f '{{.Status}}')
+    if test $status != 0 || test $default_status = Stopped
+        limactl start --tty=false
     end
     lima
 end
