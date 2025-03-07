@@ -553,6 +553,14 @@ List symlinks in the given directory, or the current directory if none is passed
 
 Create a symlink from `$file` to the home directory (`~`).
 
+Sample usage:
+
+```
+.dotfiles $ link-rc .tmux.conf
+.dotfiles $ head -1 ~/.tmux.conf
+set -g prefix ^Space
+```
+
 Recommended abbreviation: `abbr-add lrc link-rc`
 
 ## git utilities
