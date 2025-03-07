@@ -91,8 +91,8 @@ but I recommend using `abbr-add` and tracking
 
 All `abbr` options work with this command, so for example you can run:
 
-```
-abbr-add --position anywhere isntall install
+```fish
+$ abbr-add --position anywhere isntall install
 ```
 
 Recommended abbreviation: `abbr-add ab abbr-add`
@@ -109,7 +109,7 @@ Recommended abbreviation: `abbr-add ae abbr-erase`
 
 Copies the arguments that follow `clip` to the clipboard.
 
-```
+```fish
 $ clip cat ~/.ssh/id_ed25519.pub
 # now "cat ~/.ssh/id_ed25519.pub" is on the clipboard
 $ echo (fish_clipboard_paste)
@@ -125,7 +125,7 @@ and you can quickly copy a command.
 
 If you want to copy the _output_ of a command, pipe it to `fish_clipboard_copy`:
 
-```
+```fish
 $ echo 1 | fish_clipboard_copy
 $ echo (fish_clipboard_paste)
 1
