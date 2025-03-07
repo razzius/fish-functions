@@ -143,7 +143,7 @@ $ funcsave-last
 Saved hi
 ```
 
-Recommended abbreviation: `abbr -a fs funcsave-last`.
+Recommended abbreviation: `abbr-add fs funcsave-last`
 
 ### `mkdir-cd <directory>` [(source)](functions/mkdir-cd.fish)
 
@@ -170,7 +170,7 @@ $ ls
 README.md  README.md.bak
 ```
 
-Recommended abbreviation: `abbr -a bk backup`
+Recommended abbreviation: `abbr-add bk backup`
 
 ### `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
 
@@ -205,7 +205,9 @@ $ ls destdir/
 testdir
 ```
 
-Recommended abbreviation: `abbr -a cp copy`. If you do this abbreviation, use `command cp` for the low-level `cp`.
+Recommended abbreviation: `abbr-add cp copy`
+
+If you do this abbreviation, use `command cp` for the low-level `cp`.
 
 ### `create-file <target>` [(source)](functions/create-file.fish)
 
@@ -283,7 +285,7 @@ This arises because tab completion adds the slash. Completion for `move` could a
 
 Move the latest download to destination directory, which is the current directory if none is specified.
 
-Recommended abbreviation: `abbr -a mvl move-last-download`.
+Recommended abbreviation: `abbr-add mvl move-last-download`
 
 ### `remove <target>` [(source)](functions/remove.fish)
 
@@ -308,7 +310,9 @@ override r--r--r--  razzi/staff for dodo/.git/objects/e6/9de29bb2d1d6434b8b29ae7
 $ rm -rf dodo
 ```
 
-Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
+Recommended abbreviation: `abbr-add rm remove`
+
+If you do this abbreviation, use `command rm` for the low-level `rm`.
 
 ### `restore <backup>` [(source)](functions/restore.fish)
 
@@ -322,7 +326,7 @@ $ ls
 README.md
 ```
 
-Recommended abbreviation: `abbr -a re restore`
+Recommended abbreviation: `abbr-add re restore`
 
 ## Zipfile Utilities
 
@@ -501,7 +505,7 @@ $ echo $USER
 razzi
 ```
 
-Recommended abbreviation: `abbr -a ev echo-variable`.
+Recommended abbreviation: `abbr-add ev echo-variable`
 
 [Completion](completions/echo-variable.fish): completes environment variable names.
 
@@ -537,7 +541,6 @@ Without using absolute paths:
 cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
 ```
 
-
 ### `unsymlink <file>` [(source)](functions/unsymlink.fish)
 
 Remove a symlink. Errors if the file is not a symlink.
@@ -549,6 +552,8 @@ List symlinks in the given directory, or the current directory if none is passed
 ### `link-rc [<file>]` [(source)](functions/link-rc.fish)
 
 Create a symlink from `$file` to the home directory (`~`).
+
+Recommended abbreviation: `abbr-add lrc link-rc`
 
 ## git utilities
 
@@ -584,7 +589,7 @@ Also understand `...` to mean `../..`. If you need more levels of `../..` I gues
 
 Did I mention I have a function called `...` that `cd`s up 2 levels?
 
-Recommended abbreviation: `abbr -a ga git-add`
+Recommended abbreviation: `abbr-add ga git-add`
 
 ### `git-commit [message]` [(source)](functions/git-commit.fish)
 
@@ -605,13 +610,13 @@ $ git-commit Fix typo in README.md
 1 file changed, 57 insertions(+), 18 deletions(-)
 ```
 
-Recommended abbreviation: `abbr -a gc git-commit`
+Recommended abbreviation: `abbr-add gc git-commit`
 
 ### `gitignore <pattern>` [(source)](functions/gitignore.fish)
 
 Add a pattern to the `.gitignore`.
 
-Recommended abbreviation: `abbr -a giti gitignore`.
+Recommended abbreviation: `abbr-add giti gitignore`
 
 ## Vim Utilities
 
