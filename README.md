@@ -15,16 +15,21 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 
 ## Contents
 
+- [`fish` Interactive Utilities](#fish-interactive-utilities)
+  * [`abbr-add`](#abbr-add-name-expansion-args-source)
+  * [`abbr-erase`](#abbr-erase-name-source)
+  * [`clip`](#clip-args-source)
+  * [`funcsave-last`](#funcsave-last-source)
+  * [`mkdir-cd`](#mkdir-cd-directory-source)
 - [File Manipulation](#file-manipulation)
   * [`backup`](#backup-file-source)
   * [`copy`](#copy-source-destination-source)
   * [`create-file`](#create-file-target-source)
   * [`eat`](#eat-target-source)
-  * [`mkdir-cd`](#mkdir-cd-directory-source)
   * [`move`](#move-source-destination-source)
+  * [`move-last-download`](#move-last-download-dest-source)
   * [`remove`](#remove-target-source)
   * [`restore`](#restore-backup-source)
-  * [`move-last-download`](#move-last-download-dest-source)
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
@@ -36,12 +41,11 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`word-count`](#word-count-source)
   * [`line-count`](#line-count-source)
   * [`char-count`](#char-count-source)
-- [`fish` Utilities](#fish-utilities)
+- [`fish` Scripting Utilities](#fish-utilities)
   * [`string-empty`](#string-empty-empty-value-source)
   * [`file-exists`](#file-exists-file-source)
   * [`is-dir`](#is-dir-file-source)
   * [`is-symlink`](#is-symlink-file-source)
-  * [`funcsave-last`](#funcsave-last-source)
   * [`confirm`](#confirm-source)
 - [Environment Utilities](#environment-utilities)
   * [`curdir`](#curdir-source)
@@ -70,6 +74,88 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`wifi-password`](#wifi-password-source)
   * [`wifi-reset`](#wifi-reset-source)
 
+## `fish` Interactive Utilities
+
+Fish functions designed to be typed and run in the shell.
+
+### `abbr-add <name> <expansion> [<args>]` [(source)](functions/abbr-add.fish)
+
+Adds an abbr and syncs your abbrs to `~/.config/fish/conf.d/abbrs.fish`.
+
+This way the abbr will be loaded the next time you open your shell.
+
+Without `abbr-add`, you can use `abbr -a` to make your own abbrs,
+and add `abbr -a` calls to your fish config manually,
+but I recommend using `abbr-add` and tracking
+`~/.config/fish/conf.d/abbrs.fish` in version control.
+
+All `abbr` options work with this command, so for example you can run:
+
+```
+abbr-add --position anywhere isntall install
+```
+
+Recommended abbreviation: `abbr-add ab abbr-add`
+
+### `abbr-erase <name>`
+
+Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
+
+Recommended abbreviation: `abbr-add ae abbr-erase`
+
+[Completion](completions/abbr-erase.fish): completes abbr names.
+
+### `clip [args]` [(source)](functions/clip.fish)
+
+Copies the arguments that follow `clip` to the clipboard.
+
+```
+$ clip cat ~/.ssh/id_ed25519.pub
+# now "cat ~/.ssh/id_ed25519.pub" is on the clipboard
+$ echo (fish_clipboard_paste)
+cat ~/.ssh/id_ed25519.pub
+```
+
+This is useful when you want to copy a command to your clipboard
+(possibly to paste the command into documentation).
+
+You can press the up arrow or `control+p` to get to the previous command,
+then hit `control-a` to move your cursor to the start, prepend `clip `,
+and you can quickly copy a command.
+
+If you want to copy the _output_ of a command, pipe it to `fish_clipboard_copy`:
+
+```
+$ echo 1 | fish_clipboard_copy
+$ echo (fish_clipboard_paste)
+1
+```
+
+### `funcsave-last` [(source)](functions/funcsave-last.fish)
+
+Save the last-edited `fish` function.
+
+```fish
+$ function hi
+  echo hi
+end
+$ funcsave-last
+Saved hi
+```
+
+Recommended abbreviation: `abbr -a fs funcsave-last`.
+
+### `mkdir-cd <directory>` [(source)](functions/mkdir-cd.fish)
+
+Make a directory and cd into it.
+
+```fish
+$ mkdir-cd folder
+folder $
+```
+
+Recommended abbreviation: `abbr-add mc mkdir-cd`
+
 ## File Manipulation
 
 ### `backup <file>` [(source)](functions/backup.fish)
@@ -85,31 +171,6 @@ README.md  README.md.bak
 ```
 
 Recommended abbreviation: `abbr -a bk backup`
-
-### `restore <backup>` [(source)](functions/restore.fish)
-
-Rename a backup such as `file.bak` to remove the `.bak` extension.
-
-```fish
-$ ls
-README.md README.md.bak
-$ restore README.md.bak
-$ ls
-README.md
-```
-
-Recommended abbreviation: `abbr -a re restore`
-
-### `mkdir-cd <directory>` [(source)](functions/mkdir-cd.fish)
-
-Make a directory and cd into it.
-
-```fish
-$ mkdir-cd folder
-folder $
-```
-
-Recommended abbreviation: `abbr -a mc mkdir-cd`
 
 ### `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
 
@@ -218,6 +279,12 @@ move: to rename a symlink, remove the trailing slash from the argument.
 
 This arises because tab completion adds the slash. Completion for `move` could avoid the slash, but then again you might want to move a file within the symlinked directory.
 
+### `move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+
+Move the latest download to destination directory, which is the current directory if none is specified.
+
+Recommended abbreviation: `abbr -a mvl move-last-download`.
+
 ### `remove <target>` [(source)](functions/remove.fish)
 
 `rm` with an extra behavior.
@@ -243,11 +310,19 @@ $ rm -rf dodo
 
 Recommended abbreviation: `abbr -a rm remove`. If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-### `move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+### `restore <backup>` [(source)](functions/restore.fish)
 
-Move the latest download to destination directory, which is the current directory if none is specified.
+Rename a backup such as `file.bak` to remove the `.bak` extension.
 
-Recommended abbreviation: `abbr -a mvl move-last-download`.
+```fish
+$ ls
+README.md README.md.bak
+$ restore README.md.bak
+$ ls
+README.md
+```
+
+Recommended abbreviation: `abbr -a re restore`
 
 ## Zipfile Utilities
 
@@ -347,7 +422,7 @@ $ echo -n a b | wc -c
        3
 ```
 
-## `fish` utilities
+## `fish` Scripting utilities
 
 ### `string-empty <value>` [(source)](functions/string-empty.fish)
 
@@ -396,20 +471,6 @@ Check if `$path` is a directory.
 ### `is-symlink <path>` [(source)](functions/is-symlink.fish)
 
 Check if `$path` is a symlink.
-
-### `funcsave-last` [(source)](functions/funcsave-last.fish)
-
-Save the last-edited `fish` function.
-
-```fish
-$ function hi
-  echo hi
-end
-$ funcsave-last
-Saved hi
-```
-
-Recommended abbreviation: `abbr -a fs funcsave-last`.
 
 ### `confirm` [(source)](functions/confirm.fish)
 
