@@ -58,6 +58,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`link-rc`](#link-rc-file-source)
 - [`git` Utilities](#git-utilities)
   * [`clone-cd`](#clone-cd-url-destination-source)
+  * [`clone-shallow-cd`](#clone-shallow-cd-url-destination-source)
   * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
@@ -567,11 +568,17 @@ Recommended abbreviation: `abbr-add lrc link-rc`
 
 ### `clone-cd url [destination]` [(source)](functions/clone-cd.fish)
 
-Clone a `git` repository into the current directory (or the optional `$destination`), and `cd` into it. Clones with depth 1 for speed.
+Clone a `git` repository into the current directory (or the optional `$destination`), and `cd` into it.
 
 If a folder by that name already exists, great, you probably already cloned it, just cd into the directory and pull.
 
 If it's trying to clone into a non-empty directory, make a new folder in that directory with the repository name and clone into that, instead of erroring.
+
+Recommended abbreviation: `abbr-add cc clone-cd`
+
+### `clone-shallow-cd url [destination]` [(source)](functions/clone-shallow-cd.fish)
+
+Like `clone-cd` but clones with `--depth=1` for speed.
 
 ### `wip [message]` [(source)](functions/wip.fish)
 
