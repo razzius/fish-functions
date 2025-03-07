@@ -1,3 +1,3 @@
 function clip
-    echo -n $argv | fish_clipboard_copy
+    echo -n $argv | unexpand-home-tilde | fish_clipboard_copy
 end
