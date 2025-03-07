@@ -97,7 +97,7 @@ abbr-add --position anywhere isntall install
 
 Recommended abbreviation: `abbr-add ab abbr-add`
 
-### `abbr-erase <name>`
+### `abbr-erase <name>` [(source)](functions/abbr-erase.fish)
 
 Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
 
