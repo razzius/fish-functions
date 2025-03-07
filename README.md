@@ -183,7 +183,7 @@ Also uses -i flag by default, which will warn you if a copy would overwrite a de
 
 Example:
 
-```
+```fish
 $ mkdir testdir
 $ touch testdir/file.txt
 $ mkdir destdir
@@ -265,7 +265,7 @@ which will warn you if `mv` would overwrite a destination file.
 
 Also warns you if you are trying to move a directory symlink which is ending in slash:
 
-```
+```fish
 $ mkdir mydir
 $ ln -s mydir mylink
 $ mv mylink/ renamed
@@ -274,7 +274,7 @@ mv: cannot move 'mylink/' to 'renamed': Not a directory
 
 `move` gives a more descriptive error:
 
-```
+```fish
 $ move mylink/ renamed
 move: `from` argument "mylink/" is a symlink with a trailing slash.
 move: to rename a symlink, remove the trailing slash from the argument.
@@ -441,7 +441,7 @@ $ echo $status
 
 Can be used to test for arguments:
 
-```
+```fish
 $ function something
     if string-empty $argv
         echo No arguments passed
@@ -556,7 +556,7 @@ Create a symlink from `$file` to the home directory (`~`).
 
 Sample usage:
 
-```
+```fish
 .dotfiles $ link-rc .tmux.conf
 .dotfiles $ head -1 ~/.tmux.conf
 set -g prefix ^Space
