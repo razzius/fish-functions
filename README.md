@@ -636,7 +636,7 @@ Add a pattern to the `.gitignore`.
 
 Recommended abbreviation: `abbr-add giti gitignore`
 
-## `lima` Utilities
+## [`lima`](https://lima-vm.io/) Utilities
 
 ### `lima-ssh` [(source)](functions/lima-ssh.fish)
 
