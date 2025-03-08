@@ -73,6 +73,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`renamedb`](#renamedb-from-to-source)
 - [Date Utilities](#date-utilities)
   * [`isodate`](#isodate-source)
+  * [`isodatetime`](#isodatetime-source)
 - [MacOS Utilities](#macos-utilities)
   * [`wifi-network-name`](#wifi-network-name-source)
   * [`wifi-password`](#wifi-password-source)
@@ -676,6 +677,15 @@ Prints the date in ISO format.
 ```fish
 $ isodate
 2020-01-28
+```
+
+### `isodatetime` [(source)](functions/isodatetime.fish)
+
+Prints the date and time in ISO format.
+
+```fish
+$ isodatetime
+2025-03-07T23:11:53
 ```
 
 ## MacOS Utilities
