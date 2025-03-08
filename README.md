@@ -63,6 +63,9 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
   * [`gitignore`](#gitignore-pattern-source)
+- [`lima` Utilities](#lima-utilities)
+  * [`lima-ssh`](#lima-ssh-source)
+  * [`lima-vnc`](#lima-vnc-source)
 - [`vim` Utilities](#vim-utilities)
   * [`vim-plugin`](#vim-plugin-url-source)
 - [Postgres Utilities](#postgres-utilities)
@@ -632,6 +635,20 @@ Recommended abbreviation: `abbr-add gc git-commit`
 Add a pattern to the `.gitignore`.
 
 Recommended abbreviation: `abbr-add giti gitignore`
+
+## `lima` Utilities
+
+### `lima-ssh` [(source)](functions/lima-ssh.fish)
+
+Connect to a default lima virtual machine.
+
+Creates and starts the machine as necessary, so it works in 1 command.
+
+### `lima-vnc` [(source)](functions/lima-vnc.fish)
+
+Connect to a Lima virtual machine over VNC.
+
+Creates and starts the machine as necessary, like `lima-ssh`.
 
 ## Vim Utilities
 
