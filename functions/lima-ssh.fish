@@ -1,7 +1,7 @@
 function lima-ssh
     set default_status (limactl list default -f '{{.Status}}' 2> /dev/null)
 
-    if test $status != 0
+    if test $status != 0 || string-empty $default_status
         limactl start --tty=false
     end
 

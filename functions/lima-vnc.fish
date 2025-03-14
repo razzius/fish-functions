@@ -1,7 +1,7 @@
 function lima-vnc
     set vnc_status (limactl list vnc -f '{{.Status}}' 2> /dev/null)
 
-    if test $status != 0
+    if test $status != 0 || string-empty $vnc_status
         limactl start /usr/local/share/lima/templates/experimental/vnc.yaml --tty=false
     end
 
