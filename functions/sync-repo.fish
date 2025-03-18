@@ -1,5 +1,5 @@
 function sync-repo --argument repo
-    set repo_branch (git -C "$repo" current) || return 1
+    set repo_branch (git -C "$repo" rev-parse --abbrev-ref HEAD) || return 1
 
     git -C "$repo" status -sb
     git -C "$repo" pull origin $repo_branch
