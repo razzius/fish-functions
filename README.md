@@ -546,6 +546,8 @@ cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
 
 Remove a symlink. Errors if the file is not a symlink.
 
+Recommended abbreviation: `abbr-add us unsymlink`
+
 ### `symlinks [<dir>]` [(source)](functions/symlinks.fish)
 
 List symlinks in the given directory, or the current directory if none is passed.
