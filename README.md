@@ -175,8 +175,6 @@ $ ls
 README.md  README.md.bak
 ```
 
-Recommended abbreviation: `abbr-add bk backup`
-
 ### `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
 
 `cp` with some extra behaviors.
@@ -330,8 +328,6 @@ $ restore README.md.bak
 $ ls
 README.md
 ```
-
-Recommended abbreviation: `abbr-add re restore`
 
 ## Zipfile Utilities
 
