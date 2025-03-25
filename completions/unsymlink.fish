@@ -19,7 +19,10 @@ function __unsymlink_complete_args
     end
 
     # Make directories end with / to keep exploring them with further tab completions
-    find $find_path -mindepth 1 -maxdepth 1 -type d -printf "$base_path%f/\tDirectory\n"
+    set result_path "$base_path%f/"
+
+    # mindepth to skip current directory, maxdepth to only suggest one level of folder at a time
+    find $find_path -mindepth 1 -maxdepth 1 -type d -printf "$result_path\tDirectory\n"
 
     # Symlinks end in just the symlink name
     find $find_path -mindepth 1 -maxdepth 1 -type l -printf "$base_path%f\tSymlink\n"
