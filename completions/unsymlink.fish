@@ -5,14 +5,14 @@ function __unsymlink_complete_args
     set -l previous_token (commandline -x)[-1]
     if equals $previous_token unsymlink
         set base_path ''
-    else
-        set base_path $previous_token
-    end
-
-    if equals $base_path ''
         set find_path .
     else
-        set find_path $base_path
+        set base_path (echo $previous_token | string replace -r '[^/]+$' '')
+        if equals $base_path ''
+            set find_path .
+        else
+            set find_path $base_path
+        end
     end
 
     # Make directories end with / to keep exploring them
