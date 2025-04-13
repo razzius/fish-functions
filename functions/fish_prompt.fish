@@ -18,7 +18,7 @@ function fish_prompt --description 'Write out the prompt'
     set_color normal
 
     # printf '%s ' (__fish_git_prompt)
-    if in-git-dir
+    if in-git-repo
         set stashes (git stash list | line-count)
         if test $stashes -gt 0
             printf '%s ' $stashes
