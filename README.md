@@ -145,7 +145,7 @@ $ function hi
   echo hi
 end
 $ funcsave-last
-Saved hi
+funcsave: wrote /Users/razzi/.config/fish/functions/hi.fish
 ```
 
 Recommended abbreviation: `abbr-add fs funcsave-last`
