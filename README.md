@@ -64,7 +64,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`git-commit`](#git-commit-message-source)
   * [`gitignore`](#gitignore-pattern-source)
 - [`lima` Utilities](#lima-utilities)
-  * [`lima-ssh`](#lima-ssh-source)
+  * [`lima-ssh`](#lima-ssh-name-source)
   * [`lima-vnc`](#lima-vnc-source)
 - [`vim` Utilities](#vim-utilities)
   * [`vim-plugin`](#vim-plugin-url-source)
@@ -637,9 +637,9 @@ Recommended abbreviation: `abbr-add giti gitignore`
 
 ## [`lima`](https://lima-vm.io/) Utilities
 
-### `lima-ssh` [(source)](functions/lima-ssh.fish)
+### `lima-ssh [name]` [(source)](functions/lima-ssh.fish)
 
-Connect to a default lima virtual machine.
+Connect to a lima virtual machine. Defaults the machine named `default`.
 
 Creates and starts the machine as necessary, so it works in 1 command.
 
