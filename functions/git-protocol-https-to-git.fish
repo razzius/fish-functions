@@ -1,3 +1,6 @@
 function git-protocol-https-to-git
-    sed -i 's|https://\([[:alnum:]\.]\+\)/|git@\1:|' (git rev-parse --show-toplevel)/.git/config
+    set origin_url (git remote get-url origin)
+    set git_protocol (echo $origin_url | sed 's|https://|git@|')
+    set git_url (echo $git_protocol | sed 's|/|:|')
+    git remote set-url origin $git_url
 end
