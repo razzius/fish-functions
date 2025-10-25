@@ -62,6 +62,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`wip`](#wip-message-source)
   * [`git-add`](#git-add-paths-source)
   * [`git-commit`](#git-commit-message-source)
+  * [`git-protocol-https-to-git`](#git-protocol-https-to-git-source)
   * [`gitignore`](#gitignore-pattern-source)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh-name-source)
@@ -628,6 +629,24 @@ $ git-commit Fix typo in README.md
 ```
 
 Recommended abbreviation: `abbr-add gc git-commit`
+
+### `git-protocol-https-to-git` [(source)](functions-git-protocol-https-to-git.fish)
+
+Change the protocol of the current git repository to be git rather than https.
+
+Useful if you clone an https url but you want to push or pull later.
+
+Example usage:
+
+```
+ronin $ git push
+fatal: unable to access 'https://git.sr.ht/~razzi/ronin/': The requested URL returned error: 403
+ronin $ git-protocol-https-to-git
+ronin $ git push
+Everything up-to-date
+```
+
+Recommended abbreviation: `abbr-add gpro git-protocol-https-to-git`
 
 ### `gitignore <pattern>` [(source)](functions/gitignore.fish)
 
