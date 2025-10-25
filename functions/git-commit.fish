@@ -40,6 +40,6 @@ function git-commit
                 echo "Multiple files changed; add a commit message"
         end
     else
-        git commit -m (echo $argv)
+        git commit -m (echo $argv | unexpand-home-tilde)
     end
 end
