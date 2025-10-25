@@ -1,11 +1,6 @@
 function git-add
     if not string-empty $argv
-        # TODO `...` could be replaced with ../.. as abbr
-        if test "$argv" = '...'
-            git add ../..
-        else
-            git add $argv
-        end
+        git add $argv
     else
         git add .
     end

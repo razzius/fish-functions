@@ -601,11 +601,7 @@ $ git switch -
 
 ### `git-add [paths]` [(source)](functions/git-add.fish)
 
-Like `git add`, but defaults to `.` if no arguments given, rather than erroring.
-
-Also understand `...` to mean `../..`. If you need more levels of `../..` I guess they could be added.
-
-Did I mention I have a function called `...` that `cd`s up 2 levels?
+A wrapper for `git add` that defaults to `git add .` if no arguments given, rather than erroring.
 
 Recommended abbreviation: `abbr-add ga git-add`
 
