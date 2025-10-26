@@ -45,7 +45,12 @@ function test_to_multiple_directory_levels
 
     copy from_dir/ dir1/dir2/
 
-    breakpoint
+    rm dir1/dir2/from_dir/file.txt
+    rmdir dir1/dir2/from_dir
+    rmdir dir1/dir2
+    rmdir dir1
+    rm from_dir/file.txt
+    rmdir from_dir
 end
 
 function main
