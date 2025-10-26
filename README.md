@@ -19,6 +19,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`abbr-add`](#abbr-add-name-expansion-args-source)
   * [`abbr-erase`](#abbr-erase-name-source)
   * [`clip`](#clip-args-source)
+  * [`funced-last`](#funced-last-source)
   * [`funcsave-last`](#funcsave-last-source)
   * [`mkdir-cd`](#mkdir-cd-directory-source)
 - [File Manipulation](#file-manipulation)
@@ -75,7 +76,9 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 - [Date Utilities](#date-utilities)
   * [`isodate`](#isodate-source)
   * [`isodatetime`](#isodatetime-source)
-- [MacOS Utilities](#macos-utilities)
+- [debian Utilities](#debian-utilities)
+  * [`apt-description`](apt-description-package-source)
+- [macOS Utilities](#macos-utilities)
   * [`wifi-network-name`](#wifi-network-name-source)
   * [`wifi-password`](#wifi-password-source)
   * [`wifi-reset`](#wifi-reset-source)
@@ -136,6 +139,10 @@ $ echo 1 | fish_clipboard_copy
 $ echo (fish_clipboard_paste)
 1
 ```
+
+### `funced-last` [(source)](functions/funced-last.fish)
+
+Edit the last-edited `fish` function again.
 
 ### `funcsave-last` [(source)](functions/funcsave-last.fish)
 
@@ -700,8 +707,13 @@ Prints the date and time in ISO format.
 $ isodatetime
 2025-03-07T23:11:53
 ```
+## debian Utilities
 
-## MacOS Utilities
+### `apt-description <package>` [(source)](/functions/apt-description.fish)
+
+Show the apt description for a given package.
+
+## macOS Utilities
 
 ### `wifi-network-name` [(source)](functions/wifi-network-name.fish)
 
