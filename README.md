@@ -26,7 +26,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`copy`](#copy-source-destination-source)
   * [`create-file`](#create-file-target-source)
   * [`eat`](#eat-target-source)
-  * [`move`](#move-source-destination-source)
+  * [`move`](#move-source--destination-source)
   * [`move-last-download`](#move-last-download-dest-source)
   * [`remove`](#remove-target-source)
   * [`restore`](#restore-backup-source)
