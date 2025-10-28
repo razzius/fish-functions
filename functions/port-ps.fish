@@ -1,3 +1,3 @@
 function port-ps --argument port
-    sudo lsof -i :$port
+    sudo lsof -Pi :$port
 end
