@@ -721,7 +721,7 @@ Prints the current wifi network name.
 
 ### `wifi-password` [(source)](functions/wifi-password.fish)
 
-Prints the current wifi network password.
+Prints the current wifi network password. It will pop up with an authentication modal; enter your login username and password and hit enter and it will print the wifi password to the command line.
 
 ### `wifi-reset` [(source)](functions/wifi-reset.fish)
 
