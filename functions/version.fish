@@ -1,4 +1,9 @@
-function ver --argument program
+function version --argument program
+    if not command -q $program
+        echo version: command not found: $program
+        return 1
+    end
+
     if contains $program ssh tmux
         $program -V
     else if equals $program java
