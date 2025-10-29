@@ -1,3 +1,3 @@
 function in-git-repo
-    equals (git rev-parse --git-dir 2> /dev/null) true
+    git rev-parse --git-dir > /dev/null 2>&1
 end
