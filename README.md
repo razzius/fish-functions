@@ -16,12 +16,12 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 ## Contents
 
 - [`fish` Interactive Utilities](#fish-interactive-utilities)
-  * [`abbr-add`](#abbr-add-name-expansion-args-source)
-  * [`abbr-erase`](#abbr-erase-name-source)
-  * [`clip`](#clip-args-source)
-  * [`funced-last`](#funced-last-source)
-  * [`funcsave-last`](#funcsave-last-source)
-  * [`mkdir-cd`](#mkdir-cd-directory-source)
+  * [`abbr-add`](#abbr-add)
+  * [`abbr-erase`](#abbr-erase)
+  * [`clip`](#clip)
+  * [`funced-last`](#funced)
+  * [`funcsave-last`](#funcsave-last)
+  * [`mkdir-cd`](#mkdir-cd)
 - [File Manipulation](#file-manipulation)
   * [`backup`](#backup-file-source)
   * [`copy`](#copy-source-destination-source)
@@ -87,7 +87,14 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 
 Fish functions designed to be typed and run in the shell.
 
+<span id="abbr-add">
 ### `abbr-add <name> <expansion> [<args>]` [(source)](functions/abbr-add.fish)
+</span>
+
+<h3 id="abbr-add-alternate">
+  <code>abbr-add &lt;name&gt; &lt;expansion&gt; [&lt;args&gt;]</code>
+  <a href="functions/abbr-add.fish">(source)</a>
+</h3>
 
 Adds an abbr and syncs your abbrs to `~/.config/fish/conf.d/abbrs.fish`.
 
@@ -106,7 +113,10 @@ $ abbr-add --position anywhere isntall install
 
 Recommended abbreviation: `abbr-add ab abbr-add`
 
-### `abbr-erase <name>` [(source)](functions/abbr-erase.fish)
+<h3 id="abbr-erase">
+  <code>abbr-erase <name></code>
+  <a href="functions/abbr-erase.fish">(source)</a>
+</h3>
 
 Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
 
