@@ -113,8 +113,9 @@ $ abbr-add --position anywhere isntall install
 Recommended abbreviation: `abbr-add ab abbr-add`
 
 <h3 id="abbr-erase">
-  <code>abbr-erase &lt;name&gt;</code>
-  <a href="functions/abbr-erase.fish">(source)</a>
+
+`abbr-erase <name>` [(source)](functions/abbr-erase.fish)
+
 </h3>
 
 Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
@@ -124,8 +125,9 @@ Recommended abbreviation: `abbr-add ae abbr-erase`
 [Completion](completions/abbr-erase.fish): completes abbr names.
 
 <h3 id="clip">
-    <code>clip [args]</code>
-    <a href="functions/clip.fish">(source)</a>
+
+`clip [args]` [(source)](functions/clip.fish)
+
 </h3>
 
 Copies the arguments that follow `clip` to the clipboard.
@@ -153,15 +155,17 @@ $ echo (fish_clipboard_paste)
 ```
 
 <h3 id="funced-last">
-  <code>funced-last</code>
-  <a href="functions/funced-last.fish">(source)</a>
+
+`funced-last` [(source)](functions/funced-last.fish)
+
 </h3>
 
 Edit the last-edited `fish` function again.
 
 <h3 id="funcsave-last">
-  <code>funcsaved-last</code>
-  <a href="functions/funcsave-last.fish">(source)</a>
+
+`funcsaved-last` [(source)](functions/funcsave-last.fish)
+
 </h3>
 
 
@@ -178,8 +182,9 @@ funcsave: wrote /Users/razzi/.config/fish/functions/hi.fish
 Recommended abbreviation: `abbr-add fs funcsave-last`
 
 <h3 id="mkdir-cd">
-  <code>mkdir-cd &lt;directory&gt;</code>
-  <a href="functions/mkdir-cd.fish">(source)</a>
+
+`mkdir-cd` <directory> [(source)](functions/mkdir-cd.fish)
+
 </h3>
 
 Make a directory and cd into it.
