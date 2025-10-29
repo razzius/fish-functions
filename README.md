@@ -15,39 +15,60 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 
 ## Contents
 
-- [`fish` Interactive Utilities](#fish-interactive-utilities)
+- [`fish` Interactive Utilities](#fish-interactive-utilities-test)
   * [`abbr-add`](#abbr-add-name-expansion-args-source)
   * [`abbr-erase`](#abbr-erase-name-source)
-  * [`clip`](#clip-args-source)
   * [`funced-last`](#funced-last-source)
   * [`funcsave-last`](#funcsave-last-source)
-  * [`mkdir-cd`](#mkdir-cd-directory-source)
+- [General Interactive Utilities]
+  * [`clip`](#clip-args-source)
+  * [`clip-pwd`](#clip-pwd-source)
+  * [`ver`](#ver-program-source)
+  * [`move-last-download`](#move-last-download-dest-source)
+  * [`query`](#query-terms-source)
+  * [`repeat`]
 - [File Manipulation](#file-manipulation)
-  * [`backup`](#backup-file-source)
   * [`copy`](#copy-source-destination-source)
   * [`create-file`](#create-file-target-source)
   * [`eat`](#eat-target-source)
   * [`move`](#move-source--destination-source)
-  * [`move-last-download`](#move-last-download-dest-source)
   * [`remove`](#remove-target-source)
-  * [`restore`](#restore-backup-source)
+- [Folder Manipulation](#folder-manipulation)
+  * [`mkdir-cd`](#mkdir-cd-directory-source)
+  * [`rmdir-.`](#rmdir-source)
+  * [`rename-pwd`](#rename-pwd-name-source)
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
+- [`tar` Utilities]
+  * [`tgz`]
+  * [`tar-cd`]
 - [Text Utilities](#text-utilities)
   * [`coln`](#coln-number-source)
+  * [`last-col`](#last-col-source)
   * [`row`](#row-number-source)
-  * [`skip-lines`](#skip-lines-number-source)
+  * [`skip`](#skip-lines-number-source)
   * [`take`](#take-lines-number-source)
   * [`word-count`](#word-count-source)
   * [`line-count`](#line-count-source)
   * [`char-count`](#char-count-source)
-- [`fish` Scripting Utilities](#fish-utilities)
+- [String Utilities](#string-utilities)
+  * [`capitalize`]
   * [`string-empty`](#string-empty-empty-value-source)
+  * [`startswith`](#startswith-prefix-value-source)
+  * [`title-case`]
+  * [`trim-left`]
+  * [`trim-right`]
+  * [`trim-scheme`]
+  * [`trim-trailing-slash`]
+  * [`until-char`]
+- [`fish` Scripting Utilities](#fish-utilities)
   * [`file-exists`](#file-exists-file-source)
   * [`is-dir`](#is-dir-file-source)
   * [`is-symlink`](#is-symlink-file-source)
   * [`confirm`](#confirm-source)
+  * [`in-git-repo`](#in-git-repo-source)
+  * [`repo-from-url`]
 - [Environment Utilities](#environment-utilities)
   * [`curdir`](#curdir-source)
   * [`echo-variable`](#echo-variable-variable-source)
@@ -65,10 +86,14 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`git-commit`](#git-commit-message-source)
   * [`git-protocol-https-to-git`](#git-protocol-https-to-git-source)
   * [`gitignore`](#gitignore-pattern-source)
+  * [`hub`](#hub-source)
+- [`pass` Utilities](#pass-utilities)
+  * ['pw'](#pw-domain-source)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh-name-source)
   * [`lima-vnc`](#lima-vnc-source)
 - [`vim` Utilities](#vim-utilities)
+  * [`viw`]
   * [`vim-plugin`](#vim-plugin-url-source)
 - [Postgres Utilities](#postgres-utilities)
   * [`ensuredb`](#ensuredb-name-source)
@@ -83,7 +108,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`wifi-password`](#wifi-password-source)
   * [`wifi-reset`](#wifi-reset-source)
 
-## `fish` Interactive Utilities
+## `fish` Interactive Utilities {#fish-interactive-utilities-test}
 
 Fish functions designed to be typed and run in the shell.
 
