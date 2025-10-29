@@ -12,7 +12,10 @@ function eat --argument dir
     set target (dirname $dir)
 
     for f in $files_to_move
-        mv $f $target
+        # Use the -n flag to not overwrite.
+        # This should already be handled by the logic above
+        # but I'll also use -n here just to be safe.
+        mv -n $f $target
     end
 
     rmdir $dir
