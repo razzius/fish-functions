@@ -16,12 +16,12 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 ## Contents
 
 - [`fish` Interactive Utilities](#fish-interactive-utilities)
-  * [`abbr-add`](#abbr-add-name-expansion-args-source)
-  * [`abbr-erase`](#abbr-erase-name-source)
-  * [`clip`](#clip-args-source)
-  * [`funced-last`](#funced-last-source)
-  * [`funcsave-last`](#funcsave-last-source)
-  * [`mkdir-cd`](#mkdir-cd-directory-source)
+  * [`abbr-add`](#abbr-add)
+  * [`abbr-erase`](#abbr-erase)
+  * [`clip`](#clip)
+  * [`funced-last`](#funced-last)
+  * [`funcsave-last`](#funcsave-last)
+  * [`mkdir-cd`](#mkdir-cd)
 - [File Manipulation](#file-manipulation)
   * [`backup`](#backup-file-source)
   * [`copy`](#copy-source-destination-source)
@@ -83,11 +83,16 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`wifi-password`](#wifi-password-source)
   * [`wifi-reset`](#wifi-reset-source)
 
-## `fish` Interactive Utilities
+<h2 id="fish-interactive-utilities">
+  <code>fish</code> Interactive Utilities
+</h2>
 
 Fish functions designed to be typed and run in the shell.
 
-### `abbr-add <name> <expansion> [<args>]` [(source)](functions/abbr-add.fish)
+<h3 id="abbr-add">
+  <code>abbr-add &lt;name&gt; &lt;expansion&gt; [&lt;args&gt;]</code>
+  <a href="functions/abbr-add.fish">(source)</a>
+</h3>
 
 Adds an abbr and syncs your abbrs to `~/.config/fish/conf.d/abbrs.fish`.
 
@@ -98,7 +103,7 @@ and add `abbr -a` calls to your fish config manually,
 but I recommend using `abbr-add` and tracking
 `~/.config/fish/conf.d/abbrs.fish` in version control.
 
-All `abbr` options work with this command, so for example you can run:
+All `abbr` options are passed to this command, so for example you can run:
 
 ```fish
 $ abbr-add --position anywhere isntall install
@@ -106,7 +111,10 @@ $ abbr-add --position anywhere isntall install
 
 Recommended abbreviation: `abbr-add ab abbr-add`
 
-### `abbr-erase <name>` [(source)](functions/abbr-erase.fish)
+<h3 id="abbr-erase">
+  <code>abbr-erase &lt;name&gt;</code>
+  <a href="functions/abbr-erase.fish">(source)</a>
+</h3>
 
 Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
 
@@ -114,7 +122,10 @@ Recommended abbreviation: `abbr-add ae abbr-erase`
 
 [Completion](completions/abbr-erase.fish): completes abbr names.
 
-### `clip [args]` [(source)](functions/clip.fish)
+<h3 id="clip">
+    <code>clip [args]</code>
+    <a href="functions/clip.fish">(source)</a>
+</h3>
 
 Copies the arguments that follow `clip` to the clipboard.
 
@@ -140,11 +151,18 @@ $ echo (fish_clipboard_paste)
 1
 ```
 
-### `funced-last` [(source)](functions/funced-last.fish)
+<h3 id="funced-last">
+  <code>funced-last</code>
+  <a href="functions/funced-last.fish">(source)</a>
+</h3>
 
 Edit the last-edited `fish` function again.
 
-### `funcsave-last` [(source)](functions/funcsave-last.fish)
+<h3 id="funcsave-last">
+  <code>funcsaved-last</code>
+  <a href="functions/funcsave-last.fish">(source)</a>
+</h3>
+
 
 Save the last-edited `fish` function.
 
@@ -158,7 +176,10 @@ funcsave: wrote /Users/razzi/.config/fish/functions/hi.fish
 
 Recommended abbreviation: `abbr-add fs funcsave-last`
 
-### `mkdir-cd <directory>` [(source)](functions/mkdir-cd.fish)
+<h3 id="mkdir-cd">
+  <code>mkdir-cd &lt;directory&gt;</code>
+  <a href="functions/mkdir-cd.fish">(source)</a>
+</h3>
 
 Make a directory and cd into it.
 
