@@ -88,7 +88,9 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 Fish functions designed to be typed and run in the shell.
 
 <span id="abbr-add">
+
 ### `abbr-add <name> <expansion> [<args>]` [(source)](functions/abbr-add.fish)
+
 </span>
 
 <h3 id="abbr-add-alternate">
