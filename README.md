@@ -808,7 +808,7 @@ Recommended abbreviation: `abbr-add gc git-commit`
 
 <h3 id="git-protocol-https-to-git">
 
-`git-protocol-https-to-git` [(source)](functions-git-protocol-https-to-git.fish)
+`git-protocol-https-to-git` [(source)](functions/git-protocol-https-to-git.fish)
 
 </h3>
 
