@@ -838,6 +838,27 @@ Add a pattern to the `.gitignore`.
 
 Recommended abbreviation: `abbr-add giti gitignore`
 
+<h3 id="hub">
+
+`hub [remote]` [(source)](functions/hub.fish)
+
+Opens the url of your current git repository in the browser.
+
+By default it will open the upstream remote,
+however you can pass the specific remote you'd like to open.
+
+Some history here: before the [`gh cli`](https://cli.github.com/) was released,
+there was [`hub`](https://hub.github.com/), a command to interact with github from
+the command line. It had a weird design; it wrapped git commands, and wanted you to `alias git=hub`
+(I never did). However one thing it did better than the `gh` command is that `hub browse` would open
+the (github) git repository in the browser. I stopped installing `hub` but I still wanted
+this functionality, so I recreated it as a single-purpose command and added the ability
+to open different remotes.
+
+[Completion](completions/hub.fish): completes remote names.
+
+</h3>
+
 <h2 id="lima-utilities">
 
 [`lima`](https://lima-vm.io/) Utilities
