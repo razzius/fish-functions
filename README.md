@@ -23,14 +23,14 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`funcsave-last`](#funcsave-last)
   * [`mkdir-cd`](#mkdir-cd)
 - [File Manipulation](#file-manipulation)
-  * [`backup`](#backup-file-source)
-  * [`copy`](#copy-source-destination-source)
-  * [`create-file`](#create-file-target-source)
-  * [`eat`](#eat-target-source)
-  * [`move`](#move-source--destination-source)
-  * [`move-last-download`](#move-last-download-dest-source)
-  * [`remove`](#remove-target-source)
-  * [`restore`](#restore-backup-source)
+  * [`backup`](#backup)
+  * [`copy`](#copy)
+  * [`create-file`](#create-file)
+  * [`eat`](#eat)
+  * [`move`](#move)
+  * [`move-last-download`](#move-last-download)
+  * [`remove`](#remove)
+  * [`restore`](#restore)
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip-zipfile-source)
   * [`unzip-cd`](#unzip-cd-zipfile-source)
@@ -84,7 +84,9 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`wifi-reset`](#wifi-reset-source)
 
 <h2 id="fish-interactive-utilities">
-  <code>fish</code> Interactive Utilities
+
+`fish` Interactive Utilities
+
 </h2>
 
 Fish functions designed to be typed and run in the shell.
@@ -198,7 +200,11 @@ Recommended abbreviation: `abbr-add mc mkdir-cd`
 
 ## File Manipulation
 
-### `backup <file>` [(source)](functions/backup.fish)
+<h3 id="backup">
+
+`backup <file>` [(source)](functions/backup.fish)
+
+</h3>
 
 Creates a copy of `file` as `file.bak`.
 
@@ -210,7 +216,11 @@ $ ls
 README.md  README.md.bak
 ```
 
-### `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
+<h3>
+
+`copy <source> ... [<destination>]` [(source)](functions/copy.fish)
+
+</h3>
 
 `cp` with some extra behaviors.
 
@@ -247,7 +257,11 @@ Recommended abbreviation: `abbr-add cp copy`
 
 If you do this abbreviation, use `command cp` for the low-level `cp`.
 
-### `create-file <target>` [(source)](functions/create-file.fish)
+<h3>
+
+`create-file <target>` [(source)](functions/create-file.fish)
+
+</h3>
 
 Creates a file, including parent directories as necessary.
 
@@ -260,7 +274,11 @@ $ tree
         └── c
 ```
 
-### `eat <target>` [(source)](functions/eat.fish)
+<h3>
+
+`eat <target>` [(source)](functions/eat.fish)
+
+</h3>
 
 Moves a directory's contents to the current directory and removes the empty directory.
 
@@ -295,7 +313,11 @@ $ eat dir-a
 eat: file would be overwritten: ./dir-b
 ```
 
-### `move <source> ... <destination>` [(source)](functions/move.fish)
+<h3>
+
+`move <source> ... <destination>` [(source)](functions/move.fish)
+
+</h3>
 
 Like `mv` but uses `-i` flag by default,
 which will warn you if `mv` would overwrite a destination file.
@@ -319,13 +341,21 @@ move: to rename a symlink, remove the trailing slash from the argument.
 
 This arises because tab completion adds the slash. Completion for `move` could avoid the slash, but then again you might want to move a file within the symlinked directory.
 
-### `move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+<h3 id="move-last-download">
+
+`move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+
+</h3>
 
 Move the latest download to destination directory, which is the current directory if none is specified.
 
 Recommended abbreviation: `abbr-add mvl move-last-download`
 
-### `remove <target>` [(source)](functions/remove.fish)
+<h3 id="remove">
+
+`remove <target>` [(source)](functions/remove.fish)
+
+</h3>
 
 `rm` with an extra behavior.
 
@@ -352,7 +382,11 @@ Recommended abbreviation: `abbr-add rm remove`
 
 If you do this abbreviation, use `command rm` for the low-level `rm`.
 
-### `restore <backup>` [(source)](functions/restore.fish)
+<h3 id="restore">
+
+`restore <backup>` [(source)](functions/restore.fish)
+
+</h3>
 
 Rename a backup such as `file.bak` to remove the `.bak` extension.
 
