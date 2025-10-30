@@ -32,56 +32,56 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`remove`](#remove)
   * [`restore`](#restore)
 - [Zipfile Utilities](#zipfile-utilities)
-  * [`clean-unzip`](#clean-unzip-zipfile-source)
-  * [`unzip-cd`](#unzip-cd-zipfile-source)
+  * [`clean-unzip`](#clean-unzip)
+  * [`unzip-cd`](#unzip-cd)
 - [Text Utilities](#text-utilities)
-  * [`coln`](#coln-number-source)
-  * [`row`](#row-number-source)
-  * [`skip-lines`](#skip-lines-number-source)
-  * [`take`](#take-lines-number-source)
-  * [`word-count`](#word-count-source)
-  * [`line-count`](#line-count-source)
-  * [`char-count`](#char-count-source)
-- [`fish` Scripting Utilities](#fish-utilities)
-  * [`string-empty`](#string-empty-empty-value-source)
-  * [`file-exists`](#file-exists-file-source)
-  * [`is-dir`](#is-dir-file-source)
-  * [`is-symlink`](#is-symlink-file-source)
-  * [`confirm`](#confirm-source)
+  * [`coln`](#coln)
+  * [`row`](#row)
+  * [`skip-lines`](#skip-lines)
+  * [`take`](#take)
+  * [`word-count`](#word-count)
+  * [`line-count`](#line-count)
+  * [`char-count`](#char-count)
+- [`fish` Scripting Utilities](#fish-scripting-utilities)
+  * [`string-empty`](#string-empty)
+  * [`file-exists`](#file-exists)
+  * [`is-dir`](#is-dir)
+  * [`is-symlink`](#is-symlink)
+  * [`confirm`](#confirm)
 - [Environment Utilities](#environment-utilities)
-  * [`curdir`](#curdir-source)
-  * [`echo-variable`](#echo-variable-variable-source)
-  * [`readpass`](#readpass-name-source)
+  * [`curdir`](#curdir)
+  * [`echo-variable`](#echo-variable)
+  * [`readpass`](#readpass)
 - [Symlink Utilities](#symlink-utilities)
-  * [`symlink`](#symlink-from-to-source)
-  * [`unsymlink`](#unsymlink-file-source)
-  * [`symlinks`](#symlinks-dir-source)
-  * [`link-rc`](#link-rc-file-source)
+  * [`symlink`](#symlink)
+  * [`unsymlink`](#unsymlink)
+  * [`symlinks`](#symlinks)
+  * [`link-rc`](#link-rc)
 - [`git` Utilities](#git-utilities)
-  * [`clone-cd`](#clone-cd-url-destination-source)
-  * [`clone-shallow-cd`](#clone-shallow-cd-url-destination-source)
-  * [`wip`](#wip-message-source)
-  * [`git-add`](#git-add-paths-source)
-  * [`git-commit`](#git-commit-message-source)
-  * [`git-protocol-https-to-git`](#git-protocol-https-to-git-source)
-  * [`gitignore`](#gitignore-pattern-source)
+  * [`clone-cd`](#clone-cd)
+  * [`clone-shallow-cd`](#clone-shallow-cd)
+  * [`wip`](#wip)
+  * [`git-add`](#git-add)
+  * [`git-commit`](#git-commit)
+  * [`git-protocol-https-to-git`](#git)
+  * [`gitignore`](#gitignore)
 - [`lima` Utilities](#lima-utilities)
-  * [`lima-ssh`](#lima-ssh-name-source)
-  * [`lima-vnc`](#lima-vnc-source)
+  * [`lima-ssh`](#lima-ssh)
+  * [`lima-vnc`](#lima-vnc)
 - [`vim` Utilities](#vim-utilities)
-  * [`vim-plugin`](#vim-plugin-url-source)
+  * [`vim-plugin`](#vim-plugin)
 - [Postgres Utilities](#postgres-utilities)
-  * [`ensuredb`](#ensuredb-name-source)
-  * [`renamedb`](#renamedb-from-to-source)
+  * [`ensuredb`](#ensuredb)
+  * [`renamedb`](#renamedb)
 - [Date Utilities](#date-utilities)
-  * [`isodate`](#isodate-source)
-  * [`isodatetime`](#isodatetime-source)
+  * [`isodate`](#isodate)
+  * [`isodatetime`](#isodatetime)
 - [debian Utilities](#debian-utilities)
-  * [`apt-description`](apt-description-package-source)
+  * [`apt-description`](apt-description)
 - [macOS Utilities](#macos-utilities)
-  * [`wifi-network-name`](#wifi-network-name-source)
-  * [`wifi-password`](#wifi-password-source)
-  * [`wifi-reset`](#wifi-reset-source)
+  * [`wifi-network-name`](#wifi-network-name)
+  * [`wifi-password`](#wifi-password)
+  * [`wifi-reset`](#wifi-reset)
 
 <h2 id="fish-interactive-utilities">
 
@@ -400,12 +400,20 @@ README.md
 
 ## Zipfile Utilities
 
-### `clean-unzip <zipfile>` [(source)](functions/clean-unzip.fish)
+<h3 id="clean-unzip">
+
+`clean-unzip <zipfile>` [(source)](functions/clean-unzip.fish)
+
+</h3>
 
 Unzips a `.zip` archive without polluting the current directory, by creating a
 directory even if the zipfile does not have a folder level.
 
-### `unzip-cd <zipfile>` [(source)](functions/unzip-cd.fish)
+<h3 id="unzip-cd">
+
+`unzip-cd <zipfile>` [(source)](functions/unzip-cd.fish)
+
+</h3>
 
 Unzip a zip directory and cd into it. Uses `clean-unzip` to create a folder if
 the zipfile doesn't have one.
@@ -421,7 +429,11 @@ a.txt  b.txt
 
 ## Text Utilities
 
-### `coln <number>` [(source)](functions/coln.fish)
+<h3 id="coln">
+
+`coln <number>` [(source)](functions/coln.fish)
+
+</h3>
 
 Splits input on whitespace and prints the column indicated.
 
@@ -430,7 +442,11 @@ $ echo 1 2 | coln 2
 2
 ```
 
-### `row <number>` [(source)](functions/row.fish)
+<h3 id="row">
+
+`row <number>` [(source)](functions/row.fish)
+
+</h3>
 
 Prints the row of input indicated.
 
@@ -439,7 +455,11 @@ $ seq 3 | row 2
 2
 ```
 
-### `skip-lines <number>` [(source)](functions/skip-lines.fish)
+<h3 id="skip-lines">
+
+`skip-lines <number>` [(source)](functions/skip-lines.fish)
+
+</h3>
 
 Skips the first n lines of stdin.
 
@@ -450,7 +470,11 @@ $ seq 5 | skip-lines 2
 5
 ```
 
-### `take <n>` [(source)](functions/take.fish)
+<h3 id="take">
+
+`take <n>` [(source)](functions/take.fish)
+
+</h3>
 
 Take the first `n` lines of standard input.
 ```fish
@@ -460,7 +484,11 @@ $ seq 5 | take 3
 3
 ```
 
-### `word-count` [(source)](functions/word-count.fish)
+<h3 id="word-count">
+
+`word-count` [(source)](functions/word-count.fish)
+
+</h3>
 
 Count the words from standard input. Like `wc -w` but does not put spaces around the number.
 
@@ -472,7 +500,11 @@ $ echo a b | wc -w
        2
 ```
 
-### `line-count` [(source)](functions/line-count.fish)
+<h3 id="line-count">
+
+`line-count` [(source)](functions/line-count.fish)
+
+</h3>
 
 Count the lines from standard input. Like `wc -l` but does not put spaces around the number.
 
@@ -484,7 +516,11 @@ $ seq 3 | wc -l
        3
 ```
 
-### `char-count` [(source)](functions/char-count.fish)
+<h3 id="char-count">
+
+`char-count` [(source)](functions/char-count.fish)
+
+</h3>
 
 Count the characters from standard input. Like `wc -c` but does not put spaces around the number.
 
@@ -496,9 +532,17 @@ $ echo -n a b | wc -c
        3
 ```
 
-## `fish` Scripting utilities
+<h2 id="fish-scripting-utilities">
 
-### `string-empty <value>` [(source)](functions/string-empty.fish)
+`fish` Scripting Utilities
+
+</h2>
+
+<h3 id="string-empty">
+
+`string-empty <value>` [(source)](functions/string-empty.fish)
+
+</h3>
 
 Test if the value is the empty string.
 
@@ -534,25 +578,45 @@ $ if string-empty $VIRTUAL_ENV
 
 since `string-empty VIRTUAL_ENV` will always return `false`.
 
-### `file-exists <file>` [(source)](functions/file-exists.fish)
+<h3 id="file-exists">
+
+`file-exists <file>` [(source)](functions/file-exists.fish)
+
+</h3>
 
 Test if `$file` exists.
 
-### `is-dir <path>` [(source)](functions/is-dir.fish)
+<h3 id="is-dir">
+
+`is-dir <path>` [(source)](functions/is-dir.fish)
+
+</h3>
 
 Check if `$path` is a directory.
 
-### `is-symlink <path>` [(source)](functions/is-symlink.fish)
+<h3 id="is-symlink">
+
+`is-symlink <path>` [(source)](functions/is-symlink.fish)
+
+</h3>
 
 Check if `$path` is a symlink.
 
-### `confirm` [(source)](functions/confirm.fish)
+<h3 id="confirm">
+
+`confirm` [(source)](functions/confirm.fish)
+
+</h3>
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
 
 ## Environment Utilities
 
-### `curdir` [(source)](functions/curdir.fish)
+<h3 id="curdir">
+
+`curdir` [(source)](functions/curdir.fish)
+
+</h3>
 
 Just the current directory name, please.
 
@@ -564,7 +628,11 @@ mydir
 You probably won't need this interactively since the current directory is usually part of your `fish_prompt`,
 but this is useful for scripting.
 
-### `echo-variable <variable>` [(source)](functions/echo-variable.fish)
+<h3 id="echo-variable">
+
+`echo-variable <variable>` [(source)](functions/echo-variable.fish)
+
+</h3>
 
 Like `echo`, but without the `$` or capitalization.
 
@@ -579,7 +647,11 @@ Recommended abbreviation: `abbr-add ev echo-variable`
 
 [Completion](completions/echo-variable.fish): completes environment variable names.
 
-### `readpass <name>` [(source)](functions/readpass.fish)
+<h3 id="readpass">
+
+`readpass <name>` [(source)](functions/readpass.fish)
+
+</h3>
 
 Prompt for a password. Does not echo entered characters.
 
@@ -592,7 +664,11 @@ razzi@abuissa.net
 
 ## symlink utilities
 
-### `symlink <from> <to>` [(source)](functions/symlink.fish)
+<h3 id="symlink">
+
+`symlink <from> <to>` [(source)](functions/symlink.fish)
+
+</h3>
 
 Create a symbolic link, using absolute paths.
 
@@ -611,17 +687,29 @@ Without using absolute paths:
 cat: /Users/razzi/.prettierrc: Too many levels of symbolic links
 ```
 
-### `unsymlink <file>` [(source)](functions/unsymlink.fish)
+<h3 id="unsymlink">
+
+`unsymlink <file>` [(source)](functions/unsymlink.fish)
+
+</h3>
 
 Remove a symlink. Errors if the file is not a symlink.
 
 Recommended abbreviation: `abbr-add us unsymlink`
 
-### `symlinks [<dir>]` [(source)](functions/symlinks.fish)
+<h3 id="symlinks">
+
+`symlinks [<dir>]` [(source)](functions/symlinks.fish)
+
+</h3>
 
 List symlinks in the given directory, or the current directory if none is passed.
 
-### `link-rc [<file>]` [(source)](functions/link-rc.fish)
+<h3 id="link-rc">
+
+`link-rc [<file>]` [(source)](functions/link-rc.fish)
+
+</h3>
 
 Create a symlink from `$file` to the home directory (`~`).
 
@@ -635,9 +723,17 @@ set -g prefix ^Space
 
 Recommended abbreviation: `abbr-add lrc link-rc`
 
-## git utilities
+<h2 id="git-utilities">
 
-### `clone-cd url [destination]` [(source)](functions/clone-cd.fish)
+`git` utilities
+
+</h2>
+
+<h3 id="clone-cd">
+
+`clone-cd url [destination]` [(source)](functions/clone-cd.fish)
+
+</h3>
 
 Clone a `git` repository into the current directory (or the optional `$destination`), and `cd` into it.
 
@@ -647,11 +743,19 @@ If it's trying to clone into a non-empty directory, make a new folder in that di
 
 Recommended abbreviation: `abbr-add cc clone-cd`
 
-### `clone-shallow-cd url [destination]` [(source)](functions/clone-shallow-cd.fish)
+<h3 id="clone-shallow-cd">
+
+`clone-shallow-cd url [destination]` [(source)](functions/clone-shallow-cd.fish)
+
+</h3>
 
 Like `clone-cd` but clones with `--depth=1` for speed.
 
-### `wip [message]` [(source)](functions/wip.fish)
+<h3 id="wip">
+
+`wip [message]` [(source)](functions/wip.fish)
+
+</h3>
 
 Adds untracked changes and commits them with a WIP message. Additional arguments are added to the WIP message.
 
@@ -667,13 +771,21 @@ $ wip failing tests
 $ git switch -
 ```
 
-### `git-add [paths]` [(source)](functions/git-add.fish)
+<h3 id="git-add">
+
+`git-add [paths]` [(source)](functions/git-add.fish)
+
+</h3>
 
 A wrapper for `git add` that defaults to `git add .` if no arguments given, rather than erroring.
 
 Recommended abbreviation: `abbr-add ga git-add`
 
-### `git-commit [message]` [(source)](functions/git-commit.fish)
+<h3 id="git-commit">
+
+`git-commit [message]` [(source)](functions/git-commit.fish)
+
+</h3>
 
 Like `git commit -m` without the need to quote the commit message.
 
@@ -694,7 +806,11 @@ $ git-commit Fix typo in README.md
 
 Recommended abbreviation: `abbr-add gc git-commit`
 
-### `git-protocol-https-to-git` [(source)](functions-git-protocol-https-to-git.fish)
+<h3 id="git-protocol-https-to-git">
+
+`git-protocol-https-to-git` [(source)](functions-git-protocol-https-to-git.fish)
+
+</h3>
 
 Change the protocol of the current git repository to be git rather than https.
 
@@ -712,46 +828,82 @@ Everything up-to-date
 
 Recommended abbreviation: `abbr-add gpro git-protocol-https-to-git`
 
-### `gitignore <pattern>` [(source)](functions/gitignore.fish)
+<h3 id="gitignore">
+
+`gitignore <pattern>` [(source)](functions/gitignore.fish)
+
+</h3>
 
 Add a pattern to the `.gitignore`.
 
 Recommended abbreviation: `abbr-add giti gitignore`
 
-## [`lima`](https://lima-vm.io/) Utilities
+<h2 id="lima-utilities">
 
-### `lima-ssh [name]` [(source)](functions/lima-ssh.fish)
+[`lima`](https://lima-vm.io/) Utilities
+
+</h2>
+
+<h3 id="lima-ssh">
+
+`lima-ssh [name]` [(source)](functions/lima-ssh.fish)
+
+</h3>
 
 Connect to a lima virtual machine. Defaults the machine named `default`.
 
 Creates and starts the machine as necessary, so it works in 1 command.
 
-### `lima-vnc` [(source)](functions/lima-vnc.fish)
+<h3 id="lima-vnc">
+
+`lima-vnc` [(source)](functions/lima-vnc.fish)
+
+</h3>
 
 Connect to a Lima virtual machine over VNC.
 
 Creates and starts the machine as necessary, like `lima-ssh`.
 
-## Vim Utilities
+<h2 id="vim-utilities">
 
-### `vim-plugin <url>` [(source)](functions/vim-plugin.fish)
+`vim` Utilities
+
+</h2>
+
+<h3 id="vim-plugin">
+
+`vim-plugin <url>` [(source)](functions/vim-plugin.fish)
+
+</h3>
 
 Install a vim plugin using the builtin vim plugin mechanism.
 
 ## Postgres Utilities
 
-### `ensuredb <name>` [(source)](functions/ensuredb.fish)
+<h3 id="ensuredb">
+
+`ensuredb <name>` [(source)](functions/ensuredb.fish)
+
+</h3>
 
 Ensure that a fresh database by the name given is created.
 Drops a database by that name if it exists, clearing database connections as necessary.
 
-### `renamedb <from> <to>` [(source)](functions/renamedb.fish)
+<h3 id="renamedb">
+
+`renamedb <from> <to>` [(source)](functions/renamedb.fish)
+
+</h3>
 
 Renames a database.
 
 ## Date Utilities
 
-### `isodate` [(source)](functions/isodate.fish)
+<h3 id="isodate">
+
+`isodate` [(source)](functions/isodate.fish)
+
+</h3>
 
 Prints the date in ISO format.
 
@@ -760,7 +912,11 @@ $ isodate
 2020-01-28
 ```
 
-### `isodatetime` [(source)](functions/isodatetime.fish)
+<h3 id="isodatetime">
+
+`isodatetime` [(source)](functions/isodatetime.fish)
+
+</h3>
 
 Prints the date and time in ISO format.
 
@@ -770,20 +926,36 @@ $ isodatetime
 ```
 ## debian Utilities
 
-### `apt-description <package>` [(source)](/functions/apt-description.fish)
+<h3 id="apt-description">
+
+`apt-description <package>` [(source)](/functions/apt-description.fish)
+
+</h3>
 
 Show the apt description for a given package.
 
 ## macOS Utilities
 
-### `wifi-network-name` [(source)](functions/wifi-network-name.fish)
+<h3 id="wifi-network-name">
+
+`wifi-network-name` [(source)](functions/wifi-network-name.fish)
+
+</h3>
 
 Prints the current wifi network name.
 
-### `wifi-password` [(source)](functions/wifi-password.fish)
+<h3 id="wifi-password">
+
+`wifi-password` [(source)](functions/wifi-password.fish)
+
+</h3>
 
 Prints the current wifi network password. It will pop up with an authentication modal; enter your login username and password and hit enter and it will print the wifi password to the command line.
 
-### `wifi-reset` [(source)](functions/wifi-reset.fish)
+<h3 id="wifi-reset">
+
+`wifi-reset` [(source)](functions/wifi-reset.fish)
+
+</h3>
 
 Turns the wifi off and on again.
