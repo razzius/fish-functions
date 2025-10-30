@@ -843,6 +843,8 @@ Recommended abbreviation: `abbr-add giti gitignore`
 
 `hub [remote]` [(source)](functions/hub.fish)
 
+</h3>
+
 Opens the url of your current git repository in the browser.
 
 By default it will open the upstream remote,
@@ -857,8 +859,6 @@ this functionality, so I recreated it as a single-purpose command and added the 
 to open different remotes.
 
 [Completion](completions/hub.fish): completes remote names.
-
-</h3>
 
 <h2 id="lima-utilities">
 
