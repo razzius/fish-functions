@@ -65,6 +65,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`git-commit`](#git-commit)
   * [`git-protocol-https-to-git`](#git-protocol-https-to-git)
   * [`gitignore`](#gitignore)
+  * [`hub`](#hub)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh)
   * [`lima-vnc`](#lima-vnc)
