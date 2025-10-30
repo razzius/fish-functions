@@ -216,7 +216,7 @@ $ ls
 README.md  README.md.bak
 ```
 
-<h3>
+<h3 id="copy">
 
 `copy <source> ... [<destination>]` [(source)](functions/copy.fish)
 
@@ -257,7 +257,7 @@ Recommended abbreviation: `abbr-add cp copy`
 
 If you do this abbreviation, use `command cp` for the low-level `cp`.
 
-<h3>
+<h3 id="create-file">
 
 `create-file <target>` [(source)](functions/create-file.fish)
 
@@ -274,7 +274,7 @@ $ tree
         └── c
 ```
 
-<h3>
+<h3 id="eat">
 
 `eat <target>` [(source)](functions/eat.fish)
 
@@ -313,7 +313,7 @@ $ eat dir-a
 eat: file would be overwritten: ./dir-b
 ```
 
-<h3>
+<h3 id="move">
 
 `move <source> ... <destination>` [(source)](functions/move.fish)
 
