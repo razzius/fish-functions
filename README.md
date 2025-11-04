@@ -66,6 +66,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`git-protocol-https-to-git`](#git-protocol-https-to-git)
   * [`gitignore`](#gitignore)
   * [`hub`](#hub)
+  * [`in-git-repo`](#in-git-repo)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh)
   * [`lima-vnc`](#lima-vnc)
@@ -859,6 +860,22 @@ this functionality, so I recreated it as a single-purpose command and added the 
 to open different remotes.
 
 [Completion](completions/hub.fish): completes remote names.
+
+<h3 id="in-git-repo">
+
+`in-git-repo` [(source)](functions/in-git-repo.fish)
+
+</h3>
+
+Scripting utility that exits with status 0 if the current directory is part of a git repo, 1 otherwise.
+
+Sample usage:
+
+```
+if in-git-repo
+  git pull
+end
+```
 
 <h2 id="lima-utilities">
 
