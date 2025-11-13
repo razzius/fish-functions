@@ -37,7 +37,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
 - [Text Utilities](#text-utilities)
   * [`coln`](#coln)
   * [`row`](#row)
-  * [`skip-lines`](#skip-lines)
+  * [`skip`](#skip)
   * [`take`](#take)
   * [`word-count`](#word-count)
   * [`line-count`](#line-count)
@@ -457,16 +457,16 @@ $ seq 3 | row 2
 2
 ```
 
-<h3 id="skip-lines">
+<h3 id="skip">
 
-`skip-lines <number>` [(source)](functions/skip-lines.fish)
+`skip <number>` [(source)](functions/skip.fish)
 
 </h3>
 
 Skips the first n lines of stdin.
 
 ```fish
-$ seq 5 | skip-lines 2
+$ seq 5 | skip 2
 3
 4
 5
