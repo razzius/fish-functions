@@ -1,3 +1,3 @@
 function clip
-    echo -n $argv | unexpand-home-tilde | fish_clipboard_copy
+    status current-commandline | trim-left 'clip ' | fish_clipboard_copy
 end
