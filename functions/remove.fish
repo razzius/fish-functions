@@ -8,11 +8,11 @@ function remove
         return
     end
 
-    function confirm-remove --argument dir
+    function confirm-remove-git-objects --argument dir
         set display_dir (echo $dir | unexpand-home-tilde)
 
         if confirm "Remove .git directory $display_dir?"
-            rm -rf $dir
+            rm -rf $dir/objects
             return
         end
 
@@ -25,15 +25,15 @@ function remove
             return 1
         end
 
-        set gitdirs (find $f -mindepth 1 -name .git)
+        set gitdirs (find $f -name .git)
+
         for gitdir in $gitdirs
-            if not confirm-remove $gitdir
+            if not confirm-remove-git-objects $gitdir
                 echo 'remove: cancelling.'
                 return 1
             end
         end
     end
 
-    # could be cool to allow remove .
     rm $original_args
 end
