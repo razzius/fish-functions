@@ -1,8 +1,10 @@
 function eat --argument dir
+    # currently only works to the current directory.
+    # doesn't work to eat a directory in a different dir
     set files_to_move (find $dir -maxdepth 1 -not -path $dir)
 
     for f in $files_to_move
-        set filename (echo $f | string replace "$dir/" '' )
+        set filename (echo $f | string replace $dir/ '')
         if file-exists ./$filename
             error "eat: file would be overwritten: ./$filename"
             return 1

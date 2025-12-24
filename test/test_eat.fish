@@ -39,12 +39,13 @@ end
 function test_no_overwrite
     mkdir remove_this_dir
 
+    set stderr_file err_out.txt
     echo 'data' > remove_this_dir/a.txt
 
     set contents 'would be overwritten data'
     echo $contents > a.txt
 
-    eat remove_this_dir 2> err_out.txt
+    eat remove_this_dir 2> $stderr_file
 
     set result_status $status
     set expected_status 1
@@ -56,8 +57,17 @@ function test_no_overwrite
 
     set output (cat a.txt)
 
-    if not string match -q $contents $output
+    if not equals $contents $output
         error '`eat` did not behave as expected: file should be unchanged'
+        __fail
+    end
+
+    set error (cat $stderr_file)
+
+    set expected 'eat: file would be overwritten: ./a.txt'
+    if not equals $expected $error
+        error '`eat` did not write expected error to stderr'
+        error "expected: $expected. error: $error"
         __fail
     end
 end
