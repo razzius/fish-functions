@@ -2,7 +2,7 @@ mkdir-cd test_eat
 
 function __cleanup
     if string-empty $DEBUG
-        rm -rf remove_this_dir a.txt err_out.txt
+        rm -rf remove_this_dir a.txt err_out.txt samename
         rmdir-.
     end
 end
@@ -72,9 +72,24 @@ function test_no_overwrite
     end
 end
 
+function test_eat_directory_with_file_same_name
+    mkdir samename
+    echo 'contents' > samename/samename
+    eat samename
+
+    set result_status $status
+    set expected_status 0
+
+    if not equals $result_status $expected_status
+        error "Expected status $expected_status but got $result_status"
+        __fail
+    end
+end
+
 function main
     test_basic_behavior
     test_no_overwrite
+    test_eat_directory_with_file_same_name
 end
 
 main
