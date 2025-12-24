@@ -1,3 +1,3 @@
 function error
-    echo $argv >&2
+    echo -- $argv >&2
 end
