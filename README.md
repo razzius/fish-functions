@@ -67,6 +67,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`gitignore`](#gitignore)
   * [`hub`](#hub)
   * [`in-git-repo`](#in-git-repo)
+  * [`file-committed-in-git`](#file-committed-in-git)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh)
   * [`lima-vnc`](#lima-vnc)
@@ -878,6 +879,14 @@ if in-git-repo
   git pull
 end
 ```
+
+<h3 id="file-committed-in-git">
+
+`file-committed-in-git <file>` [(source)](functions/file-committed-in-git.fish)
+
+Scripting utility that exits with status 0 if the file is committed in git, 1 otherwise.
+
+</h3>
 
 <h2 id="lima-utilities">
 
