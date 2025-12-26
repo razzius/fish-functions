@@ -95,7 +95,7 @@ Fish functions designed to be typed and run in the shell.
 
 <h3 id="abbr-add">
 
-`abbr-add <name> <expansion> [<args>]` [(source)](functions/abbr-add.fish)
+`abbr-add <name> <expansion> [args]` [(source)](functions/abbr-add.fish)
 
 </h3>
 
@@ -220,7 +220,7 @@ README.md  README.md.bak
 
 <h3 id="copy">
 
-`copy <source> ... [<destination>]` [(source)](functions/copy.fish)
+`copy <source> [more-sources] <destination>` [(source)](functions/copy.fish)
 
 </h3>
 
@@ -278,7 +278,7 @@ $ tree
 
 <h3 id="eat">
 
-`eat <target>` [(source)](functions/eat.fish)
+`eat <directory>` [(source)](functions/eat.fish)
 
 </h3>
 
@@ -317,7 +317,7 @@ eat: file would be overwritten: ./dir-b
 
 <h3 id="move">
 
-`move <source> ... <destination>` [(source)](functions/move.fish)
+`move <source> [more-sources] <destination>` [(source)](functions/move.fish)
 
 </h3>
 
@@ -345,7 +345,7 @@ This arises because tab completion adds the slash. Completion for `move` could a
 
 <h3 id="move-last-download">
 
-`move-last-download [<dest>]` [(source)](functions/move-last-download.fish)
+`move-last-download [destination=.]` [(source)](functions/move-last-download.fish)
 
 </h3>
 
@@ -437,7 +437,7 @@ a.txt  b.txt
 
 </h3>
 
-Splits input on whitespace and prints the column indicated.
+Splits stdin on whitespace and prints the column indicated.
 
 ```fish
 $ echo 1 2 | coln 2
@@ -450,7 +450,7 @@ $ echo 1 2 | coln 2
 
 </h3>
 
-Prints the row of input indicated.
+Prints the row of stdin indicated.
 
 ```fish
 $ seq 3 | row 2
@@ -478,7 +478,8 @@ $ seq 5 | skip 2
 
 </h3>
 
-Take the first `n` lines of standard input.
+Take the first `n` lines of stdin.
+
 ```fish
 $ seq 5 | take 3
 1
@@ -586,7 +587,8 @@ since `string-empty VIRTUAL_ENV` will always return `false`.
 
 </h3>
 
-Test if `$file` exists.
+Test if `$file` exists. Follows the same semantics as `test -e`,
+namely that both files and directories count as existing.
 
 <h3 id="is-dir">
 
@@ -701,7 +703,7 @@ Recommended abbreviation: `abbr-add us unsymlink`
 
 <h3 id="symlinks">
 
-`symlinks [<dir>]` [(source)](functions/symlinks.fish)
+`symlinks [dir=.]` [(source)](functions/symlinks.fish)
 
 </h3>
 
@@ -709,7 +711,7 @@ List symlinks in the given directory, or the current directory if none is passed
 
 <h3 id="link-rc">
 
-`link-rc [<file>]` [(source)](functions/link-rc.fish)
+`link-rc <file>` [(source)](functions/link-rc.fish)
 
 </h3>
 
@@ -733,7 +735,7 @@ Recommended abbreviation: `abbr-add lrc link-rc`
 
 <h3 id="clone-cd">
 
-`clone-cd url [destination]` [(source)](functions/clone-cd.fish)
+`clone-cd <url> [destination=.]` [(source)](functions/clone-cd.fish)
 
 </h3>
 
@@ -747,7 +749,7 @@ Recommended abbreviation: `abbr-add cc clone-cd`
 
 <h3 id="clone-shallow-cd">
 
-`clone-shallow-cd url [destination]` [(source)](functions/clone-shallow-cd.fish)
+`clone-shallow-cd <url> [destination=.]` [(source)](functions/clone-shallow-cd.fish)
 
 </h3>
 
@@ -863,7 +865,7 @@ to open different remotes.
 
 <h3 id="in-git-repo">
 
-`in-git-repo` [(source)](functions/in-git-repo.fish)
+`in-git-repo [dirname=.]` [(source)](functions/in-git-repo.fish)
 
 </h3>
 
@@ -885,7 +887,7 @@ end
 
 <h3 id="lima-ssh">
 
-`lima-ssh [name]` [(source)](functions/lima-ssh.fish)
+`lima-ssh [name=default]` [(source)](functions/lima-ssh.fish)
 
 </h3>
 
@@ -899,7 +901,7 @@ Creates and starts the machine as necessary, so it works in 1 command.
 
 </h3>
 
-Connect to a Lima virtual machine over VNC.
+Connect to the Lima virtual machine named vnc over VNC.
 
 Creates and starts the machine as necessary, like `lima-ssh`.
 
