@@ -51,10 +51,24 @@ function test_staged_file_not_committed
     __success
 end
 
+function test_file_committed
+    git init --quiet
+    touch file.txt
+    git add file.txt
+    git commit --quiet -m 'File now committed'
+    if not file-committed-in-git file.txt
+        error 'fail: file.txt is committed and should be file-committed-in-git'
+        __fail
+        return
+    end
+    __success
+end
+
 function main
     test_not_in_git_dir
     test_untracked_file
     test_staged_file_not_committed
+    test_file_committed
 end
 
 main
