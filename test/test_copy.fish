@@ -3,6 +3,7 @@ mkdir-cd test_copy
 function __cleanup
     if string-empty $DEBUG
         rm a.txt b.txt error.txt
+        rm -rf git_repo
         rmdir-.
     end
 end
@@ -53,9 +54,30 @@ function test_to_multiple_directory_levels
     rmdir from_dir
 end
 
+function test_no_prompt_file_committed
+    mkdir-cd git_repo
+    git init --quiet
+    echo 'from' > from.txt
+    echo 'to' > to.txt
+    git add to.txt
+    git commit --quiet -m 'Add to.txt so it can be safely deleted'
+
+    # n would cancel if it prompted, but it shouldn't prompt
+    echo n | copy from.txt to.txt
+
+    if not equals (cat to.txt) 'from'
+        error "copy didn't copy successfully"
+        __fail
+        return 1
+    end
+
+    cd ..
+end
+
 function main
     test_basic_behavior
     test_to_multiple_directory_levels
+    test_no_prompt_file_committed
 end
 
 main

@@ -231,6 +231,9 @@ Automatic recursive copy for directories. Rather than only copying the files fro
 
 Also uses -i flag by default, which will warn you if a copy would overwrite a destination file.
 
+`copy` is git aware in that if the destination file is committed in git,
+it will overwrite it without prompting (since it can be easily recovered).
+
 Example:
 
 ```fish
