@@ -67,6 +67,7 @@ function test_no_prompt_file_committed
 
     if not equals (cat to.txt) 'from'
         error "copy didn't copy successfully"
+        cd ..
         __fail
         return 1
     end

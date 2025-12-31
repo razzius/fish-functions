@@ -6,5 +6,13 @@ function move
         error 'move: to rename a symlink, remove the trailing slash from the argument.'
         return 1
     end
+
+    set destination_files $argv[2]
+
+    if file-committed-in-git $destination_files
+        mv $argv
+        return $status
+    end
+
     mv -i $argv
 end
