@@ -1,5 +1,4 @@
 cd (mkusertemp)
-mkdir-cd test_file-committed-in-git
 
 function __cleanup
     rm -fr .git
