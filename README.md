@@ -39,6 +39,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`row`](#row)
   * [`skip`](#skip)
   * [`take`](#take)
+  * [`drop`](#drop)
   * [`word-count`](#word-count)
   * [`line-count`](#line-count)
   * [`char-count`](#char-count)
@@ -488,6 +489,22 @@ $ seq 5 | take 3
 1
 2
 3
+```
+
+<h3 id="drop">
+
+`drop <n>` [(source)](functions/drop.fish)
+
+</h3>
+
+Drop the last `n` lines of stdin.
+
+```fish
+$ seq 5 | drop 1
+1
+2
+3
+4
 ```
 
 <h3 id="word-count">
