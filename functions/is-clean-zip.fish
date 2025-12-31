@@ -4,7 +4,15 @@ function is-clean-zip --argument zipfile
         return 1
     end
 
-    set first_file (zip -sf $zipfile | row 2)
+    set first_file (zip -sf $zipfile | row 2 | string trim)
     set first_file_last_char (echo $first_file | string sub --start=-1)
-    test $first_file_last_char = /
+    test $first_file_last_char = / || return 1
+
+    set rest_contents (zip -sf $zipfile | skip 1 | drop 1 | string trim)
+
+    for f in $rest_contents
+        if not startswith $first_file $f
+            return 1
+        end
+    end
 end
