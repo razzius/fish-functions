@@ -169,10 +169,9 @@ Edit the last-edited `fish` function again.
 
 <h3 id="funcsave-last">
 
-`funcsaved-last` [(source)](functions/funcsave-last.fish)
+`funcsave-last` [(source)](functions/funcsave-last.fish)
 
 </h3>
-
 
 Save the last-edited `fish` function.
 
