@@ -230,9 +230,7 @@ README.md  README.md.bak
 Automatic recursive copy for directories. Rather than only copying the files from a directory, copies the directory itself.
 
 Also uses -i flag by default, which will warn you if a copy would overwrite a destination file.
-
-`copy` is git aware in that if the destination file is committed in git,
-it will overwrite it without prompting (since it can be easily recovered).
+Files that are committed in git are not considered at risk of being overwritten, and do not prompt.
 
 Example:
 
@@ -328,7 +326,9 @@ eat: file would be overwritten: ./dir-b
 Like `mv` but uses `-i` flag by default,
 which will warn you if `mv` would overwrite a destination file.
 
-Also warns you if you are trying to move a directory symlink which is ending in slash:
+Files that are committed in git are not considered at risk of being overwritten, and do not prompt.
+
+`move` also warns you if you are trying to move a directory symlink which is ending in slash:
 
 ```fish
 $ mkdir mydir
@@ -353,7 +353,7 @@ This arises because tab completion adds the slash. Completion for `move` could a
 
 </h3>
 
-Move the latest download to destination directory, which is the current directory if none is specified.
+[`move`](#move) the latest download to destination directory, which is the current directory if none is specified.
 
 Recommended abbreviation: `abbr-add mvl move-last-download`
 
