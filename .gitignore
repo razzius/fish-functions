@@ -1,6 +1,5 @@
 fish_history
 fish_read_history
-functions/__*
 functions/private/*
 fish_variables
 /conf.d
