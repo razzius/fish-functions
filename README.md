@@ -28,6 +28,7 @@ Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README
   * [`create-file`](#create-file)
   * [`eat`](#eat)
   * [`move`](#move)
+  * [`last-download`](#last-download)
   * [`move-last-download`](#move-last-download)
   * [`remove`](#remove)
   * [`restore`](#restore)
@@ -346,6 +347,19 @@ move: to rename a symlink, remove the trailing slash from the argument.
 ```
 
 This arises because tab completion adds the slash. Completion for `move` could avoid the slash, but then again you might want to move a file within the symlinked directory.
+
+<h3 id="last-download">
+
+`last-download` [(source)](functions/last-download.fish)
+
+</h3>
+
+Prints the latest file in your Downloads folder by file modification time.
+
+```fish
+$ last-download
+/Users/razzi/Downloads/downloaded_file.txt
+```
 
 <h3 id="move-last-download">
 

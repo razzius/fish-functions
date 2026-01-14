@@ -1,3 +1,4 @@
 function last-download
-    echo ~/Downloads/(ls -t ~/Downloads/ | head -1)
+    ls -t ~/Downloads | read latest_modified
+    echo ~/Downloads/$latest_modified
 end
