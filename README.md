@@ -664,9 +664,10 @@ Prompts the user for confirmation. Exit with status according to whether they an
 
 `error <message>` [(source)](functions/error.fish)
 
+</h3>
+
 Write the given message to stderr.
 
-</h3>
 ## Environment Utilities
 
 <h3 id="curdir">
