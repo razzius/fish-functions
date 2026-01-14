@@ -15,7 +15,7 @@ function symlink --argument-names _from --argument-names _to
     set from (realpath $_from 2> /dev/null)
 
     if string-empty $from || not test -e $from
-        echo "symlink: `from` argument '$_from' does not exist" >&2
+        error "symlink: `from` argument '$_from' does not exist"
         return 1
     end
 
