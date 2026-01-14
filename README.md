@@ -51,6 +51,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`is-dir`](#is-dir)
   * [`is-symlink`](#is-symlink)
   * [`confirm`](#confirm)
+  * [`error`](#error)
 - [Environment Utilities](#environment-utilities)
   * [`curdir`](#curdir)
   * [`echo-variable`](#echo-variable)
@@ -649,6 +650,13 @@ Check if `$path` is a symlink.
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
 
+<h3 id="error">
+
+`error <message>` [(source)](functions/error.fish)
+
+Write the given message to stderr.
+
+</h3>
 ## Environment Utilities
 
 <h3 id="curdir">
