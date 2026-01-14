@@ -36,6 +36,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip)
   * [`unzip-cd`](#unzip-cd)
+  * [`is-clean-zip`](#is-clean-zip)
 - [Text Utilities](#text-utilities)
   * [`coln`](#coln)
   * [`row`](#row)
@@ -429,7 +430,7 @@ README.md
 </h3>
 
 Unzips a `.zip` archive without polluting the current directory, by creating a
-directory even if the zipfile does not have a folder level.
+directory even if the zipfile does not have a folder level that contains everything else.
 
 <h3 id="unzip-cd">
 
@@ -448,6 +449,14 @@ Archive:  files.zip
 files $ ls
 a.txt  b.txt
 ```
+
+<h3 id="is-clean-zip">
+
+`is-clean-zip <zipfile>` [(source)](functions/is-clean-zip.fish)
+
+</h3>
+
+Check if a zipfile contains a folder at its toplevel that contains everything else.
 
 ## Text Utilities
 
