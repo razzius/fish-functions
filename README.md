@@ -8,10 +8,11 @@ Backup any existing `~/.config/fish`, then:
 git clone https://git.sr.ht/~razzi/fish-functions ~/.config/fish
 ```
 
-In previous versions, other fish config including abbrs were included as well.
-That changed much more frequently than the functions, so I split them out.
+In previous versions, other fish config including abbrs and my `fish_prompt` function were included here as well.
 
 Now they are at https://git.sr.ht/~razzi/.dotfiles (see that repository's README for installation instructions).
+
+Some abbrs are recommended below, which you can add to your personal configuration if you'd like.
 
 ## Contents
 
