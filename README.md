@@ -65,6 +65,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
 - [`git` Utilities](#git-utilities)
   * [`clone-cd`](#clone-cd)
   * [`clone-shallow-cd`](#clone-shallow-cd)
+  * [`new`](#new)
   * [`wip`](#wip)
   * [`git-add`](#git-add)
   * [`git-commit`](#git-commit)
@@ -806,6 +807,15 @@ Recommended abbreviation: `abbr-add cc clone-cd`
 </h3>
 
 Like `clone-cd` but clones with `--depth=1` for speed.
+
+<h3 id="new">
+
+`new <project>` [(source)](functions/new.fish)
+
+</h3>
+
+Creates a new directory named `<project>`, `cd`s into it, initializes git,
+creates a README.md and adds and commits it with message "Initial commit".
 
 <h3 id="wip">
 
