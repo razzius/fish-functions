@@ -946,9 +946,9 @@ end
 
 `file-committed-in-git <file>` [(source)](functions/file-committed-in-git.fish)
 
-Scripting utility that exits with status 0 if the file is committed in git, 1 otherwise.
-
 </h3>
+
+Scripting utility that exits with status 0 if the file is committed in git, 1 otherwise.
 
 <h2 id="lima-utilities">
 
