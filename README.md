@@ -74,6 +74,9 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`hub`](#hub)
   * [`in-git-repo`](#in-git-repo)
   * [`file-committed-in-git`](#file-committed-in-git)
+- [Date Utilities](#date-utilities)
+  * [`isodate`](#isodate)
+  * [`isodatetime`](#isodatetime)
 - [`lima` Utilities](#lima-utilities)
   * [`lima-ssh`](#lima-ssh)
   * [`lima-vnc`](#lima-vnc)
@@ -82,9 +85,6 @@ Some abbrs are recommended below, which you can add to your personal configurati
 - [Postgres Utilities](#postgres-utilities)
   * [`ensuredb`](#ensuredb)
   * [`renamedb`](#renamedb)
-- [Date Utilities](#date-utilities)
-  * [`isodate`](#isodate)
-  * [`isodatetime`](#isodatetime)
 - [debian Utilities](#debian-utilities)
   * [`apt-description`](#apt-description)
 - [macOS Utilities](#macos-utilities)
@@ -950,6 +950,34 @@ end
 
 Scripting utility that exits with status 0 if the file is committed in git, 1 otherwise.
 
+## Date Utilities
+
+<h3 id="isodate">
+
+`isodate` [(source)](functions/isodate.fish)
+
+</h3>
+
+Prints the date in ISO format.
+
+```fish
+$ isodate
+2020-01-28
+```
+
+<h3 id="isodatetime">
+
+`isodatetime` [(source)](functions/isodatetime.fish)
+
+</h3>
+
+Prints the date and time in ISO format.
+
+```fish
+$ isodatetime
+2025-03-07T23:11:53
+```
+
 <h2 id="lima-utilities">
 
 [`lima`](https://lima-vm.io/) Utilities
@@ -1008,34 +1036,6 @@ Drops a database by that name if it exists, clearing database connections as nec
 </h3>
 
 Renames a database.
-
-## Date Utilities
-
-<h3 id="isodate">
-
-`isodate` [(source)](functions/isodate.fish)
-
-</h3>
-
-Prints the date in ISO format.
-
-```fish
-$ isodate
-2020-01-28
-```
-
-<h3 id="isodatetime">
-
-`isodatetime` [(source)](functions/isodatetime.fish)
-
-</h3>
-
-Prints the date and time in ISO format.
-
-```fish
-$ isodatetime
-2025-03-07T23:11:53
-```
 
 ## debian Utilities
 
