@@ -885,7 +885,7 @@ Useful if you clone an https url but you want to push or pull later.
 
 Example usage:
 
-```
+```fish
 ronin $ git push
 fatal: unable to access 'https://git.sr.ht/~razzi/ronin/': The requested URL returned error: 403
 ronin $ git-protocol-https-to-git
@@ -936,7 +936,7 @@ Scripting utility that exits with status 0 if the current directory is part of a
 
 Sample usage:
 
-```
+```fish
 if in-git-repo
   git pull
 end
@@ -1036,6 +1036,7 @@ Prints the date and time in ISO format.
 $ isodatetime
 2025-03-07T23:11:53
 ```
+
 ## debian Utilities
 
 <h3 id="apt-description">
