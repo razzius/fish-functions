@@ -9,5 +9,12 @@ function lima-vnc
         limactl start vnc
     end
 
-    open vnc://:(cat ~/.lima/vnc/vncpassword)@127.0.0.1:5900
+    set display_info (cat ~/.lima/vnc/vncdisplay)
+
+    set host (echo $display_info | cut -d ':' -f 1)
+
+    set port_offset (echo $display_info | cut -d ':' -f 2)
+    set port (math $port_offset + 5900)
+
+    open vnc://:(cat ~/.lima/vnc/vncpassword)@$host:$port
 end
