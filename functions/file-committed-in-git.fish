@@ -10,7 +10,7 @@ function file-committed-in-git --argument-names file
     end
 
     # If the file is staged, it's tracked in git, but not committed
-    if not git diff --quiet --staged $file
+    if not git diff --quiet --staged -- $file
         return 1
     end
 end
