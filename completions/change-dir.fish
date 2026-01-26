@@ -14,7 +14,7 @@ function __complete_change_dir
     if equals change-dir $last_token || endswith / $last_token
         set name_args -not -name '.*'
     else
-        set name_args -iname "$find_name*"
+        set name_args -iname "*$find_name*"
     end
 
     set exclude_dir_itself_clause -not -name (basename $find_path)
