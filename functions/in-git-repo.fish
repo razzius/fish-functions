@@ -1,10 +1,5 @@
 function in-git-repo --argument-names _dir
-    if equals (curdir) .git
-        # I don't consider the .git directory itself to be
-        # part of the repo, since you can't run git commands from it.
-        return 1
-    end
-
     set dir (default $_dir .)
-    git -C $dir rev-parse --git-dir &> /dev/null
+    set in_git_worktree (git -C $dir rev-parse --is-inside-work-tree 2> /dev/null)
+    equals $in_git_worktree true
 end
