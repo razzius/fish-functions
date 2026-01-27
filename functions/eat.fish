@@ -1,4 +1,5 @@
-function eat --argument dir
+function eat --argument _dir
+    set dir (echo $_dir | trim-trailing-slash)
     # currently only works to the current directory.
     # doesn't work to eat a directory in a different dir
     set files_to_move (find $dir -maxdepth 1 -not -path $dir)

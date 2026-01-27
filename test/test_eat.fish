@@ -1,8 +1,8 @@
-mkdir-cd test_eat
+cd (mkusertemp)
 
 function __cleanup
     if string-empty $DEBUG
-        rm -rf remove_this_dir a.txt err_out.txt samename
+        rm -rf remove_this_dir a.txt err_out.txt samename folder file.txt
         rmdir-.
     end
 end
@@ -81,7 +81,21 @@ function test_eat_directory_with_file_same_name
     set expected_status 0
 
     if not equals $result_status $expected_status
-        error "Expected status $expected_status but got $result_status"
+        error "test_eat_directory_with_file_same_name expected status $expected_status but got $result_status"
+        __fail
+    end
+end
+
+function test_eat_directory_ending_with_slash
+    mkdir folder
+    echo contents > folder/file.txt
+    eat folder/
+
+    set result_status $status
+    set expected_status 0
+
+    if not equals $result_status $expected_status
+        error "test_eat_directory_ending_with_slash expected status $expected_status but got $result_status"
         __fail
     end
 end
@@ -90,6 +104,7 @@ function main
     test_basic_behavior
     test_no_overwrite
     test_eat_directory_with_file_same_name
+    test_eat_directory_ending_with_slash
 end
 
 main
