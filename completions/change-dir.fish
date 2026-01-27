@@ -1,9 +1,15 @@
 complete -f -c change-dir -a "(__complete_change_dir)"
 
 function __has_only_child_dir --argument-names dir
-    set n_children (ls $dir 2> /dev/null | line-count)
+    set n_folders (count $dir/*/ $dir/.*/)
 
-    equals $n_children 1 && is-dir $dir/*
+    if test $n_folders != 1
+        return 1
+    end
+
+    set n_children (count $dir/* $dir/.*)
+
+    test $n_children = 1
 end
 
 # some test cases
