@@ -25,8 +25,8 @@ function __get_find_name_for_path --argument-names path
     echo $path | string replace -r '.*/' ''
 end
 
-function __escape_period --argument-names value
-    echo -- $value | string replace '.' '\.'
+function __escape_period
+    string replace '.' '\.' -- $argv
 end
 
 function __get_find_regex_for_token --argument-names token find_path
@@ -34,7 +34,7 @@ function __get_find_regex_for_token --argument-names token find_path
     set -l find_name_split (echo $find_name | string split '')
     set -l find_name_escaped (__escape_period $find_name_split)
     set -l find_path_escaped (__escape_period $find_path)
-    set -l find_regex $find_path_escaped(echo $find_name_escaped | string join '.*')'.*'
+    set -l find_regex $find_path_escaped'.*'(echo $find_name_escaped | string split ' ' | string join '.*')'.*'
     echo $find_regex
 end
 
