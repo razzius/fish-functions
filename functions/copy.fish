@@ -1,4 +1,7 @@
 function copy
+    # Ignore the -r flag - copy always allows recursive directories
+    argparse r -- $argv
+
     set count (count $argv | tr -d \n)
 
     if test "$count" = 2

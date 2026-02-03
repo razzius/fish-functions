@@ -1,16 +1,12 @@
-mkdir-cd test_copy
+mkdir-cd (mkusertemp)
 
 function __cleanup
     if string-empty $DEBUG
-        rm a.txt b.txt error.txt
+        rm -f a.txt b.txt error.txt contents.txt
         rm -rf git_repo
+        rm -rf dir/ another/
         rmdir-.
     end
-end
-
-function __fail
-    __cleanup
-    return 1
 end
 
 function test_basic_behavior
@@ -25,16 +21,15 @@ function test_basic_behavior
 
     if not equals $result_status $expected_status
         echo Expected status $expected_status but got $result_status
-        __fail
+        return 1
     end
 
     set output (cat b.txt)
 
     if not string match -q $contents $output
         echo `copy` did not behave as expected.
-        __fail
+        return 1
     end
-
 end
 
 function test_to_multiple_directory_levels
@@ -68,17 +63,33 @@ function test_no_prompt_file_committed
     if not equals (cat to.txt) 'from'
         error "copy didn't copy successfully"
         cd ..
-        __fail
         return 1
     end
 
     cd ..
 end
 
+function test_allow_-r_flag
+    mkdir dir/
+    touch dir/file.txt
+
+    mkdir another/
+
+    copy -r dir/ another/
+
+    ls another/ > contents.txt
+
+    if not equals (cat contents.txt) 'dir'
+        error "copy should preserve directory even with redundant -r flag"
+        return 1
+    end
+end
+
 function main
     test_basic_behavior
     test_to_multiple_directory_levels
     test_no_prompt_file_committed
+    test_allow_-r_flag
 end
 
 main

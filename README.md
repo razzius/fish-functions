@@ -234,7 +234,12 @@ README.md  README.md.bak
 
 Automatic recursive copy for directories. Rather than only copying the files from a directory, copies the directory itself.
 
-Also uses -i flag by default, which will warn you if a copy would overwrite a destination file.
+Vanilla `cp` handles `dir` and `dir/` differently: `cp -r dir ...` copies the directory and its contents, however `cp -r dir/ ...` copies the contents of the directory only (see `man cp`).
+
+I want the directory to be copied too, but tab completion gives the latter,
+so I made `copy` preserve the directory.
+
+`copy` also uses -i flag by default, which will warn you if a copy would overwrite a destination file.
 Files that are committed in git are not considered at risk of being overwritten, and do not prompt.
 
 Example:
