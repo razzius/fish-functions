@@ -85,11 +85,22 @@ function test_allow_-r_flag
     end
 end
 
+function test_multiple_source_dirs
+    mkdir a
+    mkdir b
+    touch a/a
+    touch b/b
+    mkdir c
+    copy a b c
+    rm -r a b c
+end
+
 function main
     test_basic_behavior
     test_to_multiple_directory_levels
     test_no_prompt_file_committed
     test_allow_-r_flag
+    test_multiple_source_dirs
 end
 
 main

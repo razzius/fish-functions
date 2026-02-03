@@ -4,19 +4,18 @@ function copy
 
     set count (count $argv | tr -d \n)
 
-    if test "$count" = 2
-        if test -d "$argv[1]"
-            set from (echo $argv[1] | trim-right /)
-            set to $argv[2]
-            command cp -i -r $from $to
-            return
-        end
+    set target $argv[$count]
 
-        if file-committed-in-git $argv[2]
-            cp $argv
-            return
-        end
+    set froms_source $argv[1..(math $count - 1)]
+    set froms_result
+    for from in $froms_source
+        set trimmed (echo $from | trim-trailing-slash)
+        set froms_result $froms_result $trimmed
     end
 
-    command cp -i $argv
+    if file-committed-in-git $argv[2]
+        cp -r $froms_result $target
+    else
+        cp -r -i $froms_result $target
+    end
 end
