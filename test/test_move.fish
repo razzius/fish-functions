@@ -4,23 +4,27 @@ function __cleanup
     if string-empty $DEBUG
         file-exists mylink && unsymlink mylink
         file-exists mydir && rmdir mydir
+        remove -f a b c file
         remove -f err.txt expected_err.txt
         remove -rf repo
         rmdir-.
     end
 end
 
+function assert_status --argument-names result expected
+    if not equals $result $expected
+        error "move should have exited with status $result but got $expected"
+        return 1
+    end
+end
+
 function test_move_symlink_error
     mkdir mydir
     symlink mydir mylink
+
     move mylink/ renamed 2> err.txt
 
-    set result_status $status
-    set expected_status 1
-
-    if not equals $result_status $expected_status
-        error "move gave status $result_status but we expected $expected_status"
-    end
+    assert_status $status 1
 
     echo 'move: `from` argument "mylink/" is a symlink with a trailing slash.
 move: to rename a symlink, remove the trailing slash from the argument.' > expected_err.txt
@@ -85,18 +89,21 @@ end
 
 function test_move_error_multiple_file_not_dir
     touch a b c
-    move a b c 2> move_stderr.txt
+    move a b c 2> expected_err.txt
     set result_status $status
 
-    if not equals $result_status 1
-        error "move should have exited with status 1 but got $result_status"
-        return 1
-    end
+    assert_status $result_status 1
 
-    if not equals (cat move_stderr.txt) "move: c is not a directory"
-        error "move stderr unexpected: "(cat move_stderr.txt)
+    if not equals (cat expected_err.txt) "move: c is not a directory"
+        error "move stderr unexpected: "(cat expected_err.txt)
         return 1
     end
+end
+
+function test_move_file_to_itself
+    touch file
+    move file file 2> expected_err.txt
+    assert_status $status 1
 end
 
 function main
@@ -104,6 +111,7 @@ function main
     and test_move_no_confirm_committed_file
     and test_move_confirm_mixed_committed_files
     and test_move_error_multiple_file_not_dir
+    and test_move_file_to_itself
 end
 
 main

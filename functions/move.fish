@@ -5,6 +5,11 @@ function _move_single --argument-names from to
         return 1
     end
 
+    if equals $from $to
+        error "move: not going to move '$from' to itself"
+        return 1
+    end
+
     if file-committed-in-git $to
         mv $from $to
     else
