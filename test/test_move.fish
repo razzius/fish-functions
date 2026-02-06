@@ -7,13 +7,46 @@ function __cleanup
         remove -f a b c file
         remove -f err.txt expected_err.txt
         remove -rf repo
+        remove -f readme.md
         rmdir-.
     end
 end
 
 function assert_status --argument-names result expected
     if not equals $result $expected
-        error "move should have exited with status $result but got $expected"
+        error "move should have exited with status $expected but got $result"
+        return 1
+    end
+end
+
+function test_move_handle_1_argument
+    move rere 2> err.txt
+
+    assert_status $status 1 || return 1
+
+    echo 'move: given arguments "rere" but expected at least 2 arguments' > expected_err.txt
+
+    if not equals (cat expected_err.txt) (cat err.txt)
+        error "move had unexpected stderr:"
+        cat err.txt >&2
+        error "but expected:"
+        cat expected_err.txt >&2
+        return 1
+    end
+end
+
+function test_move_handle_missing_file
+    move nofile nowhere 2> err.txt
+
+    assert_status $status 1 || return 1
+
+    echo 'move: `from` argument "nofile" does not exist' > expected_err.txt
+
+    if not equals (cat err.txt) (cat expected_err.txt)
+        error move had unexpected stderr
+        cat err.txt >&2
+        error "but expected:"
+        cat expected_err.txt >&2
         return 1
     end
 end
@@ -22,9 +55,9 @@ function test_move_symlink_error
     mkdir mydir
     symlink mydir mylink
 
-    move mylink/ renamed 2> err.txt
+    move mylink/ renamed 2> err.txt < /dev/null
 
-    assert_status $status 1
+    assert_status $status 1 || return 1
 
     echo 'move: `from` argument "mylink/" is a symlink with a trailing slash.
 move: to rename a symlink, remove the trailing slash from the argument.' > expected_err.txt
@@ -45,8 +78,8 @@ function test_move_no_confirm_committed_file
 
     echo 'new' > new.txt
 
-    # n would cancel the prompt, but it shouldn't prompt
-    echo n | move new.txt to.txt
+    # It shouldn't prompt
+    move new.txt to.txt < /dev/null
 
     if not equals (cat to.txt) 'new'
         error "move didn't overwrite commited file without prompting"
@@ -67,7 +100,7 @@ function test_move_confirm_mixed_committed_files
     git commit --quiet -m 'Add target/a.txt which would be overwritten'
     echo 'new_a' > a.txt
     echo 'new_b' > b.txt
-    echo n | move a.txt b.txt target/ 2> move_stdout.txt
+    move a.txt b.txt target/ 2> move_stdout.txt < /dev/null
 
     # target/b.txt should not be overwritten
     if not equals (cat target/b.txt) 'b'
@@ -92,26 +125,45 @@ function test_move_error_multiple_file_not_dir
     move a b c 2> expected_err.txt
     set result_status $status
 
-    assert_status $result_status 1
+    assert_status $status 1 || return 1
 
-    if not equals (cat expected_err.txt) "move: c is not a directory"
+    set expected_err 'move: "c" is not a directory'
+
+    if not equals (cat expected_err.txt) $expected_err
         error "move stderr unexpected: "(cat expected_err.txt)
+        error "expected: $expected_err"
         return 1
     end
 end
 
 function test_move_file_to_itself
     touch file
-    move file file 2> expected_err.txt
-    assert_status $status 1
+    move file file < /dev/null 2> err.txt
+    assert_status $status 1 || return 1
+end
+
+function test_move_change_capitalization
+    echo contents > README.md
+    move README.md readme.md < /dev/null 2> err.txt
+    if not file-exists readme.md
+        error "move didn't rename README.md to readme.md"
+        return 1
+    end
+    set contents (cat readme.md)
+    if not equals $contents contents
+        error "move didn't rename file properly"
+    end
 end
 
 function main
-    test_move_symlink_error
+    test_move_handle_1_argument
+    and test_move_handle_missing_file
+    and test_move_symlink_error
     and test_move_no_confirm_committed_file
     and test_move_confirm_mixed_committed_files
     and test_move_error_multiple_file_not_dir
     and test_move_file_to_itself
+    and test_move_change_capitalization
 end
 
 main
