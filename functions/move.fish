@@ -1,11 +1,10 @@
-function _move_using_tmp --argument-names flags from to
-    set tmp (mkusertemp)
+function _move_using_tmp --argument-names flags from to tmp
+    # Allows renaming a file case-sensitively on a case-insensitive file system
     mv $flags $from $tmp
     mv $flags $tmp/$from $to
-    rmdir $tmp
 end
 
-function _move_single --argument-names from to
+function _move_single --argument-names from to tmp
     if not file-exists $from
         error 'move: `from` argument "'$from'" does not exist'
         return 1
@@ -23,9 +22,9 @@ function _move_single --argument-names from to
     end
 
     if file-committed-in-git $to
-        _move_using_tmp '--' $from $to
+        _move_using_tmp '--' $from $to $tmp
     else
-        _move_using_tmp -i $from $to
+        _move_using_tmp -i $from $to $tmp
     end
 end
 
@@ -38,9 +37,13 @@ function move
 
     set froms $argv[1..-2]
 
+    set tmp (mkusertemp)
+
     if equals (count $argv) 2
-        _move_single $argv
-        return $status
+        _move_single $argv[1] $argv[2] $tmp
+        set result $status
+        rmdir $tmp
+        return $result
     end
 
     set target_dir $argv[-1]
@@ -52,9 +55,13 @@ function move
     for f in $froms
         set to $target_dir$f
 
-        _move_single $f $to
-        if not equals $status 0
-            return $status
+        _move_single $f $to $tmp
+
+        set result $status
+
+        if not equals $result 0
+            rmdir $tmp
+            return $result
         end
     end
 end
