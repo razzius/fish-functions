@@ -28,7 +28,7 @@ function eat --argument _dir
         mv -n $f $tmpdir
     end
 
-    rmdir $dir
+    rmdir $dir || return $status
 
     for f in $files_to_move
         # Use the -n flag to not overwrite.
