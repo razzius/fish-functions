@@ -1,6 +1,6 @@
 .PHONY: test
 
-all: test
-
 test:
-	@fish test.fish
+	@for test in test/*.fish ; do \
+		fish $$test ; \
+	done
