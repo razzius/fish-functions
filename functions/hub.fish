@@ -1,5 +1,9 @@
 function hub --argument _remote
-    set remote (default $_remote (git rev-parse --abbrev-ref @{upstream} | cut -d / -f 1))
+    if string-empty $_remote
+        set remote (git rev-parse --abbrev-ref @{upstream} | cut -d / -f 1)
+    else
+        set remote $_remote
+    end
 
     set url (git config --get remote.$remote.url)
     set https_url (echo $url | string replace -r 'git@(.+):' 'https://$1/')
