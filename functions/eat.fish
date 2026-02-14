@@ -14,7 +14,7 @@ function eat --argument _dir
             continue
         end
 
-        if file-exists ./$filename
+        if test -e ./$filename
             error "eat: file would be overwritten: ./$filename"
             return 1
         end
@@ -32,7 +32,7 @@ function eat --argument _dir
 
     for f in $files_to_move
         # Use the -n flag to not overwrite.
-        # This should already be handled by the logic above
+        # This should already be handled by the `test -e` logic above
         # but I'll also use -n here just to be safe.
         set filename (echo $f | string replace $dir/ '')
         mv -n $tmpdir/$filename $target

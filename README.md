@@ -638,8 +638,9 @@ since `string-empty VIRTUAL_ENV` will always return `false`.
 
 </h3>
 
-Test if `$file` exists. Follows the same semantics as `test -e`,
-namely that both files and directories count as existing.
+Test if `$file` exists. Both files and directories count as existing.
+
+Even if [your filesystem is case-insensitive](https://razzi.abuissa.net/2026/02/12/are-case-insensitive-file-systems-case-insensitive/), it attempts to do a case-sensitive match using `find`.
 
 <h3 id="is-dir">
 
