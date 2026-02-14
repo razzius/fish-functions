@@ -4,16 +4,22 @@ function __cleanup
     rmdir-.
 end
 
-function test_1
-    assert 1 1
+function test_remove_simple
+    touch remove_me.txt
+    remove remove_me.txt
+    not file-exists remove-me.txt
 end
 
-function test_2
-    assert 1 2
+function test_remove_git_repo
+    mkdir-cd git_repo
+    git init --quiet
+    cd ..
+    echo y | remove -r git_repo
+    not file-exists git_repo
 end
 
 function main
-    set tests test_1 test_2
+    set tests test_remove_simple test_remove_git_repo
     run-tap-tests $tests
 end
 
