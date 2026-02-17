@@ -1,4 +1,4 @@
-function __get_remote_for_current_branch
+function __get_remote_for_current_branch --argument _remote
     if not string-empty $_remote
         echo $_remote
         return
