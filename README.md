@@ -177,6 +177,8 @@ $ echo (fish_clipboard_paste)
 
 `clip-pwd` [(source)](functions/clip-pwd.fish)
 
+</h3>
+
 Copy the current directory to the clipboard. Uses the `~` for home directory convention.
 
 ```
@@ -186,7 +188,6 @@ hack $ clip-pwd
 # copies ~/hack to the clipboard
 ```
 
-</h3>
 
 <h3 id="funced-last">
 
