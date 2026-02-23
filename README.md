@@ -20,6 +20,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`abbr-add`](#abbr-add)
   * [`abbr-erase`](#abbr-erase)
   * [`clip`](#clip)
+  * [`clip-pwd`](#clip-pwd)
   * [`funced-last`](#funced-last)
   * [`funcsave-last`](#funcsave-last)
   * [`mkdir-cd`](#mkdir-cd)
@@ -39,7 +40,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`clean-unzip`](#clean-unzip)
   * [`unzip-cd`](#unzip-cd)
   * [`is-clean-zip`](#is-clean-zip)
-- [Text Utilities](#text-utilities)
+- [Text Stream Utilities](#text-stream-utilities)
   * [`coln`](#coln)
   * [`row`](#row)
   * [`skip`](#skip)
@@ -48,8 +49,12 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`word-count`](#word-count)
   * [`line-count`](#line-count)
   * [`char-count`](#char-count)
-- [`fish` Scripting Utilities](#fish-scripting-utilities)
+- [String Utilities]
   * [`string-empty`](#string-empty)
+  * [`equals`](#equals)
+  * [`startswith`](#startswith)
+  * [`endswith`](#endswith)
+- [`fish` Scripting Utilities](#fish-scripting-utilities)
   * [`file-exists`](#file-exists)
   * [`file-exists-matching-case`](#file-exists-matching-case)
   * [`is-dir`](#is-dir)
@@ -167,6 +172,21 @@ $ echo 1 | fish_clipboard_copy
 $ echo (fish_clipboard_paste)
 1
 ```
+
+<h3 id="clip-pwd">
+
+`clip-pwd` [(source)](functions/clip-pwd.fish)
+
+Copy the current directory to the clipboard. Uses the `~` for home directory convention.
+
+```
+hack $ pwd
+/Home/razzi/hack
+hack $ clip-pwd
+# copies ~/hack to the clipboard
+```
+
+</h3>
 
 <h3 id="funced-last">
 
@@ -486,7 +506,7 @@ a.txt  b.txt
 
 Check if a zipfile contains a folder at its toplevel that contains everything else.
 
-## Text Utilities
+## Text Stream Utilities
 
 <h3 id="coln">
 
@@ -608,11 +628,7 @@ $ echo -n a b | wc -c
        3
 ```
 
-<h2 id="fish-scripting-utilities">
-
-`fish` Scripting Utilities
-
-</h2>
+## String Utilities
 
 <h3 id="string-empty">
 
@@ -653,6 +669,32 @@ $ if string-empty $VIRTUAL_ENV
 ```
 
 since `string-empty VIRTUAL_ENV` will always return `false`.
+
+<h3 id="equals">
+
+`equals <a> <b>` [(source)](functions/equals.fish)
+
+</h3>
+
+Return whether the 2 given strings are equal.
+
+<h3 id="startswith">
+
+`startswith <prefix> <string>` [(source)](functions/startswith.fish)
+
+</h3>
+
+Return whether the give string has the given prefix.
+
+<h3 id="endswith">
+
+`endswith <suffix> <string>` [(source)](functions/endswith.fish)
+
+</h3>
+
+Return whether the give string has the given suffix.
+
+## `fish` Scripting Utilities
 
 <h3 id="file-exists">
 
