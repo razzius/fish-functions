@@ -155,15 +155,26 @@ function test_move_change_capitalization
     end
 end
 
+function test_move_file_from_subdirectory
+    create-file subdir/file.txt
+    move subdir/file.txt result.txt
+    rmdir subdir
+    remove result.txt
+end
+
 function main
-    test_move_handle_1_argument
-    and test_move_handle_missing_file
-    and test_move_symlink_error
-    and test_move_no_confirm_committed_file
-    and test_move_confirm_mixed_committed_files
-    and test_move_error_multiple_file_not_dir
-    and test_move_file_to_itself
-    and test_move_change_capitalization
+    set tests \
+        test_move_handle_1_argument \
+        test_move_handle_missing_file \
+        test_move_symlink_error \
+        test_move_no_confirm_committed_file \
+        test_move_confirm_mixed_committed_files \
+        test_move_error_multiple_file_not_dir \
+        test_move_file_to_itself \
+        test_move_change_capitalization \
+        test_move_file_from_subdirectory
+
+    run-tap-tests $tests
 end
 
 main

@@ -1,7 +1,8 @@
-function _move_using_tmp --argument-names flags from to tmp
+function _move_using_tmp --argument-names _flags from to tmp
+    set flags (echo -- $_flags | string split ' ')
     # Allows renaming a file case-sensitively on a case-insensitive file system
     mv $flags $from $tmp
-    mv $flags $tmp/$from $to
+    mv $flags $tmp/(basename $from) $to
 end
 
 function _move_single --argument-names from to tmp
@@ -24,7 +25,7 @@ function _move_single --argument-names from to tmp
     if file-committed-in-git $to
         _move_using_tmp '--' $from $to $tmp
     else
-        _move_using_tmp -i $from $to $tmp
+        _move_using_tmp '-i --' $from $to $tmp
     end
 end
 
