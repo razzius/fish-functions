@@ -26,9 +26,13 @@ function _move_single --argument-names from to tmp
     if file-committed-in-git $to
         mv -- $from $to
     else
-        set tmp (mkusertemp)
-        _move_using_tmp $from $to $tmp
-        rmdir $tmp
+        if equals (string lower -- $from) (string lower -- $to)
+            set tmp (mkusertemp)
+            _move_using_tmp $from $to $tmp
+            rmdir $tmp
+        else
+            mv -i -- $from $to
+        end
     end
 end
 
