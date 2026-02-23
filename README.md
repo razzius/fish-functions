@@ -434,7 +434,7 @@ README.md
 
 <h3 id="find-and-replace">
 
-`find-and-replace <find> <replace> <filetype>`
+`find-and-replace <find> <replace> <filetype>` [(source)](functions/find-and-replace.fish)
 
 </h3>
 
