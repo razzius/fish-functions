@@ -49,6 +49,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
 - [`fish` Scripting Utilities](#fish-scripting-utilities)
   * [`string-empty`](#string-empty)
   * [`file-exists`](#file-exists)
+  * [`file-exists-matching-case`](#file-exists-matching-case)
   * [`is-dir`](#is-dir)
   * [`is-symlink`](#is-symlink)
   * [`confirm`](#confirm)
@@ -640,7 +641,22 @@ since `string-empty VIRTUAL_ENV` will always return `false`.
 
 Test if `$file` exists. Both files and directories count as existing.
 
-Even if [your filesystem is case-insensitive](https://razzi.abuissa.net/2026/02/12/are-case-insensitive-file-systems-case-insensitive/), it attempts to do a case-sensitive match using `find`.
+Uses `test -e` so its case sensitivity depends on your filesystem's case sensitivity.
+
+<h3 id="file-exists-matching-case">
+
+`file-exists-matching-case <file>` [(source)](functions/file-exists-matching-case.fish)
+
+</h3>
+
+Test if `$file` exists. Both files and directories count as existing. Even if your filesystem is case-insensitive, it attempts to do a case-sensitive match using `find`.
+
+You can check if your filesystem is case sensitive like so:
+
+```
+$ touch file.txt
+$ test -e FILE.txt && echo 'case insensitive' || echo 'case sensitive'
+```
 
 <h3 id="is-dir">
 

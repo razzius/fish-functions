@@ -4,9 +4,9 @@ function run-tap-tests
     echo 1..(count $argv)
     for test in $argv
         if $test
-            echo ok
+            echo ok - $test
         else
-            echo not ok
+            echo not ok - $test
             set result 1
         end
     end

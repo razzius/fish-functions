@@ -1,25 +1,20 @@
-mkdir-cd (mkusertemp)
+cd (mkusertemp)
 
-function main
-    touch file.txt
-    set result 0
+echo 'TAP version 14'
+echo '1..2'
+touch file.txt
 
-    if file-exists FILE.txt
-        error file-exists should be case-sensitive
-    end
-
-    mkdir another
-    touch another/file.txt
-
-    if not file-exists file.txt
-        error file-exists should look in the current directory only
-    end
-
-    rm -r another
-    rm file.txt
-    rmdir-.
-
-    return $result
+if file-exists file.txt
+    echo ok
+else
+    echo not ok
 end
 
-main
+if not file-exists nonexistant.txt
+    echo ok
+else
+    echo not ok
+end
+
+remove file.txt
+rmdir-.
