@@ -145,7 +145,7 @@ end
 function test_move_change_capitalization
     echo contents > README.md
     move README.md readme.md < /dev/null 2> err.txt
-    if not file-exists readme.md
+    if not file-exists-matching-case readme.md
         error "move didn't rename README.md to readme.md"
         return 1
     end
