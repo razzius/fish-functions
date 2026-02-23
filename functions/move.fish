@@ -1,8 +1,9 @@
-function _move_using_tmp --argument-names _flags from to tmp
-    set flags (echo -- $_flags | string split ' ')
-    # Allows renaming a file case-sensitively on a case-insensitive file system
-    mv $flags $from $tmp
-    mv $flags $tmp/(basename $from) $to
+function _move_using_tmp --argument-names from to tmp
+    # Using a tmpdir allows renaming a file case-sensitively
+    # on a case-insensitive file system. Otherwise mv -i a.txt A.txt
+    # will prompt because it thinks it's overwriting a.txt
+    mv -i -- $from $tmp
+    mv -i -- $tmp/(basename $from) $to
 end
 
 function _move_single --argument-names from to tmp
@@ -23,9 +24,9 @@ function _move_single --argument-names from to tmp
     end
 
     if file-committed-in-git $to
-        _move_using_tmp '--' $from $to $tmp
+        mv -- $from $to
     else
-        _move_using_tmp '-i --' $from $to $tmp
+        _move_using_tmp $from $to $tmp
     end
 end
 
