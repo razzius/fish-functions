@@ -33,6 +33,8 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`move-last-download`](#move-last-download)
   * [`remove`](#remove)
   * [`restore`](#restore)
+- [Editing Utilities](#editing-utilities)
+  * [`find-and-replace`](#find-and-replace)
 - [Zipfile Utilities](#zipfile-utilities)
   * [`clean-unzip`](#clean-unzip)
   * [`unzip-cd`](#unzip-cd)
@@ -426,6 +428,25 @@ README.md README.md.bak
 $ restore README.md.bak
 $ ls
 README.md
+```
+
+## Editing Utilities
+
+<h3 id="find-and-replace">
+
+`find-and-replace <find> <replace> <filetype>`
+
+</h3>
+
+Search files in the current directory and its subdirectories with the given `<filetype>`
+for the `<find>` string, and replace it with the `<replace>` string.
+
+```
+$ cat file.txt
+some text
+$ find-and-replace text fun txt
+$ cat file.txt
+some fun
 ```
 
 ## Zipfile Utilities
