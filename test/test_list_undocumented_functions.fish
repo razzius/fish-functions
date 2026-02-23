@@ -1,5 +1,6 @@
 for f in functions/*.fish
-    if not grep -q "$f" README.md
+    # Functions starting with '_' are considered internal
+    if not startswith functions/_ $f && not grep -q "$f" README.md
         echo missing doc $f
     end
 end
