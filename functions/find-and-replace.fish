@@ -5,8 +5,7 @@ function find-and-replace --argument-names find replace extension
     end
 
     set files (
-        rg \
-            --files-with-matches \
+        rg --files-with-matches \
             --type-add "search:*.$extension" \
             --type=search \
             --color=never \
@@ -14,7 +13,7 @@ function find-and-replace --argument-names find replace extension
             -e $find
     )
     for f in $files
-        rg -e $find \
+        rg $find \
             --passthru \
             --multiline \
             --no-line-number \
