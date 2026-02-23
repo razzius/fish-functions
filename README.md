@@ -49,7 +49,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`word-count`](#word-count)
   * [`line-count`](#line-count)
   * [`char-count`](#char-count)
-- [String Utilities]
+- [String Utilities](#string-utilities)
   * [`string-empty`](#string-empty)
   * [`equals`](#equals)
   * [`startswith`](#startswith)
