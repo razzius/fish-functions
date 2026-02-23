@@ -26,7 +26,9 @@ function _move_single --argument-names from to tmp
     if file-committed-in-git $to
         mv -- $from $to
     else
+        set tmp (mkusertemp)
         _move_using_tmp $from $to $tmp
+        rmdir $tmp
     end
 end
 
@@ -39,12 +41,9 @@ function move
 
     set froms $argv[1..-2]
 
-    set tmp (mkusertemp)
-
     if equals (count $argv) 2
-        _move_single $argv[1] $argv[2] $tmp
+        _move_single $argv[1] $argv[2]
         set result $status
-        rmdir $tmp
         return $result
     end
 
@@ -57,12 +56,11 @@ function move
     for f in $froms
         set to $target_dir$f
 
-        _move_single $f $to $tmp
+        _move_single $f $to
 
         set result $status
 
         if not equals $result 0
-            rmdir $tmp
             return $result
         end
     end
