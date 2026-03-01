@@ -916,12 +916,15 @@ I use this instead of `git stash` so that changes are associated with the branch
 
 ```fish
 $ git stat
-## master
-M      tests.py
+## main
+ M tests.py
 $ git switch -c testing
+Switched to a new branch 'testing'
 $ wip failing tests
-[testing 0078f7f] WIP failing tests
+[testing 7bc145d] wip failing tests
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 $ git switch -
+Switched to branch 'main'
 ```
 
 <h3 id="git-add">
