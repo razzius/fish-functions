@@ -947,6 +947,8 @@ Like `git commit -m` without the need to quote the commit message.
 
 If no commit message is given and there's only 1 file changed, commit "(Add / Update / Delete) (that file)".
 
+If multiple files changed, run the standard interactive `git commit`.
+
 ```fish
 $ git-commit
 [master c77868d] Update README.md
