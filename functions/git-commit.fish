@@ -37,7 +37,7 @@ function git-commit
                     git commit -m "Rename $from to $to"
                 end
             case '*'
-                echo "Multiple files changed; add a commit message"
+                git commit
         end
     else
         git commit -m (echo $argv | unexpand-home-tilde)
