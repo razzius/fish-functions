@@ -181,7 +181,7 @@ $ echo (fish_clipboard_paste)
 
 Copy the current directory to the clipboard. Uses the `~` for home directory convention.
 
-```
+```fish
 hack $ pwd
 /Home/razzi/hack
 hack $ clip-pwd
@@ -462,7 +462,9 @@ README.md
 Search files in the current directory and its subdirectories with the given `<filetype>`
 for the `<find>` string, and replace it with the `<replace>` string.
 
-```
+Requires the [`ripgrep`](https://github.com/BurntSushi/ripgrep) and [`sponge`](https://joeyh.name/code/moreutils/) commands.
+
+```fish
 $ cat file.txt
 some text
 $ find-and-replace text fun txt
@@ -685,7 +687,7 @@ Return whether the 2 given strings are equal.
 
 </h3>
 
-Return whether the give string has the given prefix.
+Return whether the given string has the given prefix.
 
 <h3 id="endswith">
 
