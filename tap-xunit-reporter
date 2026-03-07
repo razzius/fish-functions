@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function main
-    set total_tests 0
+    set total_tests 'No'
     set passed 0
     set failed 0
 
