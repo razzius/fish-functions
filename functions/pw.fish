@@ -9,15 +9,11 @@ function pw --wraps=pass --argument url
     end
 
     # TODO doesn't handle subdirectories
-    set matches (find ~/.password-store -maxdepth 1 -type f | grep $domain)
-    if test (echo $matches | word-count) -gt 1
-        echo "pw: more than 1: $matches"
-        return 1
-    end
+    set match (find-matching-pass $domain) || return 1
 
-    set match (echo $matches | trim-right .gpg | trim-left ~/.password-store/)
-    if not string-empty $match
-        pass -c $match
+    set file (echo $match | trim-right .gpg | trim-left ~/.password-store/)
+    if not string-empty $file
+        pass -c $file
     else
         pass generate -c $domain
         git -C ~/.password-store push
