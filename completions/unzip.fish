@@ -7,4 +7,8 @@ function __unzip_complete_zips
     for f in (find $find_path -maxdepth 1 -name '*.zip')
         echo -e "$f\tZip" | string replace -r '^./' ''
     end
+
+    for f in (find $find_path -maxdepth 1 -name '*.jar')
+        echo -e "$f\tJar" | string replace -r '^./' ''
+    end
 end
