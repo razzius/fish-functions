@@ -48,11 +48,14 @@ function __find_dirs_for_commandline_arg --argument-names find_path last_token
     set exclude_dir_itself_clause -not -name (basename $find_path)
 
     find $find_path -maxdepth 1 -type d $exclude_dir_itself_clause $name_args
+    # find $find_path -maxdepth 1 -type d $exclude_dir_itself_clause $name_args 1>&2
+    # error "find $find_path -maxdepth 1 -type d $exclude_dir_itself_clause $name_args"
     find $find_path -maxdepth 1 -type l -exec test -d {} \; $name_args -print
+    # error "find $find_path -maxdepth 1 -type l -exec test -d {} \; $name_args -print"
 end
 
 function __complete_change_dir
-    set -l find_path (__completion_find_path_for_last_token cd)
+    set -l find_path (__completion_find_path_for_last_token change-dir)
     set -l last_token (commandline -x)[-1]
 
     set -l dirs (__find_dirs_for_commandline_arg $find_path $last_token)
