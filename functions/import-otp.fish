@@ -6,7 +6,7 @@ function import-otp --argument-names image
     if not confirm "Write otpauth to "(basename $passfile)"? "
         return 1
     end
-    set passdomain (basename $passfile | trim-right .gpg)
+    set passdomain (basename $passfile .gpg)
     echo $otpdata | pass otp append $passdomain
     git -C ~/.password-store push
 end

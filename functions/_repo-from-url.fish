@@ -1,3 +1,3 @@
 function _repo-from-url --argument url
-    basename $url | trim-right .git
+    basename $url .git
 end
