@@ -11,7 +11,7 @@ function pw --wraps=pass --argument url
     # TODO doesn't handle subdirectories
     set match (find-matching-pass $domain) || return 1
 
-    set file (echo $match | trim-right .gpg | trim-left ~/.password-store/)
+    set file (basename $match .gpg)
     if not string-empty $file
         pass -c $file
     else
