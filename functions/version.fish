@@ -6,7 +6,7 @@ function version --argument program
 
     if contains $program ssh tmux
         $program -V
-    else if equals $program java
+    else if contains $program java ant
         $program -version
     else if equals $program go
         $program version
