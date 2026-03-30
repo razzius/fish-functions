@@ -1,3 +1,4 @@
-function add-sourcehut-remote
-    git remote add origin git@git.sr.ht:~$USER/(curdir | string replace ' ' -)
+function add-sourcehut-remote --argument _remote
+    set remote (default $_remote origin)
+    git remote add $remote git@git.sr.ht:~$USER/(curdir | string replace ' ' -)
 end
