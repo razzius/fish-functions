@@ -19,5 +19,5 @@ function hub --argument _remote
     set remote (__get_remote_for_current_branch $_remote)
     set url (git config --get remote.$remote.url)
     set https_url (echo $url | string replace -r 'git@(.+):' 'https://$1/')
-    $BROWSER $https_url
+    open $https_url
 end
