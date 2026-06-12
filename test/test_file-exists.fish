@@ -1,20 +1,24 @@
-cd (mkusertemp)
+function test_file-exists_does_exist
+    touch file.txt
 
-echo 'TAP version 14'
-echo '1..2'
-touch file.txt
-
-if file-exists file.txt
-    echo ok
-else
-    echo not ok
+    if not file-exists file.txt
+        return 1
+    end
 end
 
-if not file-exists nonexistant.txt
-    echo ok
-else
-    echo not ok
+function test_file-exists_doesnt_exist
+    if file-exists nonexistant.txt
+        return 1
+    end
 end
 
-remove file.txt
-rmdir-.
+function main
+    cd (mkusertemp)
+
+    run-tap-tests test_file-exists_does_exist test_file-exists_doesnt_exist
+
+    remove file.txt
+    rmdir-.
+end
+
+main

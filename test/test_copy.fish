@@ -1,5 +1,3 @@
-mkdir-cd (mkusertemp)
-
 function __cleanup
     if string-empty $DEBUG
         rm -f a.txt b.txt error.txt contents.txt
@@ -96,12 +94,18 @@ function test_multiple_source_dirs
 end
 
 function main
-    test_basic_behavior
-    test_to_multiple_directory_levels
-    test_no_prompt_file_committed
-    test_allow_-r_flag
-    test_multiple_source_dirs
+    mkdir-cd (mkusertemp)
+
+    set tests \
+        test_basic_behavior \
+        test_to_multiple_directory_levels \
+        test_no_prompt_file_committed \
+        test_allow_-r_flag \
+        test_multiple_source_dirs
+
+    run-tap-tests $tests
+
+    __cleanup
 end
 
 main
-__cleanup

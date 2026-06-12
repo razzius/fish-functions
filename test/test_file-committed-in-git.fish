@@ -1,5 +1,3 @@
-cd (mkusertemp)
-
 function __cleanup
     rm -fr .git
     rm -f file.txt
@@ -64,11 +62,14 @@ function test_file_committed
 end
 
 function main
+    cd (mkusertemp)
+
     test_not_in_git_dir
     test_untracked_file
     test_staged_file_not_committed
     test_file_committed
+
+    rmdir-.
 end
 
 main
-rmdir-.

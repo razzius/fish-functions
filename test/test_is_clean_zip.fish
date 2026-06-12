@@ -1,5 +1,3 @@
-cd (mkusertemp)
-
 function __cleanup
     if string-empty $DEBUG
         remove -rf clean_dir clean_dir.zip
@@ -56,10 +54,16 @@ function test_is_clean_zip_mix_folder_files
 end
 
 function main
-    test_is_clean_zip_true_positive
-    test_is_clean_zip_not_clean
-    test_is_clean_zip_mix_folder_files
+    cd (mkusertemp)
+
+    set tests \
+        test_is_clean_zip_true_positive \
+        test_is_clean_zip_not_clean \
+        test_is_clean_zip_mix_folder_files
+
+    run-tap-tests $tests
+
+    __cleanup
 end
 
 main
-__cleanup

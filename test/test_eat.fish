@@ -101,11 +101,15 @@ function test_eat_directory_ending_with_slash
 end
 
 function main
-    test_basic_behavior
-    test_no_overwrite
-    test_eat_directory_with_file_same_name
-    test_eat_directory_ending_with_slash
+    set tests \
+        test_basic_behavior \
+        test_no_overwrite \
+        test_eat_directory_with_file_same_name \
+        test_eat_directory_ending_with_slash
+
+    run-tap-tests $tests
+
+    __cleanup
 end
 
 main
-__cleanup

@@ -1,5 +1,3 @@
-cd (mkusertemp)
-
 function __cleanup
     rmdir-.
 end
@@ -19,6 +17,8 @@ function test_remove_git_repo
 end
 
 function main
+    cd (mkusertemp)
+
     set tests test_remove_simple test_remove_git_repo
     run-tap-tests $tests
 end

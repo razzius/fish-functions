@@ -3,6 +3,6 @@ set fns (cat $readme | grep '(source)' | coln 1 | string trim -c `)
 
 for f in $fns
     if not file-exists functions/$f.fish
-        echo "Missing function $f"
+        error "Missing function $f that was described in README"
     end
 end
