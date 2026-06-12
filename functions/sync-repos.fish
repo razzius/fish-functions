@@ -1,12 +1,10 @@
 function sync-repos
-    if not file-exists ~/.repos.txt
-        echo 'Put the repositories to sync in ~/.repos.txt'
+    if string-empty SYNC_REPOS
+        echo 'Put the repositories to sync in environment variable SYNC_REPOS'
         return 1
     end
 
-    for path in (cat ~/.repos.txt | grep -v '^#')
-        set repo (echo $path | expand-home-tilde)
-
+    for repo in $SYNC_REPOS
         if not is-dir $repo
             echo $repo not present
             continue
