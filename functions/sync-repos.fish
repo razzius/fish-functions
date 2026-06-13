@@ -10,7 +10,6 @@ function sync-repos
             continue
         end
 
-        echo $path
         if not sync-repo $repo
             echo 'sync-repos: canceling'
             return 1
