@@ -10,10 +10,10 @@ function find-and-replace --argument-names find replace extension
             --type=search \
             --color=never \
             --multiline \
-            -e $find
+            --fixed-strings $find
     )
     for f in $files
-        rg $find \
+        rg --fixed-strings $find \
             --passthru \
             --multiline \
             --no-line-number \
