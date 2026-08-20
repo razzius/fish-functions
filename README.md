@@ -19,6 +19,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
 - [`fish` Interactive Utilities](#fish-interactive-utilities)
   * [`abbr-add`](#abbr-add)
   * [`abbr-erase`](#abbr-erase)
+  * [`change-dir`](#change-dir)
   * [`clip`](#clip)
   * [`clip-pwd`](#clip-pwd)
   * [`funced-last`](#funced-last)
@@ -142,6 +143,17 @@ Erases an abbr and removes it from `~/.config/fish/conf.d/abbrs.fish`.
 Recommended abbreviation: `abbr-add ae abbr-erase`
 
 [Completion](completions/abbr-erase.fish): completes abbr names.
+
+<h3 id="change-dir">
+
+`change-dir <directory>` [(source)](functions/change-dir.fish)
+
+</h3>
+
+Change directory like `cd`. Autocompletion that automatically expands child directories.
+Automatically dereferences symlinks like `cd -P`.
+
+[Completion](completions/change-dir.fish): recursively expands child directories if the parent only has 1 child.
 
 <h3 id="clip">
 
