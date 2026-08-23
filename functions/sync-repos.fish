@@ -14,6 +14,9 @@ function sync-repos
             echo 'sync-repos: canceling'
             return 1
         end
-        echo
+
+        if not equals $repo $SYNC_REPOS[-1]
+            echo
+        end
     end
 end

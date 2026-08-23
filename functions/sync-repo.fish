@@ -1,4 +1,6 @@
 function sync-repo --argument repo
+    echo "Syncing "(echo $repo | unexpand-home-tilde)
+
     set repo_branch (git -C "$repo" rev-parse --abbrev-ref HEAD) || return 1
 
     git -C "$repo" status -sb
