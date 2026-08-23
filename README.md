@@ -51,6 +51,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`line-count`](#line-count)
   * [`char-count`](#char-count)
 - [String Utilities](#string-utilities)
+  * [`chomp`](#chomp)
   * [`string-empty`](#string-empty)
   * [`equals`](#equals)
   * [`startswith`](#startswith)
@@ -644,6 +645,28 @@ $ echo -n a b | wc -c
 ```
 
 ## String Utilities
+
+<h3 id="chomp">
+
+`chomp` [(source)](functions/chomp.fish)
+
+</h3>
+
+Removes trailing newlines from standard input.
+
+Like perl's `chomp`, but does not depend on perl.
+
+```
+$ echo hi\n\n
+hi
+
+
+$ echo hi\n\n | chomp
+hi⏎
+```
+
+(The ⏎ symbol is fish's way of showing there is no newline in the output.
+It prints that and a newline so the next prompt gets its own line.)
 
 <h3 id="string-empty">
 

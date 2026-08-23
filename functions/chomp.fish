@@ -1,3 +1,3 @@
 function chomp
-    perl -pe 'chomp if eof'
+    cat | string collect
 end
