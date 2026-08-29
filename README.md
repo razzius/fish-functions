@@ -152,7 +152,7 @@ Recommended abbreviation: `abbr-add ae abbr-erase`
 </h3>
 
 Change directory like `cd`. Autocompletion that automatically expands child directories.
-Automatically dereferences symlinks like `cd -P`.
+Automatically dereferences symlinks using `cd -P`.
 
 [Completion](completions/change-dir.fish): recursively expands child directories if the parent only has 1 child.
 

@@ -1,3 +1,3 @@
 function change-dir
-    cd --dereference $argv
+    cd -P $argv
 end
