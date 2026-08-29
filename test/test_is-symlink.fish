@@ -16,7 +16,12 @@ function test_is-symlink
     end
 
     if is-symlink file.txt
-        error 'Expected is-symlink to report not symlink'
+        error 'expected is-symlink to report not symlink'
+        return 1
+    end
+
+    if is-symlink nonexistent-file
+        error 'Expected is-symlink to report nonexistent file is not symlink'
         return 1
     end
 end
