@@ -1,5 +1,5 @@
 function sync-repos
-    if string-empty SYNC_REPOS
+    if string-empty $SYNC_REPOS
         echo 'Put the repositories to sync in environment variable SYNC_REPOS'
         return 1
     end
