@@ -18,14 +18,14 @@ function test_basic_behavior
     set expected_status 0
 
     if not equals $result_status $expected_status
-        echo Expected status $expected_status but got $result_status
+        error Expected status $expected_status but got $result_status
         return 1
     end
 
     set output (cat b.txt)
 
     if not string match -q $contents $output
-        echo `copy` did not behave as expected.
+        error `copy` did not behave as expected.
         return 1
     end
 end
