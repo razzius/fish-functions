@@ -3,9 +3,7 @@ function lima-vnc
 
     if test $status != 0 || string-empty $vnc_status
         limactl start /usr/local/share/lima/templates/experimental/vnc.yaml --tty=false
-    end
-
-    if equals $vnc_status Stopped
+    else if equals $vnc_status Stopped
         limactl start vnc
     end
 
