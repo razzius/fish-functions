@@ -1,3 +1,5 @@
-function debug --argument-names varname --no-scope-shadowing
-    error $varname (eval 'echo $'$varname)
+function debug --no-scope-shadowing
+    for varname in $argv
+        error $varname (eval 'echo $'$varname)
+    end
 end
