@@ -1,6 +1,6 @@
-complete -c umount -d "Mount point" -x -a '(__complete_umount)'
+complete -c umount -d "Mount point" -x -a '(__fish_print_mounted)'
 
-function __complete_umount
+function __fish_print_mounted --description 'Print mounted devices'
     if test -r /etc/mtab
         # In mtab, spaces are replaced by a literal '\040'
         # So it's safe to get the second "field" and then replace it
@@ -9,19 +9,20 @@ function __complete_umount
         # and tabs because of descriptions
         string replace -r '\S+ (\S+) .*' '$1' </etc/mtab | string replace -a "\040" " " | string replace -a "\011" \t | string replace -a "\012" \n | string replace -a "\\\\" "\\"
     else
-        set -l last_token (commandline -x)[-1]
+        set -l last_token (commandline | string split ' ')[-1]
 
         set results (
             mount | string replace -r '^(\S+) \S+ (\S+) .*' '$1\n$2' | string replace -r '[\d.]*:/' / | string match '/*' | string split0
         )
 
-        if startswith . $last_token
+        if test (string sub -l 1 $last_token) = .
             echo $results | string replace (pwd) .
             return
         end
 
-        if startswith $HOME $last_token
+        if test (string sub -l 1 $last_token) = '~'
             echo $results | string replace $HOME '~'
+            return
         end
 
         echo $results
