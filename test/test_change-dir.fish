@@ -13,7 +13,7 @@ function test_change-dir_symlink
     change-dir source
 
     if not equals (curdir) target
-        error 'test_cd_symlink: cd did not resolve symlink. curdir '(curdir)', expected target'
+        error 'test_cd_symlink: cd did not resolve symlink. curdir `'(curdir)'`, expected `target`'
         set result 1
     end
 
