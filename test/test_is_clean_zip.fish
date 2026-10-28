@@ -1,9 +1,11 @@
 function __cleanup
+    set last_status $status
+
     if string-empty $DEBUG
-        remove -rf clean_dir clean_dir.zip
-        remove -rf file.txt dirty_dir dirty_dir.zip
-        remove -rf folder mixed_dir.zip
-        rmdir-.
+        remove -rf clean_dir clean_dir.zip && \
+            remove -rf file.txt dirty_dir dirty_dir.zip && \
+            remove -rf folder mixed_dir.zip && \
+            rmdir-. && return $last_status
     end
 end
 
