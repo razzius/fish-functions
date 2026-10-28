@@ -1,3 +1,4 @@
 function unzip-cd --argument zipfile
-    clean-unzip $zipfile && cd (echo $zipfile | until-char .)
+    set folder (zip -sf $zipfile | row 2 | string trim)
+    clean-unzip $zipfile && cd $folder
 end
