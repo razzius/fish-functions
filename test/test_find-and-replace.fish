@@ -1,6 +1,4 @@
 function test_find-and-replace
-    mkdir-cd repo
-
     echo 'original' > file.txt
 
     find-and-replace 'original' 'updated' txt
