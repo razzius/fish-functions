@@ -1,3 +1,3 @@
-function coln
-    awk '{print $'$argv[1]'}'
+function coln --argument-names number
+    awk '{print $'$number'}'
 end
