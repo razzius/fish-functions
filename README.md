@@ -52,6 +52,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`word-count`](#word-count)
   * [`line-count`](#line-count)
   * [`char-count`](#char-count)
+  * [`filter-blank-lines`](#filter-blank-lines)
 - [String Utilities](#string-utilities)
   * [`chomp`](#chomp)
   * [`string-empty`](#string-empty)
@@ -656,6 +657,25 @@ $ echo -n a b | char-count
 $ echo -n a b | wc -c
        3
 ```
+
+<h3 id="filter-blank-lines">
+
+`filter-blank-lines` [(source)](functions/filter-blank-lines.fish)
+
+Remove the blank lines from stdin.
+
+```fish
+$ echo 1\n\n\n2
+1
+
+
+2
+$ echo 1\n\n\n2 | filter-blank-lines
+1
+2
+```
+
+</h3>
 
 ## String Utilities
 
