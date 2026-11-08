@@ -1,3 +1,3 @@
-function uid
-    id -u
+function uid --argument-names user
+    id -u $user
 end
