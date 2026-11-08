@@ -41,6 +41,8 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`clean-unzip`](#clean-unzip)
   * [`unzip-cd`](#unzip-cd)
   * [`is-clean-zip`](#is-clean-zip)
+- [Tarfile Utilities](#tarfile-utilities)
+  * [`tgz`](#tgz)
 - [Text Stream Utilities](#text-stream-utilities)
   * [`coln`](#coln)
   * [`row`](#row)
@@ -522,6 +524,16 @@ a.txt  b.txt
 </h3>
 
 Check if a zipfile contains a folder at its toplevel that contains everything else.
+
+## Tarfile Utilities
+
+<h3 id="tgz">
+
+`tgz <folder>` [(source)](functions/tgz.fish)
+
+</h3>
+
+Create a `.tar.gz` of the given folder.
 
 ## Text Stream Utilities
 
