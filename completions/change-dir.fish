@@ -55,10 +55,10 @@ function __find_dirs_for_commandline_arg --argument-names find_path last_token
 end
 
 function __complete_change_dir
-    set -l find_path (__completion_find_path_for_last_token change-dir)
-    set -l last_token (commandline -x)[-1]
+    set find_path (__completion_find_path_for_last_token change-dir)
+    set last_token (commandline -x)[-1]
 
-    set -l dirs (__find_dirs_for_commandline_arg $find_path $last_token)
+    set dirs (__find_dirs_for_commandline_arg $find_path $last_token)
 
     for d in $dirs
         set path $d
