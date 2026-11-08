@@ -60,7 +60,6 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`file-exists`](#file-exists)
   * [`file-exists-matching-case`](#file-exists-matching-case)
   * [`is-dir`](#is-dir)
-  * [`is-symlink`](#is-symlink)
   * [`confirm`](#confirm)
   * [`default`](#default)
   * [`error`](#error)
@@ -73,6 +72,8 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`unsymlink`](#unsymlink)
   * [`symlinks`](#symlinks)
   * [`link-rc`](#link-rc)
+  * [`is-symlink`](#is-symlink)
+  * [`is-valid-symlink`](#is-valid-symlink)
 - [`git` Utilities](#git-utilities)
   * [`clone-cd`](#clone-cd)
   * [`clone-shallow-cd`](#clone-shallow-cd)
@@ -201,7 +202,6 @@ hack $ pwd
 hack $ clip-pwd
 # copies ~/hack to the clipboard
 ```
-
 
 <h3 id="funced-last">
 
@@ -768,14 +768,6 @@ $ test -e FILE.txt && echo 'case insensitive' || echo 'case sensitive'
 
 Check if `$path` is a directory.
 
-<h3 id="is-symlink">
-
-`is-symlink <path>` [(source)](functions/is-symlink.fish)
-
-</h3>
-
-Check if `$path` is a symlink.
-
 <h3 id="confirm">
 
 `confirm` [(source)](functions/confirm.fish)
@@ -930,6 +922,22 @@ set -g prefix ^Space
 ```
 
 Recommended abbreviation: `abbr-add lrc link-rc`
+
+<h3 id="is-symlink">
+
+`is-symlink <path>` [(source)](functions/is-symlink.fish)
+
+</h3>
+
+Check if `$path` is a symlink.
+
+<h3 id="is-valid-symlink">
+
+`is-valid-symlink <path>` [(source)](functions/is-valid-symlink.fish)
+
+</h3>
+
+Check if `$path` is a valid symlink, meaning it is a symlink to a file and not broken.
 
 <h2 id="git-utilities">
 
