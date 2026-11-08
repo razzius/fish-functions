@@ -62,6 +62,7 @@ Some abbrs are recommended below, which you can add to your personal configurati
   * [`is-dir`](#is-dir)
   * [`is-symlink`](#is-symlink)
   * [`confirm`](#confirm)
+  * [`default`](#default)
   * [`error`](#error)
 - [Environment Utilities](#environment-utilities)
   * [`curdir`](#curdir)
@@ -782,6 +783,32 @@ Check if `$path` is a symlink.
 </h3>
 
 Prompts the user for confirmation. Exit with status according to whether they answered `y`, `Y`, `yes`, or `YES`.
+
+<h3 id="default">
+
+`default value defaultvalue` [(source)](functions/default.fish)
+
+</h3>
+
+Gives back the value if it is non-empty; if it is empty, return the defaultvalue instead. Useful for functions that take an optional argument, since fish scripts don't have a mechanism for default arguments.
+
+Usage:
+
+```fish
+$ default 'abc' 3
+abc
+$ default '' 3
+3
+```
+
+For example, the [`symlinks`](#symlinks) function allows an argument, but runs in the current directory by default:
+
+```fish
+function symlinks --argument-names _path
+    set path (default $_path .)
+    find $path -maxdepth 1 -type l -exec basename {} \;
+end
+```
 
 <h3 id="error">
 
