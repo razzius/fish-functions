@@ -1,10 +1,12 @@
-function __completion_find_path_for_last_token --argument-names executable
-    set -l previous_token (commandline -x)[-1]
+function __completion_find_path_for_last_token
+    set command_line (commandline -x)
 
-    if equals $previous_token $executable
+    if equals (echo $command_line | word-count) 1
         echo '.'
         return
     end
 
-    __completion_find_path_for_token $previous_token
+    set last_token $command_line[-1]
+
+    __completion_find_path_for_token $last_token
 end
