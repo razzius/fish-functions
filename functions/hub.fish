@@ -18,6 +18,12 @@ end
 function hub --argument _remote
     set remote (__get_remote_for_current_branch $_remote)
     set url (git config --get remote.$remote.url)
+
+    if string-empty $url
+        error "hub: remote not recognized: $remote"
+        return 1
+    end
+
     set https_url (echo $url | string replace -r 'git@(.+):' 'https://$1/')
     open $https_url
 end
